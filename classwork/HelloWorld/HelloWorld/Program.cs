@@ -12,7 +12,7 @@ namespace HelloWorld
         static void Main(string[] args)
         {
             
-            int abc;
+            int abc = 123;
             Console.WriteLine("Hello World!");
         }
     }
