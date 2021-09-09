@@ -44,6 +44,11 @@ namespace MitchelCampozano.AdventureGame.ConsoleHost
             // The bodies here are not as armoured as the dead ones before you, but they still carry weapons
             // They surround a chained metal chest
             // You can't access the chest as it is chained with a lock
+            Console.WriteLine("You enter the room, seeing a slew of light troops laying on the floor.");
+            Console.WriteLine("At the center of the room, a large chest sits upright, chains and soldiers alike wrapped around it.");
+            Console.WriteLine("In the middle of the chest, there is a lock.");
+
+
 
             // Going North takes you to RoomWest()
         }
@@ -150,6 +155,7 @@ namespace MitchelCampozano.AdventureGame.ConsoleHost
         
         static string GameAction ()
         {
+            Console.WriteLine("");
             Console.WriteLine("What would you like to do, adventurer?");
 
             while (true)
@@ -161,7 +167,7 @@ namespace MitchelCampozano.AdventureGame.ConsoleHost
                 else if (action.Contains("look"))
                     CheckLook();
                 else if (action.Contains("quit"))
-                    ExitGame();
+                    return "quit";
                 else
                     ErrorMessage("I don't understand.");
             };
