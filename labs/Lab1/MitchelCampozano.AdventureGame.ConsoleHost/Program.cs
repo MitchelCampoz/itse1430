@@ -12,23 +12,8 @@ namespace MitchelCampozano.AdventureGame.ConsoleHost
     {
         static void Main(string[] args)
         {
-            string choice;
+            bool done = false;
 
-            GameStart();
-
-            // TODO : Finish Game Loop
-            while (!exitGame())
-            {
-                choice = CheckMove("What would you like to do, adventurer?", true);
-
-                if (choice == "quit")
-                    exitGame();
-            } 
-        }
-
-       
-        static void GameStart ()
-        {
             Console.WriteLine("Mitchel Campozano, ITSE 1430 Adventure Game, Fall 2021");
             Console.WriteLine("------------------------------------------------------");
             Console.WriteLine("");
@@ -38,31 +23,152 @@ namespace MitchelCampozano.AdventureGame.ConsoleHost
             Console.WriteLine("Large bronze doors tower over you, embossed with a tale of struggle between man and deities.");
             Console.WriteLine("Before you can move, they groan open, cracking enough to give you room to enter.");
             Console.WriteLine("");
+
+            // TODO : Finish Game Loop
+            do
+            {
+                string choice = GameAction();
+
+                // Possible switch statement to see which room to be in
+
+
+                if (choice == "quit")
+                    done = ExitGame();
+            } while (!done);
         }
 
-        static string CheckMove ( string message, bool checkVal )
+        static void RoomSouthWest ()
         {
-            Console.WriteLine(message);
+            // Has one way to go (North)
 
-            string input = Console.ReadLine();
+            // The bodies here are not as armoured as the dead ones before you, but they still carry weapons
+            // They surround a chained metal chest
+            // You can't access the chest as it is chained with a lock
 
-            // TODO: Input validation for various commands
-            return input;
+            // Going North takes you to RoomWest()
+        }
+
+        static void RoomWest ()
+        {
+            // Has two ways to go (East and South)
+            // The bodies here are stacked all near the doorway to the next room
+
+            // Going East goes to RoomCentral()
+
+            // Going South goes to RoomSouthWest()
+        }
+
+        static void RoomNorthWest ()
+        {
+
+        }
+
+        static void RoomSouth ()
+        {
+            // First room to go in
+            // Has one way to go (North)
+            // Stacked with bodies soldiers wearing different armour than you
+            
+            // Going North takes you to RoomCentral()
+        }
+
+        static void RoomCentral ()
+        {
+            // Has three ways to go (West and East and South)
+            // More bodies, but now you can hear faint growling
+            
+            // Going West goes to RoomWest()
+
+            // Going East goes to RoomEast()
+        }
+
+        static void RoomNorth ()
+        {
+
+        }
+
+        static void RoomSouthEast ()
+        {
+            // Has one way to go (North)
+            // Room is surprisingly empty, with but one body cowered in the corner
+            // Its armour is more ornate than the ones you've found thus far, it must be their superior
+            // In its left hand is a vial that seems to have contained poison
+            // In its right hand, held close and stiff to its chest, is a key
+
+            // Take Key
+
+            // Going North takes you to RoomEast()
+        }
+
+        static void RoomEast ()
+        {
+            // Has three ways to go (North and South and West)
+            // This room has heavily armored bodies strewn about the room
+            // There is a large blood streak leading North
+            // The growling is growing heavier
+
+            // Going West takes you to RoomCentral()
+            // Going South takes you to RoomSouthEast()
+            // Going North takes you to RoomNorthEast()
+        }
+
+        static void RoomNorthEast ()
+        {
+
+        }
+
+        static void CheckMove ( string action, bool checkVal)
+        {
+            Console.WriteLine("You Move");
         } 
-        static bool exitGame()
+
+        static void CheckLook ()
         {
-            string quitCom;
+            Console.WriteLine("You Look");
+        }
 
-            Console.WriteLine("Are you sure you want to quit? (Y / N)");
-            quitCom = Console.ReadLine();
+        static bool ReadBoolean ( string message)
+        {
+            Console.Write(message);
 
-            if (quitCom == "n")
-                return false;
-            else if (quitCom == "y")
-                return true;
-            else
-                Console.WriteLine("Invalid entry.");
-            return default;
+            do
+            {
+                ConsoleKeyInfo input = Console.ReadKey(true);
+                if (input.Key == ConsoleKey.Y)
+                    return true;
+                else if (input.Key == ConsoleKey.N)
+                    return false;
+            } while (true);
+        }
+
+        static void ErrorMessage ( string message )
+        {
+            Console.ForegroundColor = ConsoleColor.Red;
+            Console.WriteLine(message);
+            Console.ResetColor();
+        }
+        
+        static string GameAction ()
+        {
+            Console.WriteLine("What would you like to do, adventurer?");
+
+            while (true)
+            {
+                string action = Console.ReadLine();
+
+                if (action.Contains("move"))
+                    CheckMove(action, true);
+                else if (action.Contains("look"))
+                    CheckLook();
+                else if (action.Contains("quit"))
+                    ExitGame();
+                else
+                    ErrorMessage("I don't understand.");
+            };
+        }
+        static bool ExitGame ()
+        {
+            return (ReadBoolean("Are you sure you want to quit (Y/N)?   ")) ;
         }
 
     }
