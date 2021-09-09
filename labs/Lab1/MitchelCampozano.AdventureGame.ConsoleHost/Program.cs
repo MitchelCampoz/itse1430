@@ -31,7 +31,6 @@ namespace MitchelCampozano.AdventureGame.ConsoleHost
 
                 // Possible switch statement to see which room to be in
 
-
                 if (choice == "quit")
                     done = ExitGame();
             } while (!done);
@@ -39,6 +38,7 @@ namespace MitchelCampozano.AdventureGame.ConsoleHost
 
         static void RoomSouthWest ()
         {
+            
             // Has one way to go (North)
 
             // The bodies here are not as armoured as the dead ones before you, but they still carry weapons
@@ -48,8 +48,6 @@ namespace MitchelCampozano.AdventureGame.ConsoleHost
             Console.WriteLine("At the center of the room, a large chest sits upright, chains and soldiers alike wrapped around it.");
             Console.WriteLine("In the middle of the chest, there is a lock.");
 
-
-
             // Going North takes you to RoomWest()
         }
 
@@ -57,6 +55,10 @@ namespace MitchelCampozano.AdventureGame.ConsoleHost
         {
             // Has two ways to go (East and South)
             // The bodies here are stacked all near the doorway to the next room
+            Console.WriteLine("Your eyes adjust to the sickly dark as you enter what appears to be a dining hall.");
+            Console.WriteLine("Corpses are strewn about, all furniture either tossed with them or shattered in pieces.");
+            Console.WriteLine("Tapestries hang tattered, one draped down on the floor like a red carpet into the only other doorway aside from the one you entered.");
+            Console.WriteLine("Surrounding this doorway are many corpses piled high.");
 
             // Going East goes to RoomCentral()
 
@@ -124,6 +126,26 @@ namespace MitchelCampozano.AdventureGame.ConsoleHost
 
         static void CheckMove ( string action, bool checkVal)
         {
+            Console.WriteLine(action);
+
+            do
+            {
+                if (action.Contains("north"))
+                {
+
+                } else if (action.Contains("east"))
+                {
+
+                } else if (action.Contains("south"))
+                {
+
+                } else if (action.Contains("west"))
+                {
+
+                } else
+                    ErrorMessage("Invalid Move!");
+            } while (true);
+
             Console.WriteLine("You Move");
         } 
 
