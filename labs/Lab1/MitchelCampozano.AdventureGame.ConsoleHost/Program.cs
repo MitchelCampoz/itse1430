@@ -58,7 +58,7 @@ namespace MitchelCampozano.AdventureGame.ConsoleHost
             Console.WriteLine("Your eyes adjust to the sickly dark as you enter what appears to be a dining hall.");
             Console.WriteLine("Corpses are strewn about, all furniture either tossed with them or shattered in pieces.");
             Console.WriteLine("Tapestries hang tattered, one draped down on the floor like a red carpet into the only other doorway aside from the one you entered.");
-            Console.WriteLine("Surrounding this doorway are many corpses piled high.");
+            Console.WriteLine("Surrounding this doorway are many soldiers piled high.");
 
             // Going East goes to RoomCentral()
 
@@ -126,24 +126,29 @@ namespace MitchelCampozano.AdventureGame.ConsoleHost
 
         static void CheckMove ( string action, bool checkVal)
         {
+            int newX = 0, newY = 0;
+
+            Console.ForegroundColor = ConsoleColor.Green;
             Console.WriteLine(action);
+            Console.ResetColor();
 
             do
             {
                 if (action.Contains("north"))
                 {
-
+                    newY +=1;                    
                 } else if (action.Contains("east"))
                 {
-
+                    newX +=1;
                 } else if (action.Contains("south"))
                 {
-
+                    newY -=1;
                 } else if (action.Contains("west"))
                 {
-
+                    newX +=1;
                 } else
                     ErrorMessage("Invalid Move!");
+
             } while (true);
 
             Console.WriteLine("You Move");
@@ -152,6 +157,13 @@ namespace MitchelCampozano.AdventureGame.ConsoleHost
         static void CheckLook ()
         {
             Console.WriteLine("You Look");
+        }
+
+        static void ControlHelp ()
+        {
+            Console.WriteLine("movenorth | movesouth | moveeast | movewest ::= To move in the indicated direction");
+            Console.WriteLine("look :: = To look at notable areas of the room");
+            // TODO : Add Take feature
         }
 
         static bool ReadBoolean ( string message)
@@ -190,6 +202,8 @@ namespace MitchelCampozano.AdventureGame.ConsoleHost
                     CheckLook();
                 else if (action.Contains("quit"))
                     return "quit";
+                else if (action.Contains("help"))
+                    ControlHelp();
                 else
                     ErrorMessage("I don't understand.");
             };
