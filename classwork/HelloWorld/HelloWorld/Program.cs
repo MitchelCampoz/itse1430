@@ -4,6 +4,7 @@
  * ITSE 1430 Fal 2021
 */
 using System;   // Statement
+using System.Text;
 
 namespace HelloWorld
 {
@@ -191,6 +192,80 @@ namespace HelloWorld
             string asString = length.ToString();    // Length as a string
             asString = 10.ToString();   // "10"
             asString = areEqualNull.ToString(); // False
+
+            // Comparison
+            string value1 = "Hello", value2 = "hello";
+            bool areEqual = value1 == value2;
+
+            bool compareCaseSensitive = String.Compare(value1, value2) == 0;
+
+            bool compareCaseInsensitive = String.Compare(value1, value2, true) == 0;    // Preferred
+
+            compareCaseSensitive = value1.CompareTo(value2) == 0;   // Works but not safe
+
+            string lowerValue1 = value1.ToLower();
+            string upperValue1 = value1.ToUpper();
+            compareCaseInsensitive = value1.ToUpper() == value2.ToUpper();  // Inefficient
+
+            // Concatenation: first last year
+            int year = 2021;
+            firstName = "Bob";
+            string lastName = "Smith";
+            string name = firstName + " " + lastName + " " + year;   // Bob Smith
+            name = String.Concat(firstName, " ", lastName, " ", year);    // For Larger # of strings
+
+            var builder = new StringBuilder();
+            builder.Append(firstName);
+            builder.Append(" ");
+            builder.Append(lastName);
+            builder.Append(" ");
+            builder.Append(year);
+            name = builder.ToString();
+
+            name = String.Join(" ", firstName, lastName, year);
+
+            // Misc
+            bool startsWithB = name.StartsWith("B");
+            startsWithB = name.StartsWith("B", StringComparison.CurrentCultureIgnoreCase);
+
+            bool endsWith9 = name.StartsWith("9");
+            endsWith9 = name.EndsWith("9", StringComparison.CurrentCultureIgnoreCase);
+
+            // Removes leading and trailing whitespace 
+            string normalizedName = name.Trim();
+            //name.TrimStart().TrimEnd();
+
+            // Some useful functions
+            //name.Substring(startIndex); // Gets a subset of string
+            //name.IndexOf(character);    // Finds a character
+
+            name.PadLeft(50);   // Add enough spaces on left to make string length 50
+            name.PadRight(50);  // Add enough spaces on left to make string length 50
+
+            // Empty string checking
+            bool isEmpty;
+            isEmpty = name == "";   // Not always going to work correctly for you
+            isEmpty = name.Length == 0; // Will crash if null
+
+            // Handle Null
+            isEmpty = (name != null) ? name == "" : true;
+            isEmpty = name == null || name == "";
+            isEmpty = (name != null) ? name.Length == 0 : true;
+            isEmpty = String.IsNullOrEmpty(name);   // Preferred
+
+            // Formatting - Hello first last, the year is year
+            name = "Hello " + firstName + " " + lastName + ", the year is " + year + ". ";
+            name = String.Format("Hello {0} {1}, the year is {2}.", firstName, lastName, year);
+            Console.WriteLine("Hello {0} {1}, the year is {2}.", firstName, lastName, year);
+
+            decimal price = 8.75M;
+            string priceString = price.ToString();  // 8.7500000
+            priceString = price.ToString("C");      // Money
+            priceString = price.ToString("N6:N2");     // 8.7500
+            priceString = String.Format("{0:C}", price);
+
+            // String Interpolation - Way to go
+            name = $"Hello {firstName} {lastName}, the year is {year:0000}.";
         }
     }
 }
