@@ -28,8 +28,8 @@ namespace MitchelCampozano.AdventureGame.ConsoleHost
         }
 
         // Player coordinates
-        static int placeX;
-        static int placeY;
+        static int placeX = 0;
+        static int placeY = 0;
 
         // Game intro text block
         static void GameIntro()
@@ -73,7 +73,7 @@ namespace MitchelCampozano.AdventureGame.ConsoleHost
 
         // Checks the move of the player if it's correct
         // Returns a value for the PlayerTracker function to do its thing
-        static void CheckMove ( string action) 
+        static void CheckMove ( string action ) 
         {
             // Keeps track of player movement
             int newX = placeX, newY = placeY;
@@ -104,16 +104,16 @@ namespace MitchelCampozano.AdventureGame.ConsoleHost
 
                 switch (roomNumber)
                 {
-                    case 1: Room1(); break;
-                    case 2: Room2(); break;
-                    case 3: Room3(); break;
-                    case 4: Room4(); break;
-                    case 5: Room5(); break;
-                    case 6: Room6(); break;
-                    case 7: Room7(); break;
-                    case 8: Room8(); break;
-                    case 9: Room9(); break;
-                };
+                    case 1: Room1(); Console.WriteLine(placeX + " " + placeY); break;
+                    case 2: Room2(); Console.WriteLine(placeX + " " + placeY); break;
+                    case 3: Room3(); Console.WriteLine(placeX + " " + placeY); break;
+                    case 4: Room4(); Console.WriteLine(placeX + " " + placeY); break;
+                    case 5: Room5(); Console.WriteLine(placeX + " " + placeY); break;
+                    case 6: Room6(); Console.WriteLine(placeX + " " + placeY); break;
+                    case 7: Room7(); Console.WriteLine(placeX + " " + placeY); break;
+                    case 8: Room8(); Console.WriteLine(placeX + " " + placeY); break;
+                    case 9: Room9(); Console.WriteLine(placeX + " " + placeY); break;
+                 };
             } else
                 ErrorMessage("You bonk into the wall");
         }
