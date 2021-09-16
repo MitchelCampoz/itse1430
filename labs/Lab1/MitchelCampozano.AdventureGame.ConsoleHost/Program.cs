@@ -14,6 +14,26 @@ namespace MitchelCampozano.AdventureGame.ConsoleHost
         {
             bool done = false;
 
+            GameIntro();
+
+            do
+            {
+                string action = GameAction();
+
+                if (action.Contains("quit"))
+                    done = ExitGame();
+
+
+            } while (!done);
+        }
+
+        // Maximum value for rooms based on XY axes
+        static int maximumX = 3;
+        static int maximumY = 3;
+
+        // Game intro text block
+        static void GameIntro()
+        {
             Console.WriteLine("Mitchel Campozano, ITSE 1430 Adventure Game, Fall 2021");
             Console.WriteLine("------------------------------------------------------");
             Console.WriteLine("");
@@ -23,150 +43,78 @@ namespace MitchelCampozano.AdventureGame.ConsoleHost
             Console.WriteLine("Large bronze doors tower over you, embossed with a tale of struggle between man and deities.");
             Console.WriteLine("Before you can move, they groan open, cracking enough to give you room to enter.");
             Console.WriteLine("");
+        }
 
-            // TODO : Finish Game Loop
-            do
+        // Input loop
+        static string GameAction ()
+        {
+            Console.WriteLine("");
+            Console.WriteLine("What would you like to do, adventurer?");
+
+            while (true)
             {
-                string choice = GameAction();
+                string action = Console.ReadLine();
 
-                // Possible switch statement to see which room to be in
+                if (action.Contains("move"))
+                    CheckMove(action);
+                else if (action.Contains("look"))
+                    CheckLook(action);
+                else if (action.Contains("quit"))
+                    return "quit";
+                else if (action.Contains("help"))
+                    ControlHelp();
+                else
+                    ErrorMessage("I don't understand.");
 
-                if (choice == "quit")
-                    done = ExitGame();
-            } while (!done);
+            };
         }
 
-        static void RoomSouthWest ()
+        // Checks the move of the player if it's correct
+        // Returns a value for the PlayerTracker function to do its thing
+        static void CheckMove ( string action) 
         {
-            
-            // Has one way to go (North)
+            // Keeps track of player movement
+            int moveX = 0, moveY = 0;
 
-            // The bodies here are not as armoured as the dead ones before you, but they still carry weapons
-            // They surround a chained metal chest
-            // You can't access the chest as it is chained with a lock
-            Console.WriteLine("You enter the room, seeing a slew of light troops laying on the floor.");
-            Console.WriteLine("At the center of the room, a large chest sits upright, chains and soldiers alike wrapped around it.");
-            Console.WriteLine("In the middle of the chest, there is a lock.");
-
-            // Going North takes you to RoomWest()
-        }
-
-        static void RoomWest ()
-        {
-            // Has two ways to go (East and South)
-            // The bodies here are stacked all near the doorway to the next room
-            Console.WriteLine("Your eyes adjust to the sickly dark as you enter what appears to be a dining hall.");
-            Console.WriteLine("Corpses are strewn about, all furniture either tossed with them or shattered in pieces.");
-            Console.WriteLine("Tapestries hang tattered, one draped down on the floor like a red carpet into the only other doorway aside from the one you entered.");
-            Console.WriteLine("Surrounding this doorway are many soldiers piled high.");
-
-            // Going East goes to RoomCentral()
-
-            // Going South goes to RoomSouthWest()
-        }
-
-        static void RoomNorthWest ()
-        {
-
-        }
-
-        static void RoomSouth ()
-        {
-            // First room to go in
-            // Has one way to go (North)
-            // Stacked with bodies soldiers wearing different armour than you
-            
-            // Going North takes you to RoomCentral()
-        }
-
-        static void RoomCentral ()
-        {
-            // Has three ways to go (West and East and South)
-            // More bodies, but now you can hear faint growling
-            
-            // Going West goes to RoomWest()
-
-            // Going East goes to RoomEast()
-        }
-
-        static void RoomNorth ()
-        {
-
-        }
-
-        static void RoomSouthEast ()
-        {
-            // Has one way to go (North)
-            // Room is surprisingly empty, with but one body cowered in the corner
-            // Its armour is more ornate than the ones you've found thus far, it must be their superior
-            // In its left hand is a vial that seems to have contained poison
-            // In its right hand, held close and stiff to its chest, is a key
-
-            // Take Key
-
-            // Going North takes you to RoomEast()
-        }
-
-        static void RoomEast ()
-        {
-            // Has three ways to go (North and South and West)
-            // This room has heavily armored bodies strewn about the room
-            // There is a large blood streak leading North
-            // The growling is growing heavier
-
-            // Going West takes you to RoomCentral()
-            // Going South takes you to RoomSouthEast()
-            // Going North takes you to RoomNorthEast()
-        }
-
-        static void RoomNorthEast ()
-        {
-
-        }
-
-        static void CheckMove ( string action, bool checkVal)
-        {
-            int newX = 0, newY = 0;
-
-            Console.ForegroundColor = ConsoleColor.Green;
-            Console.WriteLine(action);
-            Console.ResetColor();
-
-            do
+            switch (action)
             {
-                if (action.Contains("north"))
-                {
-                    newY +=1;                    
-                } else if (action.Contains("east"))
-                {
-                    newX +=1;
-                } else if (action.Contains("south"))
-                {
-                    newY -=1;
-                } else if (action.Contains("west"))
-                {
-                    newX +=1;
-                } else
-                    ErrorMessage("Invalid Move!");
 
-            } while (true);
+                case "movenorth": moveY -= 1;// WIP
+                break;
+                case "movesouth": moveY += 1;// WIP
+                break;
+                case "moveeast": moveX += 1;// WIP
+                break;
+                case "movewest": moveX -= 1;// WIP
+                break;
+                default: ErrorMessage("Invalid Move"); 
+                break;
 
-            Console.WriteLine("You Move");
-        } 
+            };
+            
+            if (moveX  >= 0 && moveX  < maximumX && moveY >= 0 && moveY < maximumY)
+            {
 
-        static void CheckLook ()
-        {
-            Console.WriteLine("You Look");
+            }
         }
 
-        static void ControlHelp ()
+        // Inspect function
+        static void CheckLook( string action )
         {
-            Console.WriteLine("movenorth | movesouth | moveeast | movewest ::= To move in the indicated direction");
-            Console.WriteLine("look :: = To look at notable areas of the room");
-            // TODO : Add Take feature
+            Console.WriteLine("You entered " + action);
         }
 
-        static bool ReadBoolean ( string message)
+
+        // Exit Game function calls the ReadBool function for quick and easy input
+        static bool ExitGame ()
+        {
+            if (ReadBool("Are you sure you want to quit (Y/N)?   "))
+                return true;
+            return false;
+        }
+
+        // Validates user response to the ExitGame function
+        static bool ReadBool ( string message )
         {
             Console.Write(message);
 
@@ -180,38 +128,106 @@ namespace MitchelCampozano.AdventureGame.ConsoleHost
             } while (true);
         }
 
+        static void ControlHelp ()
+        {
+            Console.WriteLine("movenorth | movesouth | moveeast | movewest ::= To move in the indicated direction");
+            Console.WriteLine("look :: = To look at notable areas of the room");
+            // TODO : Add Take feature
+        }
+
         static void ErrorMessage ( string message )
         {
             Console.ForegroundColor = ConsoleColor.Red;
             Console.WriteLine(message);
             Console.ResetColor();
         }
-        
-        static string GameAction ()
-        {
-            Console.WriteLine("");
-            Console.WriteLine("What would you like to do, adventurer?");
 
-            while (true)
-            {
-                string action = Console.ReadLine();
+        //static void RoomSouthWest ()
+        //{
 
-                if (action.Contains("move"))
-                    CheckMove(action, true);
-                else if (action.Contains("look"))
-                    CheckLook();
-                else if (action.Contains("quit"))
-                    return "quit";
-                else if (action.Contains("help"))
-                    ControlHelp();
-                else
-                    ErrorMessage("I don't understand.");
-            };
-        }
-        static bool ExitGame ()
-        {
-            return (ReadBoolean("Are you sure you want to quit (Y/N)?   ")) ;
-        }
+        //    // Has one way to go (North)
 
+        //    // The bodies here are not as armoured as the dead ones before you, but they still carry weapons
+        //    // They surround a chained metal chest
+        //    // You can't access the chest as it is chained with a lock
+        //    Console.WriteLine("You enter the room, seeing a slew of light troops laying on the floor.");
+        //    Console.WriteLine("At the center of the room, a large chest sits upright, chains and soldiers alike wrapped around it.");
+        //    Console.WriteLine("In the middle of the chest, there is a lock.");
+
+        //    // Going North takes you to RoomWest()
+        //}
+
+        //static void RoomWest ()
+        //{
+        //    // Has two ways to go (East and South)
+        //    // The bodies here are stacked all near the doorway to the next room
+        //    Console.WriteLine("Your eyes adjust to the sickly dark as you enter what appears to be a dining hall.");
+        //    Console.WriteLine("Corpses are strewn about, all furniture either tossed with them or shattered in pieces.");
+        //    Console.WriteLine("Tapestries hang tattered, one draped down on the floor like a red carpet into the only other doorway aside from the one you entered.");
+        //    Console.WriteLine("Surrounding this doorway are many soldiers piled high.");
+
+        //    // Going East goes to RoomCentral()
+
+        //    // Going South goes to RoomSouthWest()
+        //}
+
+        //static void RoomNorthWest ()
+        //{
+
+        //}
+
+        //static void RoomSouth ()
+        //{
+        //    // First room to go in
+        //    // Has one way to go (North)
+        //    // Stacked with bodies soldiers wearing different armour than you
+
+        //    // Going North takes you to RoomCentral()
+        //}
+
+        //static void RoomCentral ()
+        //{
+        //    // Has three ways to go (West and East and South)
+        //    // More bodies, but now you can hear faint growling
+
+        //    // Going West goes to RoomWest()
+
+        //    // Going East goes to RoomEast()
+        //}
+
+        //static void RoomNorth ()
+        //{
+
+        //}
+
+        //static void RoomSouthEast ()
+        //{
+        //    // Has one way to go (North)
+        //    // Room is surprisingly empty, with but one body cowered in the corner
+        //    // Its armour is more ornate than the ones you've found thus far, it must be their superior
+        //    // In its left hand is a vial that seems to have contained poison
+        //    // In its right hand, held close and stiff to its chest, is a key
+
+        //    // Take Key
+
+        //    // Going North takes you to RoomEast()
+        //}
+
+        //static void RoomEast ()
+        //{
+        //    // Has three ways to go (North and South and West)
+        //    // This room has heavily armored bodies strewn about the room
+        //    // There is a large blood streak leading North
+        //    // The growling is growing heavier
+
+        //    // Going West takes you to RoomCentral()
+        //    // Going South takes you to RoomSouthEast()
+        //    // Going North takes you to RoomNorthEast()
+        //}
+
+        //static void RoomNorthEast ()
+        //{
+
+        //}
     }
 }
