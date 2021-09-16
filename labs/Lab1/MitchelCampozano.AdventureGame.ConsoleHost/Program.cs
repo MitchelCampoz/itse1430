@@ -31,6 +31,10 @@ namespace MitchelCampozano.AdventureGame.ConsoleHost
         static int maximumX = 3;
         static int maximumY = 3;
 
+        // Player coordinates
+        static int placeX;
+        static int placeY;
+
         // Game intro text block
         static void GameIntro()
         {
@@ -48,8 +52,10 @@ namespace MitchelCampozano.AdventureGame.ConsoleHost
         // Input loop
         static string GameAction ()
         {
+            Console.ForegroundColor = ConsoleColor.Green;
             Console.WriteLine("");
             Console.WriteLine("What would you like to do, adventurer?");
+            Console.ResetColor();
 
             while (true)
             {
@@ -74,28 +80,36 @@ namespace MitchelCampozano.AdventureGame.ConsoleHost
         static void CheckMove ( string action) 
         {
             // Keeps track of player movement
-            int moveX = 0, moveY = 0;
+            int newX = placeX, newY = placeY;
 
             switch (action)
             {
 
-                case "movenorth": moveY -= 1;// WIP
+                case "movenorth": newY -= 1;// WIP
                 break;
-                case "movesouth": moveY += 1;// WIP
+                case "movesouth": newY += 1;// WIP
                 break;
-                case "moveeast": moveX += 1;// WIP
+                case "moveeast": newX += 1;// WIP
                 break;
-                case "movewest": moveX -= 1;// WIP
+                case "movewest": newX -= 1;// WIP
                 break;
                 default: ErrorMessage("Invalid Move"); 
                 break;
 
             };
-            
-            if (moveX  >= 0 && moveX  < maximumX && moveY >= 0 && moveY < maximumY)
-            {
 
-            }
+            if (placeX  >= 0 && placeX  < maximumX && placeY >= 0 && placeY < maximumY)
+            {
+                int roomNumber = placeX + (maximumX * (placeY - 1));
+
+                switch (roomNumber)
+                {
+                    case 1: Room1(); break;
+                    case 2: Room2(); break;
+                    case 3: Room3(); break;
+                };
+            } else
+                Console.WriteLine("You bonk into the wall");
         }
 
         // Inspect function
@@ -142,6 +156,20 @@ namespace MitchelCampozano.AdventureGame.ConsoleHost
             Console.ResetColor();
         }
 
+        static void Room1 ()
+        {
+            Console.WriteLine("You found me");
+        }
+
+        static void Room2 ()
+        {
+            Console.WriteLine("You found me");
+        }
+
+        static void Room3 ()
+        {
+            Console.WriteLine("You found me");
+        }
         //static void RoomSouthWest ()
         //{
 
