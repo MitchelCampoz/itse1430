@@ -14,6 +14,7 @@ namespace MitchelCampozano.AdventureGame.ConsoleHost
         {
             bool done = false;
 
+            // Call the game intro
             GameIntro();
 
             do
