@@ -101,21 +101,6 @@ namespace MitchelCampozano.AdventureGame.ConsoleHost
 
             if (placeX  >= 0 && placeX  < 3 && placeY >= 0 && placeY < 3)
             {
-                // int roomNumber = placeX + (3 * (placeY - 1));
-
-                //switch (roomNumber)
-                //{
-                //    case 1: Room1(); Console.WriteLine(placeX + " " + placeY); break;
-                //    case 2: Room2(); Console.WriteLine(placeX + " " + placeY); break;
-                //    case 3: Room3(); Console.WriteLine(placeX + " " + placeY); break;
-                //    case 4: Room4(); Console.WriteLine(placeX + " " + placeY); break;
-                //    case 5: Room5(); Console.WriteLine(placeX + " " + placeY); break;
-                //    case 6: Room6(); Console.WriteLine(placeX + " " + placeY); break;
-                //    case 7: Room7(); Console.WriteLine(placeX + " " + placeY); break;
-                //    case 8: Room8(); Console.WriteLine(placeX + " " + placeY); break;
-                //    case 9: Room9(); Console.WriteLine(placeX + " " + placeY); break;
-                // };
-
                 if (placeX >= 0 && placeY == 0)
                 {
                     if (placeX == 0)
@@ -213,16 +198,26 @@ namespace MitchelCampozano.AdventureGame.ConsoleHost
 
         static void Room1 ()
         {
-            Console.WriteLine("You found room1");
+            // Fountain and offering place to leave a toll to enter the church
+            // Can only go east
+            Console.WriteLine("You find yourself in a strange room, with gates to the next busted down.");
+            Console.WriteLine("Footprints of dried blood stain the dusty floor, all crowding past the archway");
+            Console.WriteLine("There is much damage to the walls, scratches marring the now faded murals.");
+            Console.WriteLine("To the left of you is a large fountain, the edge of it broken to rubble with coins littering the floor.");
+
+
         }
 
         static void Room2 ()
         {
+            // Entrance into the main chapel with pews
+            // Can go west and south
             Console.WriteLine("You found room2");
         }
 
         static void Room3 ()
         {
+            
             Console.WriteLine("You found room3");
         }
 
@@ -233,6 +228,8 @@ namespace MitchelCampozano.AdventureGame.ConsoleHost
 
         static void Room5 ()
         {
+            // Continue down the aisle and see a break in the rows of pews
+            // Can go north, south, east, west
             Console.WriteLine("You found room5");
         }
 
