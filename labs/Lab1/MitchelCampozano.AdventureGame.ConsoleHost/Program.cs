@@ -29,8 +29,8 @@ namespace MitchelCampozano.AdventureGame.ConsoleHost
         }
 
         // Player coordinates
-        static int placeX = 0;
-        static int placeY = 0;
+        static int placeX;
+        static int placeY;
 
         // Game intro text block
         static void GameIntro()
@@ -101,20 +101,68 @@ namespace MitchelCampozano.AdventureGame.ConsoleHost
 
             if (placeX  >= 0 && placeX  < 3 && placeY >= 0 && placeY < 3)
             {
-                int roomNumber = placeX + (3 * (placeY - 1));
+                // int roomNumber = placeX + (3 * (placeY - 1));
 
-                switch (roomNumber)
+                //switch (roomNumber)
+                //{
+                //    case 1: Room1(); Console.WriteLine(placeX + " " + placeY); break;
+                //    case 2: Room2(); Console.WriteLine(placeX + " " + placeY); break;
+                //    case 3: Room3(); Console.WriteLine(placeX + " " + placeY); break;
+                //    case 4: Room4(); Console.WriteLine(placeX + " " + placeY); break;
+                //    case 5: Room5(); Console.WriteLine(placeX + " " + placeY); break;
+                //    case 6: Room6(); Console.WriteLine(placeX + " " + placeY); break;
+                //    case 7: Room7(); Console.WriteLine(placeX + " " + placeY); break;
+                //    case 8: Room8(); Console.WriteLine(placeX + " " + placeY); break;
+                //    case 9: Room9(); Console.WriteLine(placeX + " " + placeY); break;
+                // };
+
+                if (placeX >= 0 && placeY == 0)
                 {
-                    case 1: Room1(); Console.WriteLine(placeX + " " + placeY); break;
-                    case 2: Room2(); Console.WriteLine(placeX + " " + placeY); break;
-                    case 3: Room3(); Console.WriteLine(placeX + " " + placeY); break;
-                    case 4: Room4(); Console.WriteLine(placeX + " " + placeY); break;
-                    case 5: Room5(); Console.WriteLine(placeX + " " + placeY); break;
-                    case 6: Room6(); Console.WriteLine(placeX + " " + placeY); break;
-                    case 7: Room7(); Console.WriteLine(placeX + " " + placeY); break;
-                    case 8: Room8(); Console.WriteLine(placeX + " " + placeY); break;
-                    case 9: Room9(); Console.WriteLine(placeX + " " + placeY); break;
-                 };
+                    if (placeX == 0)
+                    {
+                        Room1();
+                        Console.WriteLine(placeX + " " + placeY);
+                    } else if (placeX == 1)
+                    {
+                        Room2();
+                        Console.WriteLine(placeX + " " + placeY);
+                    } else if (placeX == 2)
+                    {
+                        Room3();
+                        Console.WriteLine(placeX + " " + placeY);
+                    }
+                } else if (placeX >= 0 && placeY == 1)
+                {
+                    if (placeX == 0)
+                    {
+                        Room4();
+                        Console.WriteLine(placeX + " " + placeY);
+                    } else if (placeX == 1)
+                    {
+                        Room5(); 
+                        Console.WriteLine(placeX + " " + placeY);
+                    }else if (placeX == 2)
+                    {
+                        Room6(); 
+                        Console.WriteLine(placeX + " " + placeY);
+                    }
+                }else if (placeX >= 0 && placeY == 2)
+                {
+                    if (placeX == 0)
+                    {
+                        Room7();
+                        Console.WriteLine(placeX + " " + placeY);
+                    } else if (placeX == 1)
+                    {
+                        Room8();
+                        Console.WriteLine(placeX + " " + placeY);
+                    } else if (placeX == 2)
+                    {
+                        Room9();
+                        Console.WriteLine(placeX + " " + placeY);
+                    }
+                }
+
             } else
                 ErrorMessage("You bonk into the wall");
         }
