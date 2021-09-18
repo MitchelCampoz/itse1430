@@ -96,6 +96,7 @@ namespace MitchelCampozano.AdventureGame.ConsoleHost
 
             };
 
+            // Test comment
             placeX = newX; 
             placeY = newY;
 
