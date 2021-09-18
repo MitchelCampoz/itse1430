@@ -32,7 +32,9 @@ namespace MitchelCampozano.AdventureGame.ConsoleHost
         static int placeX;
         static int placeY;
 
-        // Game intro text block
+        // Quest trackers
+        static bool quest;
+        static bool mcguffin;
         static void GameIntro()
         {
             Console.WriteLine("Mitchel Campozano, ITSE 1430 Adventure Game, Fall 2021");
@@ -178,11 +180,19 @@ namespace MitchelCampozano.AdventureGame.ConsoleHost
                 } else if (placeX == 2)
                 {
                     // Room3();
-                    Console.WriteLine("Upon inspection, you can see that the chest has a single lock at the top");
-                    Console.WriteLine("The key to the lock, however, is nowhere in sight.");
-                    Console.WriteLine("Whatever was inside must have been important to the temple, the defenders all fighting to the bitter end.");
-                    Console.WriteLine("It must have been important to the attackers as well, seeing as how they didn't even hold onto the coins from the fountain earlier.");
-                    Console.WriteLine("You may go South or West");
+                    if (quest == false)
+                    {
+                        Console.WriteLine("Upon inspection, you can see that the chest has a single lock at the top");
+                        Console.WriteLine("The key to the lock, however, is nowhere in sight.");
+                        Console.WriteLine("Whatever was inside must have been important to the temple, the defenders all fighting to the bitter end.");
+                        Console.WriteLine("It must have been important to the attackers as well, seeing as how they didn't even hold onto the coins from the fountain earlier.");
+                        Console.WriteLine("You may go South or West");
+                    }else if (quest == true)
+                    {
+                        Console.WriteLine("You take the key you found and put it in the lock, turning it until you hear a hard *CLICK*.");
+                        Console.WriteLine("The lock falls on top of the bones, and the chest groans open to reveal a hammer with a stone head.");
+                        Console.WriteLine("The hammer is heavy and beautifully carven. It doesn't seem to be ordinary.");
+                    }
                 }
             } else if (placeX >= 0 && placeY == 1)
             {
@@ -201,13 +211,33 @@ namespace MitchelCampozano.AdventureGame.ConsoleHost
                     Console.WriteLine("You may go North, South, East, or West");
                 } else if (placeX == 2)
                 {
-                   // Room6();
+                    // Room6();
+                    Console.WriteLine("The squeaks of rats can be heard about, eating the rotting remnants of flesh and entrees.");
+                    Console.WriteLine("Up and down the bars of the stained glass windows, you see bones clinging to them, desperate souls looking for safe haven.");
+                    Console.WriteLine("The bones around you seem to grow denser around the room with the chest, and then toward the chapel.");
+                    Console.WriteLine("You may go North, South, or West.");
                 }
             } else if (placeX >= 0 && placeY == 2)
             {
                 if (placeX == 0)
                 {
-                   // Room7();
+                    // Room7();
+                    Console.WriteLine("On the desk in front of the priest is a piece of parchment with faded ink scribbled on it.");
+                    Console.WriteLine("What you can make out reads: ");
+                    
+                    Console.ForegroundColor = ConsoleColor.DarkMagenta;
+                    Console.WriteLine("\"Should this be the end of us, our sacred order, I can not bear to see it fall.\"");
+                    Console.WriteLine("\"If our order does not fall, however, and if the Smith himself sends a savior, \"");
+                    Console.WriteLine("\"let it be known we died loyal servants to the Smith, and in turn, the Liberator.\"");
+                    Console.WriteLine("");
+                    Console.ResetColor();
+
+                    if (quest == false)
+                    {
+                        Console.WriteLine("You gently take the twine holding the key and wrap it around your neck.");
+                        quest = true;
+                    }
+
                 } else if (placeX == 1)
                 {
                     //Room8();
@@ -309,13 +339,21 @@ namespace MitchelCampozano.AdventureGame.ConsoleHost
         {
             Console.WriteLine("You enter the dining hall, looking around at the obliterated grand table in the center of the room.");
             Console.WriteLine("Stained glass windows rise above the room, though the tight iron bars seemed to cage everyone in during the massacre.");
-            Console.WriteLine("The bones seem to spill into the room from where the iron chest resides, .");
+            Console.WriteLine("The bones seem to spill into the room from where the iron chest resides.");
         }
 
         static void Room7 ()
         {
             // Make a boolean set to true to overturn the false one to complete the quest
-            Console.WriteLine("You found room7");
+            if (quest == false)
+            {
+                Console.WriteLine("Entering the Priest's Quarters, the juxtaposition between here and the rest of the temple is striking.");
+                Console.WriteLine("There is no carnage, no distress, rather, there is but one lone skeleton here, sitting at a desk.");
+                Console.WriteLine("As you approach, you see there is something in each hand: in his left is a vial of poison, and in the right, there is a key.");
+            }else if (quest == true)
+            {
+                Console.WriteLine("Entering the priest's quarters, you see his remains peacefully at his desk, the empty eyes of his skull forever reading his last words.");
+            }
         }
 
         static void Room8 ()
