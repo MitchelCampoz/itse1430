@@ -14,8 +14,8 @@ namespace MitchelCampozano.AdventureGame.ConsoleHost
         {
             bool done = false;
 
-            // Call the game intro
             GameIntro();
+            
             do
             {
                 Console.ForegroundColor = ConsoleColor.Green;
@@ -38,14 +38,11 @@ namespace MitchelCampozano.AdventureGame.ConsoleHost
                     ErrorMessage("I don't understand.");
             } while (!done);
         }
+
         // Player coordinates
         static int placeX;
         static int placeY;
 
-        // Quest trackers
-        static bool quest;
-        static bool trackHam;
-        static bool smithFree;
         static void GameIntro()
         {
             Console.ForegroundColor = ConsoleColor.Cyan;
@@ -139,7 +136,7 @@ namespace MitchelCampozano.AdventureGame.ConsoleHost
                         case 0:
                         {
                             PriestRoom();
-                            Console.WriteLine($"Your location is: {placeX + 1}, {placeY}.");
+                            Console.WriteLine($"Your location is: {placeX + 1}, {placeY + 1}.");
                             break;
                         }
                         case 1:
@@ -200,25 +197,11 @@ namespace MitchelCampozano.AdventureGame.ConsoleHost
                     }
                     case 2:
                     {
-                        if (quest == false)
-                        {
-                            Console.WriteLine("Upon inspection, you can see that the chest has a single lock at the top.");
-                            Console.WriteLine("The key to the lock, however, is nowhere in sight.");
-                            Console.WriteLine("Whatever is inside must be important to the temple, the defenders all fighting to the bitter end.");
-                            Console.WriteLine("It must have been important to the attackers as well, nothing valuable thus far looted from here.");
-                            Console.WriteLine("You may go South or West");
-                        }else if (trackHam == true)
-                        {
-                            Console.WriteLine("The bones that wrapped around the chest in the middle of the room now lay on the ground.");
-                            Console.WriteLine("Both invader and defender, now intermingled with one another, need not behold what lay inside of the metal casket.");
-                        } else if (quest == true)
-                        {
-                            Console.WriteLine("You take the key you found and put it in the lock, turning it until you hear a hard *CLICK*.");
-                            Console.WriteLine("The lock falls on top of the bones, and the chest groans open to reveal a hammer with a stone head.");
-                            Console.WriteLine("The hammer is heavy and beautifully carven. It doesn't seem to be ordinary.");
-
-                            trackHam = true;
-                        }
+                        Console.WriteLine("Upon inspection, you can see that the chest has a single lock at the top.");
+                        Console.WriteLine("The key to the lock, however, is nowhere in sight.");
+                        Console.WriteLine("Whatever is inside must be important to the temple, the defenders all fighting to the bitter end.");
+                        Console.WriteLine("It must have been important to the attackers as well, nothing valuable thus far looted from here.");
+                        Console.WriteLine("You may go South or West");
                         break;
                     }
                 };
@@ -268,34 +251,21 @@ namespace MitchelCampozano.AdventureGame.ConsoleHost
                         Console.WriteLine("\"We will die for the sake of the Smith, and in turn, the sake of the Liberator!\"");
                         Console.WriteLine("");
                         Console.ResetColor();
-
-                        if (quest == false)
-                        {
-                            Console.WriteLine("You gently take the twine holding the key and wrap it around your neck.");
-                            quest = true;
-                        }
                         break;
                     }
                     case 1:
                     {
-                        if (smithFree == false)
-                        {
-                            Console.WriteLine("The carved idol seems to wield an ornate hammer, the head embossed with runes of might and power.");
-                            Console.WriteLine("Its purpose seems to be to intimidate those below it, ensuring they pray and give proper offering.");
-                            Console.WriteLine("Your eyes trail down to the altar it looms over, seeing carved inscriptions scrawled on the edges of it.");
-                            Console.WriteLine("The words you can make out, appear to say: ");
-                            Console.ForegroundColor = ConsoleColor.DarkMagenta;
-                            Console.WriteLine("\"And the Smith shall rest after his endeavor with the Liberator, as will all of the Old Ones.\"");
-                            Console.WriteLine("\"Knowing his hammer to be the source of his everlasting power, he stowed it away with those\""); 
-                            Console.WriteLine("\"most devoted as a pact of peace with the humans that fought alongside the Liberator and the Old Ones.\"");
-                            Console.WriteLine("\"And with this act, he laid himself to rest until called once more, sealing his power for now.\"");
-                            Console.WriteLine("");
-                            Console.ResetColor();
-                        } else if (smithFree == true)
-                        {
-                            Console.WriteLine("The altar now gone, it seems the stone idol now looms over you specifically.");
-                            Console.WriteLine("Now, however, its stare seems neutral, the heavy glare it gave now gone.");
-                        }
+                        Console.WriteLine("The carved idol seems to wield an ornate hammer, the head embossed with runes of might and power.");
+                        Console.WriteLine("Its purpose seems to be to intimidate those below it, ensuring they pray and give proper offering.");
+                        Console.WriteLine("Your eyes trail down to the altar it looms over, seeing carved inscriptions scrawled on the edges of it.");
+                        Console.WriteLine("The words you can make out, appear to say: ");
+                        Console.ForegroundColor = ConsoleColor.DarkMagenta;
+                        Console.WriteLine("\"And the Smith shall rest after his endeavor with the Liberator, as will all of the Old Ones.\"");
+                        Console.WriteLine("\"Knowing his hammer to be the source of his everlasting power, he stowed it away with those\""); 
+                        Console.WriteLine("\"most devoted as a pact of peace with the humans that fought alongside the Liberator and the Old Ones.\"");
+                        Console.WriteLine("\"And with this act, he laid himself to rest until called once more, sealing his power for now.\"");
+                        Console.WriteLine("");
+                        Console.ResetColor();
                         break;
                     }
                     case 2:
@@ -405,79 +375,30 @@ namespace MitchelCampozano.AdventureGame.ConsoleHost
 
         static void PriestRoom ()
         {
-            if (quest == false)
-            {
-                Console.ForegroundColor = ConsoleColor.Cyan;
-                Console.WriteLine("Entering the Priest's Quarters, the juxtaposition between here and the rest of the temple is striking.");
-                Console.WriteLine("There is no carnage, no distress, rather, there is but one lone skeleton here, sitting at a desk.");
-                Console.WriteLine("As you approach, you see there is something in each hand: in his left is a vial of poison, and in the right, there is a key.");
-                Console.ResetColor();
-            } else if (quest == true)
-            {
-                Console.ForegroundColor = ConsoleColor.Cyan;
-                Console.WriteLine("Entering the priest's quarters, you see his remains peacefully at his desk, the empty eyes of his skull forever reading his last words.");
-                Console.ResetColor();
-            }
+            Console.ForegroundColor = ConsoleColor.Cyan;
+            Console.WriteLine("Entering the Priest's Quarters, the juxtaposition between here and the rest of the temple is striking.");
+            Console.WriteLine("There is no carnage, no distress, rather, there is but one lone skeleton here, sitting at a desk.");
+            Console.WriteLine("As you approach, you see there is something in each hand: in his left is a vial of poison, and in the right, there is a key.");
+            Console.ResetColor();
         }
 
         static void ChapelAltar ()
         {
-            if (trackHam == false)
-            {
-                Console.ForegroundColor = ConsoleColor.Cyan;
-                Console.WriteLine("You reach the end of the chapel, where a massive altar resides. Piles of bones lay all over it, possibly seeking refuge or saying a final prayer.");
-                Console.WriteLine("The idol carved into the wall behind it stands tall, a depiction similar to the god in the mural on top of the cieling.");
-                Console.WriteLine("The altar has strange carvings in it, though much of it is illegible, worn away by the test of time and the collision of weapons to it.");
-                Console.ResetColor();
-            } else if (trackHam == true)
-            {
-                Console.ForegroundColor = ConsoleColor.Cyan;
-                Console.WriteLine("The hammer you took from the chest rips from your possession, flying forward to the altar and exploding it.");
-                Console.WriteLine("Dust and rubble take over the room, when suddenly, in place of the altar, you see a tall figure standing there.");
-                Console.WriteLine("Holding the hammer high, the energy of the room changes, charged with the might of this being.");
-                Console.WriteLine("He turns to see you standing there, the cold glare of his not showing gratitude nor animosity.");
-                Console.WriteLine("Before you can move, he heads straight to the kitchen.");
-                Console.ResetColor();
-
-                smithFree = true;
-                trackHam = false;
-            } else if (trackHam == false && smithFree == true)
-            {
-                Console.ForegroundColor = ConsoleColor.Cyan;
-                Console.WriteLine("The altar now longer rests with the people, the bones and place it once held now scattered throughout the chapel.");
-                Console.WriteLine("The idol carved into the wall behind it stands tall, a depiction similar to the god that broke from his stony prison.");
-                Console.WriteLine("You should probably find this entity.");
-                Console.ResetColor();
-            }
+            Console.ForegroundColor = ConsoleColor.Cyan;
+            Console.WriteLine("You reach the end of the chapel, where a massive altar resides. Piles of bones lay all over it, possibly seeking refuge or saying a final prayer.");
+            Console.WriteLine("The idol carved into the wall behind it stands tall, a depiction similar to the god in the mural on top of the cieling.");
+            Console.WriteLine("The altar has strange carvings in it, though much of it is illegible, worn away by the test of time and the collision of weapons to it.");
+            Console.ResetColor();
         }
 
         static void Forge ()
         {
-            if (smithFree == false)
-            {
-                Console.ForegroundColor = ConsoleColor.Cyan;
-                Console.WriteLine("This room is darker than the others, being completely sealed off from the light of both the chapel and the dining hall.");
-                Console.WriteLine("It looks to be the kitchen, with large amounts of rotten food on shelves lining the walls and cookware tossed about.");
-                Console.WriteLine("The rats scurry about your feet, too scared to nibble at you. They must be startled to see someone alive here after all these years.");
-                Console.WriteLine("Something doesn't seem right about the oven, however; it is oddly decorated, and has racks makeshifted into it.");
-                Console.ResetColor();
-            } else if (smithFree == true)
-            {
-                Console.ForegroundColor = ConsoleColor.Cyan;
-                Console.WriteLine("You enter to see the tall man standing before the forge, looking ashamedly down at it. He opens his mouth to speak: ");
-                Console.ResetColor();
-                Console.ForegroundColor = ConsoleColor.DarkCyan;
-                Console.WriteLine("So it seems my followers are lost to time now. The invaders of the Usurper have done their worst.");
-                Console.WriteLine("However, if it weren't for my followers to protect my hammer, they would have taken it and freed me, slaying me as I am still weak.");
-                Console.WriteLine("And you, adventurer, stumbling upon this desecrated site, you have freed me to avenge them, and for that I am grateful.");
-                Console.WriteLine("You bear the markings of the Liberator, thus I will send you to his lands where you may find answers to the questions you may have.");
-                Console.WriteLine("Now, I must start my forge once more, and will not leave my followers' sacrifice in vain!");
-                Console.ResetColor();
-                Console.WriteLine("");
-                Console.WriteLine("You feel a strange energy wrap around you as the room goes white, fading away until you see it no more.");
-                Console.WriteLine("");
-                Console.WriteLine("Congratulations! You finished the game! Enter \"quit\" to end.");
-            }
+            Console.ForegroundColor = ConsoleColor.Cyan;
+            Console.WriteLine("This room is darker than the others, being completely sealed off from the light of both the chapel and the dining hall.");
+            Console.WriteLine("It looks to be the kitchen, with large amounts of rotten food on shelves lining the walls and cookware tossed about.");
+            Console.WriteLine("The rats scurry about your feet, too scared to nibble at you. They must be startled to see someone alive here after all these years.");
+            Console.WriteLine("Something doesn't seem right about the oven, however; it is oddly decorated, and has racks makeshifted into it.");
+            Console.ResetColor();
         }
     }
 }
