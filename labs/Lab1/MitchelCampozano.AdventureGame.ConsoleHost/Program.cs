@@ -19,12 +19,10 @@ namespace MitchelCampozano.AdventureGame.ConsoleHost
             do
             {
                 Console.ForegroundColor = ConsoleColor.Green;
-                Console.WriteLine("");
                 Console.WriteLine("What would you like to do, adventurer?");
                 Console.ResetColor();
 
                 string action = Console.ReadLine();
-                Console.WriteLine("");
 
                 if (action.Contains("move"))
                     CheckMove(action);
@@ -39,9 +37,10 @@ namespace MitchelCampozano.AdventureGame.ConsoleHost
             } while (!done);
         }
 
-        // Player coordinates
         static int placeX;
         static int placeY;
+        static int maximumX = 3;
+        static int maximumY = 3;
 
         static void GameIntro()
         {
@@ -60,49 +59,60 @@ namespace MitchelCampozano.AdventureGame.ConsoleHost
 
             Fountain();
         }
-        static void CheckMove ( string action ) 
-        {
-            int newX = placeX, newY = placeY;
 
+        static void CheckMove ( string action )
+        {
             switch (action)
             {
-                case "movenorth": newY -= 1;
+                case "movenorth":
+                RoomTracker(0, -1);
                 break;
-                case "movesouth": newY += 1;
+                case "movesouth":
+                RoomTracker(0, 1);
                 break;
-                case "moveeast": newX += 1;
+                case "moveeast":
+                RoomTracker(1, 0);
                 break;
-                case "movewest": newX -= 1;
+                case "movewest":
+                RoomTracker(-1, 0);
                 break;
-                default: ErrorMessage("Invalid Move"); 
+                default:
+                ErrorMessage("Invalid Move");
                 break;
             };
+        }
 
-            placeX = newX; 
-            placeY = newY;
+        static void RoomTracker ( int newX, int newY )
+        {
+            placeX += newX;
+            placeY += newY;
 
-            if (placeX  >= 0 && placeX  < 3 && placeY >= 0 && placeY < 3)
+
+
+            if (placeX  >= 0 && placeX  < maximumX && placeY >= 0 && placeY < maximumY) 
             {
+
                 if (placeX >= 0 && placeY == 0)
                 {
-                    switch (placeX){
+                    switch (placeX)
+                    {
 
                         case 0:
                         {
                             Fountain();
-                            Console.WriteLine($"Your location is: {placeX + 1}, {placeY}.");
+                            Console.WriteLine($"Your location is: {placeX + 1}, {placeY + 1}.");
                             break;
                         }
                         case 1:
                         {
                             ChapelStart();
-                            Console.WriteLine($"Your location is: {placeX + 1}, {placeY}.");
+                            Console.WriteLine($"Your location is: {placeX + 1}, {placeY + 1}.");
                             break;
                         }
                         case 2:
                         {
                             ChestRoom();
-                            Console.WriteLine($"Your location is: {placeX + 1}, {placeY}.");
+                            Console.WriteLine($"Your location is: {placeX + 1}, {placeY + 1}.");
                             break;
                         }
                     };
@@ -113,19 +123,19 @@ namespace MitchelCampozano.AdventureGame.ConsoleHost
                         case 0:
                         {
                             Hallway();
-                            Console.WriteLine($"Your location is: {placeX + 1}, {placeY}.");
+                            Console.WriteLine($"Your location is: {placeX + 1}, {placeY + 1}.");
                             break;
                         }
                         case 1:
                         {
                             ChapelMid();
-                            Console.WriteLine($"Your location is: {placeX + 1}, {placeY}.");
+                            Console.WriteLine($"Your location is: {placeX + 1}, {placeY + 1}.");
                             break;
                         }
                         case 2:
                         {
                             DiningHall();
-                            Console.WriteLine($"Your location is: {placeX + 1}, {placeY}.");
+                            Console.WriteLine($"Your location is: {placeX + 1}, {placeY + 1}.");
                             break;
                         }
                     };
@@ -142,13 +152,13 @@ namespace MitchelCampozano.AdventureGame.ConsoleHost
                         case 1:
                         {
                             ChapelAltar();
-                            Console.WriteLine($"Your location is: {placeX + 1}, {placeY}.");
+                            Console.WriteLine($"Your location is: {placeX + 1}, {placeY + 1}.");
                             break;
                         }
                         case 2:
                         {
                             Forge();
-                            Console.WriteLine($"Your location is: {placeX + 1}, {placeY}.");
+                            Console.WriteLine($"Your location is: {placeX + 1}, {placeY + 1}.");
                             break;
                         }
                     };
@@ -168,7 +178,7 @@ namespace MitchelCampozano.AdventureGame.ConsoleHost
                     placeY--;
             }
         }
-
+        
         static void CheckLook(int placeX, int placeY)
         {
             if (placeX >= 0 && placeY == 0)
@@ -179,9 +189,8 @@ namespace MitchelCampozano.AdventureGame.ConsoleHost
                     {
                         Console.WriteLine("At the northern side of the room is a fountain, the idol once atop obliterated to rubble.");
                         Console.WriteLine("Pieces of metal are scattered throughout the room, embedded in the walls and floor.");
-                        Console.WriteLine("");
                         Console.WriteLine("All along the floor are coins from the fountain, though they must have been scattered from whatever explosion took place.");
-                        Console.WriteLine("It doesn't seem any which one were looted. None follow the main paths in or out of the temple.");
+                        Console.WriteLine("It doesn't seem any were looted. None follow the main paths in or out of the temple.");
                         Console.WriteLine("They lay on the floor, abandoned, victims to what has happened here.");
                         Console.WriteLine("You may go East or South");
                         break;
@@ -249,7 +258,6 @@ namespace MitchelCampozano.AdventureGame.ConsoleHost
                         Console.WriteLine("\"If our order does not fall, however, and if the Smith himself sends a savior, \"");
                         Console.WriteLine("\"let it be known we died loyal servants to him, guarding his most sacred treasure.\"");
                         Console.WriteLine("\"We will die for the sake of the Smith, and in turn, the sake of the Liberator!\"");
-                        Console.WriteLine("");
                         Console.ResetColor();
                         break;
                     }
@@ -264,7 +272,6 @@ namespace MitchelCampozano.AdventureGame.ConsoleHost
                         Console.WriteLine("\"Knowing his hammer to be the source of his everlasting power, he stowed it away with those\""); 
                         Console.WriteLine("\"most devoted as a pact of peace with the humans that fought alongside the Liberator and the Old Ones.\"");
                         Console.WriteLine("\"And with this act, he laid himself to rest until called once more, sealing his power for now.\"");
-                        Console.WriteLine("");
                         Console.ResetColor();
                         break;
                     }
@@ -296,7 +303,10 @@ namespace MitchelCampozano.AdventureGame.ConsoleHost
                 if (input.Key == ConsoleKey.Y)
                     return true;
                 else if (input.Key == ConsoleKey.N)
+                {
+                    Console.WriteLine("");
                     return false;
+                }
             } while (true);
         }
 
@@ -341,7 +351,7 @@ namespace MitchelCampozano.AdventureGame.ConsoleHost
             Console.ForegroundColor = ConsoleColor.Cyan;
             Console.WriteLine("Making your way down the passage around the chapel, you see more signs of struggle between the temple's followers and the invaders.");
             Console.WriteLine("You get to the end where a large wooden door is barely holding onto its hinges.");
-            Console.WriteLine("Inside, invaders and temple followers with arms in hand lay in a protective mound wrapped around a metal chest in the middle of the room.");
+            Console.WriteLine("Inside, invaders and temple followers with weapons in hand lay in a protective mound wrapped around a metal chest in the middle of the room.");
             Console.ResetColor();
         }
 
