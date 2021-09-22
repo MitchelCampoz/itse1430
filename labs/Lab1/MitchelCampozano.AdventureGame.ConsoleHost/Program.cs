@@ -236,7 +236,7 @@ namespace MitchelCampozano.AdventureGame.ConsoleHost
                     }
                     case 2:
                     {
-                        Console.WriteLine("The squeaks of rats can be heard about, eating the rotting remnants of flesh and entrees.");
+                        Console.WriteLine("The squeaks of rats can be heard about, eating whatever morsel hasn't gone to rot.");
                         Console.WriteLine("Up and down the bars of the stained glass windows, you see bones clinging to them, desperate souls looking for safe haven.");
                         Console.WriteLine("The bones around you seem to grow denser around the room with the chest, but also to the Southern end of the hall.");
                         Console.WriteLine("If there was an exit down at that end of the dining hall, why wouldn't those clinging to the windows go down there?");
@@ -289,14 +289,14 @@ namespace MitchelCampozano.AdventureGame.ConsoleHost
     
         static bool ExitGame ()
         {
-            if (ReadBool("Are you sure you want to quit (Y/N)?   "))
+            if (CheckBool("Are you sure you want to quit (Y/N)?   "))
                 return true;
             return false;
         }
 
-        static bool ReadBool ( string message )
+        static bool CheckBool ( string quitSelect )
         {
-            Console.Write(message);
+            Console.Write(quitSelect);
             do
             {
                 ConsoleKeyInfo input = Console.ReadKey(true);
@@ -361,7 +361,6 @@ namespace MitchelCampozano.AdventureGame.ConsoleHost
             Console.WriteLine("You walk through the ruined entranceway, entering a once opulent hallway.");
             Console.WriteLine("Relics and paintings are strewn all over, and strangest of all, a mess of bones and different armors.");
             Console.WriteLine("There are extreme signs of struggle here, both dense with the invaders and what seems to be defenders.");
-            Console.WriteLine("Going forward seems to lead into the Priest's Quarters.");
             Console.ResetColor();
         }
 
@@ -389,6 +388,7 @@ namespace MitchelCampozano.AdventureGame.ConsoleHost
             Console.WriteLine("Entering the Priest's Quarters, the juxtaposition between here and the rest of the temple is striking.");
             Console.WriteLine("There is no carnage, no distress, rather, there is but one lone skeleton here, sitting at a desk.");
             Console.WriteLine("As you approach, you see there is something in each hand: in his left is a vial of poison, and in the right, there is a key.");
+            Console.WriteLine("Most notably, there is something resting before his vacant eyes on top of his desk.");
             Console.ResetColor();
         }
 
