@@ -87,8 +87,6 @@ namespace MitchelCampozano.AdventureGame.ConsoleHost
             placeX += newX;
             placeY += newY;
 
-
-
             if (placeX  >= 0 && placeX  < maximumX && placeY >= 0 && placeY < maximumY) 
             {
 
@@ -96,7 +94,6 @@ namespace MitchelCampozano.AdventureGame.ConsoleHost
                 {
                     switch (placeX)
                     {
-
                         case 0:
                         {
                             Fountain();
