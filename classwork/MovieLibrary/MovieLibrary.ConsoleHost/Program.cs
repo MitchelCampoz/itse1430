@@ -56,15 +56,16 @@ namespace MovieLibrary.ConsoleHost
             do
             {
                 // Movie Details
-                newMovie.title = ReadString("Enter the Movie Title: ", false);           // Required
-                newMovie.description = ReadString("Enter the optional description: ", false);     // Optional
+                // newMovie.set_Title(...)
+                newMovie.Title = ReadString("Enter the Movie Title: ", false);           // Required
+                newMovie.Description = ReadString("Enter the optional description: ", false);     // Optional
 
-                newMovie.runLength = ReadInt32("Enter run length (in minutes): ", 0);          // Option, in minutes, >= 0
-                newMovie.releaseYear = ReadInt32("Enter the release year (min 1900): ", newMovie.MinimumReleaseYear);        // 1900+
+                newMovie.RunLength = ReadInt32("Enter run length (in minutes): ", 0);          // Option, in minutes, >= 0
+                newMovie.ReleaseYear = ReadInt32("Enter the release year (min 1900): ", Movie.MinimumReleaseYear);        // 1900+
 
                 //reviewRating;    // Optional, 0.0 to 5.0
-                newMovie.rating = ReadString("Enter the MPAA rating: ", false);          // MPAA
-                newMovie.isClassic = ReadBoolean("Is this a classic (Y/N)? ");         // Optional
+                newMovie.Rating = ReadString("Enter the MPAA rating: ", false);          // MPAA
+                newMovie.IsClassic = ReadBoolean("Is this a classic (Y/N)? ");         // Optional
 
                 // Validate
                 var error = newMovie.Validate();
@@ -89,11 +90,16 @@ namespace MovieLibrary.ConsoleHost
             };
 
             // TODO: Formatting
-            Console.WriteLine($"{movie.title} ({movie.releaseYear})");
-            Console.WriteLine($"Runtime: {movie.runLength} mins");
-            Console.WriteLine($"Rating: {movie.rating}");
-            Console.WriteLine($"Classic? {movie.isClassic}");
-            Console.WriteLine(movie.description);
+            // movie.get_Title()
+            Console.WriteLine($"{movie.Title} ({movie.ReleaseYear})");
+            Console.WriteLine($"Runtime: {movie.RunLength} mins");
+            Console.WriteLine($"Rating: {movie.Rating}");
+            Console.WriteLine($"Classic? {movie.IsClassic}");
+            Console.WriteLine(movie.Description);
+
+            if (movie.AgeInYears >= 25)
+                Console.WriteLine($"{movie.AgeInYears}th anniversary.");
+            //movie.AgeInYears = 10;
         }
 
         /// <summary>
