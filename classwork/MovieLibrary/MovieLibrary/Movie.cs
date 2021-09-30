@@ -20,6 +20,9 @@ namespace MovieLibrary
         // Property syntax ::= access T id { getter; setter }
         // Getter ::= get { S* }
         // Setter ::= set { S* }
+
+        // null-coalesce ::= E ?? E (returns first non-null expression)
+        // null-conditional ::= E ?. M (works with members; changes the type of the expression)
         
         /// <summary>
         /// Gets and sets the title
@@ -29,18 +32,23 @@ namespace MovieLibrary
             // Read: T get_Title()
             get 
             { 
+                return _title ?? "";
                 //if (_title == null)
                 //    return "";
 
                 //return _title;
-                return (_title != null) ? _title : "";
+                // return (_title != null) ? _title : "";
             }
 
             // Write void set_Title ( string value )
             set 
             {
                 //_title = value;
-                _title = (value != null) ? value.Trim() : null;
+                //_title = (value != null) ? value.Trim() : null;
+                _title = value?.Trim();
+
+                //Movie m;
+                //int id = m?.Id ?? 0; // int?
             }
         }
 

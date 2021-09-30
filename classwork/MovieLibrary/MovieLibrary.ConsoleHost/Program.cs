@@ -185,8 +185,7 @@ namespace MovieLibrary.ConsoleHost
             // return false;        NOT NEEDED ANYMORE
         }
 
-        static char GetInput ()
-            
+        static char GetInput () 
         {
             Console.WriteLine("Movie Library");
             //Console.WriteLine("---------------");
@@ -232,7 +231,67 @@ namespace MovieLibrary.ConsoleHost
 
                 DisplayError("Invalid input");
             };
-            //return default(char);   // default
+            // return default(char);   // default
+        }
+
+        static void DemoObjects ()
+        {
+            object someValue = 10;
+            someValue = "Hello";
+
+            Print(10);
+            Print("Hello");
+            Print(45.6);
+            // someValue.Equals(10);
+        }
+
+        static void Print (object value )
+        {
+            // Console.WriteLine(value);
+            
+            // Type checking
+            // is-operator ::= E is T (returns bool)
+            // as-operator ::= E as T (returns T or null), does not work with primitives
+            // patter-matching ::= E is T id => (returns E as T if valid or false otherwise)
+
+            // Type casting
+            // c-style ::= (T)E blows up at runtime if wrong, only use with primitives
+
+            if (value is int)
+            {
+                Console.WriteLine((int)value);
+                return;
+            };
+
+            string str = value as string;
+            if (str != null)
+            {
+                Console.WriteLine(str);
+                return;
+            };
+
+            // The best choice
+            if (value is double doubleValue)
+            {
+                Console.WriteLine(doubleValue);
+                return;
+            };
+
+            int x = 10;
+            int y = x;
+            x = 20;
+            Console.WriteLine(y);   // 10
+
+            // Value types follow value semantics
+            var equal = x == y;
+
+            Movie m1 = new Movie();
+            Movie m2 = m1;
+            m1.Title = "Jaws";
+            Console.WriteLine(m2.Title);
+
+            // Ref types follow reference semantics
+            equal = m1 == m2;   // Object.Equals
         }
     }
 }
