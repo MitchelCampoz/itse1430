@@ -4,6 +4,8 @@ namespace MitchelCampozano.CharacterCreator
 {
     public class Character
     {
+        // Test comment here
+
         /// <summary>
         /// Gets and sets the name of the character
         /// </summary>
