@@ -64,9 +64,87 @@ namespace MitchelCampozano.CharacterCreator.ConsoleHost
 
         static void AddCharacter ()
         {
+            var newCharacter = new Character();
+            
             do
             {
-                var newCharacter = new Character();
+                newCharacter.Name = NamePicker("Please enter a name for your character: ", false);
+                newCharacter.Profession = JobPicker("Please select a valid occupation for your character: ");
+                newCharacter.Race = RacePicker("Please select a valid race: ");
+            } while (true);
+        }
+
+        static string NamePicker( string message, bool checker )
+        {
+            Console.Write(message);
+
+            do
+            {
+                string input = Console.ReadLine().Trim();
+
+                if (!String.IsNullOrEmpty(input) || !checker)
+                    return input;
+
+                ErrorMessage("Value is required");
+            } while (true);
+        }
+
+        static string JobPicker ( string message )
+        {
+            do
+            {
+                Console.WriteLine(message);
+                Console.WriteLine("Warrior");
+                Console.WriteLine("Cleric");
+                Console.WriteLine("Ranger");
+                Console.WriteLine("Rogue");
+                Console.WriteLine("Wizard");
+
+                string input = Console.ReadLine().Trim();
+
+                if (!String.IsNullOrEmpty(input))
+                {
+                    switch (input.ToUpper())
+                    {
+                        case "WARRIOR": return "WARRIOR";
+                        case "CLERIC": return "Cleric";
+                        case "RANGER": return "Ranger";
+                        case "ROGUE": return "Rogue";
+                        case "WIZARD": return "Wizard";
+                        default: ErrorMessage("Invalid Input. Please select again."); break;
+                    }
+                } else
+                    ErrorMessage("Value is required");
+            } while (true);
+        }
+
+        static string RacePicker ( string message )
+        {
+            do
+            {
+                Console.WriteLine(message);
+                Console.WriteLine("Dwarf");
+                Console.WriteLine("Orc");
+                Console.WriteLine("Elf");
+                Console.WriteLine("Hobbit");
+                Console.WriteLine("Human");
+                
+                string input = Console.ReadLine().Trim();
+
+                if (!String.IsNullOrEmpty(input))
+                {
+                    switch (input.ToUpper())
+                    {
+                        case "DWARF": return "Dwarf";
+                        case "ORC": return "Orc";
+                        case "ELF": return "Elf";
+                        case "HOBBIT": return "Hobbit";
+                        case "HUMAN": return "Human";
+                        default: ErrorMessage("Invalid Input. Please select again."); break;
+                    }
+                }
+                else
+                    ErrorMessage("Value is required");
             } while (true);
         }
 

@@ -79,11 +79,11 @@ namespace MitchelCampozano.CharacterCreator
         private string _race;
         private string _biography;
 
-        private int _strength;
-        private int _intelligence;
-        private int _agility;
-        private int _constitution;
-        private int _charisma;
+        //private int _strength;
+        //private int _intelligence;
+        //private int _agility;
+        //private int _constitution;
+        //private int _charisma;
 
         public string AttributeChecker ()
         {
