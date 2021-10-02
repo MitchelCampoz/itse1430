@@ -64,28 +64,32 @@ namespace MitchelCampozano.CharacterCreator.ConsoleHost
 
         static void AddCharacter ()
         {
+            bool loopEnder = false;
             var newCharacter = new Character();
             
             do
             {
-                newCharacter.Name = NamePicker("Please enter a name for your character: ", false);
+                newCharacter.Name = NamePicker("Please enter a name for your character: ");
                 newCharacter.Profession = JobPicker("Please select a valid occupation for your character: ");
                 newCharacter.Race = RacePicker("Please select a valid race: ");
-            } while (true);
+                newCharacter.Biography = BiographyEntry("Tell us a little about your character (if you want): ", false);
+            } while (!loopEnder);
         }
 
-        static string NamePicker( string message, bool checker )
+        static string NamePicker( string message )
         {
-            Console.Write(message);
-
             do
             {
+                Console.Write(message);
+
                 string input = Console.ReadLine().Trim();
 
-                if (!String.IsNullOrEmpty(input) || !checker)
-                    return input;
+                Console.WriteLine("");
 
-                ErrorMessage("Value is required");
+                if (!String.IsNullOrEmpty(input))
+                    return input;
+                else
+                    ErrorMessage("Value is required");
             } while (true);
         }
 
@@ -101,6 +105,8 @@ namespace MitchelCampozano.CharacterCreator.ConsoleHost
                 Console.WriteLine("Wizard");
 
                 string input = Console.ReadLine().Trim();
+
+                Console.WriteLine("");
 
                 if (!String.IsNullOrEmpty(input))
                 {
@@ -131,6 +137,8 @@ namespace MitchelCampozano.CharacterCreator.ConsoleHost
                 
                 string input = Console.ReadLine().Trim();
 
+                Console.WriteLine("");
+
                 if (!String.IsNullOrEmpty(input))
                 {
                     switch (input.ToUpper())
@@ -145,6 +153,21 @@ namespace MitchelCampozano.CharacterCreator.ConsoleHost
                 }
                 else
                     ErrorMessage("Value is required");
+            } while (true);
+        }
+
+        static string BiographyEntry ( string message, bool checker )
+        {
+            Console.Write(message);
+
+            do
+            {
+                string input = Console.ReadLine().Trim();
+
+                if (!String.IsNullOrEmpty(input) || !checker)
+                    return input;
+
+                ErrorMessage("Value is required");
             } while (true);
         }
 
