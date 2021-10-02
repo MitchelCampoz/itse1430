@@ -69,6 +69,9 @@ namespace MitchelCampozano.CharacterCreator
         /// </summary>
         public int Charisma { get; set; }
 
+        public const int MinimumValue = 1;
+        public const int MaximumValue = 100;
+
         private string _name;
         private string _profession;
         private string _race;
