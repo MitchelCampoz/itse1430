@@ -18,6 +18,8 @@ namespace MitchelCampozano.CharacterCreator.ConsoleHost
 
             bool done = false;
 
+            // Test comment
+
             do
             {
                 char choice = GetInput();
