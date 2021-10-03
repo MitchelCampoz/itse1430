@@ -27,13 +27,15 @@ namespace MitchelCampozano.CharacterCreator.ConsoleHost
                 switch (choice)
                 {
                     case 'A': AddCharacter(); break;
-                    case 'B': break;
+                    case 'V': ViewCharacter(); break;
                     case 'C': break;
                     case 'Q': done = CheckQuit(); break;
                     default: ErrorMessage("Unknown choice"); break;
                 };
             } while (!done);
         }
+
+        static Character character;
 
         static char GetInput ()
         {
@@ -43,7 +45,7 @@ namespace MitchelCampozano.CharacterCreator.ConsoleHost
                 Console.WriteLine("");
                 Console.WriteLine("Please select an option: ");
                 Console.WriteLine("A) dd a Character ");
-                Console.WriteLine("B. ");
+                Console.WriteLine("V) iew your Character ");
                 Console.WriteLine("C. ");
                 Console.WriteLine("Q) uit ");
                 Console.ResetColor();
@@ -53,7 +55,7 @@ namespace MitchelCampozano.CharacterCreator.ConsoleHost
                 switch (choice.ToUpper())
                 {
                     case "A": return 'A';
-                    case "B": return 'B';
+                    case "V": return 'V';
                     case "C": return 'C';
                     case "Q": return 'Q';
                 }
@@ -79,6 +81,14 @@ namespace MitchelCampozano.CharacterCreator.ConsoleHost
                 newCharacter.Agility = ReadInt32("Please enter a value for your Agility: ", Character.MinimumValue, Character.MaximumValue);
                 newCharacter.Constitution = ReadInt32("Please enter a value for your Constitution: ", Character.MinimumValue, Character.MaximumValue);
                 newCharacter.Charisma = ReadInt32("Please enter a value for your Charisma: ", Character.MinimumValue, Character.MaximumValue);
+
+                var error = newCharacter.Validator();
+
+                if (String.IsNullOrEmpty(error))
+                {
+                    character = newCharacter;
+                    return;
+                }
 
                 loopEnder = true;
             } while (!loopEnder);
@@ -192,6 +202,20 @@ namespace MitchelCampozano.CharacterCreator.ConsoleHost
 
                 ErrorMessage($"Your input must be between {minimumValue} and {maximumValue}. Please try again.");
             } while (true);
+        }
+
+        static void ViewCharacter ()
+        {
+            if (character == null)
+            {
+                Console.WriteLine("There is no character to view.");
+                return;
+            }
+
+            Console.WriteLine($"Adventurer's Name: {character.Name}");
+            Console.WriteLine($"Adventurer's Profession: {character.Profession}");
+            Console.WriteLine($"Adventurer's Race: {character.Race}");
+            Console.WriteLine($"Adventurer's Biography: {character.Biography}");
         }
 
         static bool CheckQuit ()

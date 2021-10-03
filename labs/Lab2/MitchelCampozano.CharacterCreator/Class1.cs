@@ -85,6 +85,22 @@ namespace MitchelCampozano.CharacterCreator
         //private int _constitution;
         //private int _charisma;
 
+        public Character Recruit ()
+        {
+            var character = new Character();
+            character.Name = Name;
+            character.Profession = Profession;
+            character.Race = Race;
+            character.Biography = Biography;
+            character.Strength = Strength;
+            character.Intelligence = Intelligence;
+            character.Agility = Agility;
+            character.Constitution = Constitution;
+            character.Charisma = Charisma;
+
+            return character;
+        }
+
         public string Validator ()
         {
             if (String.IsNullOrEmpty(Name))
