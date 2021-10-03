@@ -212,10 +212,17 @@ namespace MitchelCampozano.CharacterCreator.ConsoleHost
                 return;
             }
 
-            Console.WriteLine($"Adventurer's Name: {character.Name}");
-            Console.WriteLine($"Adventurer's Profession: {character.Profession}");
-            Console.WriteLine($"Adventurer's Race: {character.Race}");
-            Console.WriteLine($"Adventurer's Biography: {character.Biography}");
+            Console.WriteLine("-----Adventurer-----");
+            Console.WriteLine($"Name: {character.Name}");
+            Console.WriteLine($"Profession: {character.Profession}");
+            Console.WriteLine($"Race: {character.Race}");
+            Console.WriteLine($"Biography: {character.Biography}");
+            Console.WriteLine("-----STATS-----");
+            Console.WriteLine($"Strength: {character.Strength}");
+            Console.WriteLine($"Intelligence: {character.Intelligence}");
+            Console.WriteLine($"Agility: {character.Agility}");
+            Console.WriteLine($"Constitution: {character.Constitution}");
+            Console.WriteLine($"Charisma: {character.Charisma}");
         }
 
         static bool CheckQuit ()
