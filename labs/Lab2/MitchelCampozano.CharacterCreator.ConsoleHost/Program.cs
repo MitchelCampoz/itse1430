@@ -73,6 +73,14 @@ namespace MitchelCampozano.CharacterCreator.ConsoleHost
                 newCharacter.Profession = JobPicker("Please select a valid occupation for your character: ");
                 newCharacter.Race = RacePicker("Please select a valid race: ");
                 newCharacter.Biography = BiographyEntry("Tell us a little about your character (if you want): ", false);
+                Console.WriteLine("You will now enter the values for your skills: ");
+                newCharacter.Strength = ReadInt32("Please enter a value for your Strength: ", Character.MinimumValue, Character.MaximumValue);
+                newCharacter.Intelligence = ReadInt32("Please enter a value for your Intelligence: ", Character.MinimumValue, Character.MaximumValue);
+                newCharacter.Agility = ReadInt32("Please enter a value for your Agility: ", Character.MinimumValue, Character.MaximumValue);
+                newCharacter.Constitution = ReadInt32("Please enter a value for your Constitution: ", Character.MinimumValue, Character.MaximumValue);
+                newCharacter.Charisma = ReadInt32("Please enter a value for your Charisma: ", Character.MinimumValue, Character.MaximumValue);
+
+                loopEnder = true;
             } while (!loopEnder);
         }
 
@@ -168,6 +176,21 @@ namespace MitchelCampozano.CharacterCreator.ConsoleHost
                     return input;
 
                 ErrorMessage("Value is required");
+            } while (true);
+        }
+
+        static int ReadInt32 ( string message, int minimumValue, int maximumValue )
+        {   
+            do
+            {
+                Console.Write(message);
+
+                var input = Console.ReadLine();
+
+                if (Int32.TryParse(input, out var result) && result >= minimumValue && result <= maximumValue)
+                    return result;
+
+                ErrorMessage($"Your input must be between {minimumValue} and {maximumValue}. Please try again.");
             } while (true);
         }
 

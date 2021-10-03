@@ -85,21 +85,30 @@ namespace MitchelCampozano.CharacterCreator
         //private int _constitution;
         //private int _charisma;
 
-        public string AttributeChecker ()
+        public string Validator ()
         {
-            if (Strength < 1 || Strength > 100)
+            if (String.IsNullOrEmpty(Name))
+                return "Please name your character.";
+
+            if (String.IsNullOrEmpty(Profession))
+                return "Please give your character a profession.";
+
+            if (String.IsNullOrEmpty(Race))
+                return "Please give your character a race.";
+
+            if (Strength < MinimumValue || Strength > MaximumValue)
                 return "Invalid amount.";
 
-            if (Intelligence < 1 || Intelligence > 100)
+            if (Intelligence < MinimumValue || Intelligence > MaximumValue)
                 return "Invalid amount.";
 
-            if (Agility < 1 || Agility > 100)
+            if (Agility < MinimumValue || Agility > MaximumValue)
                 return "Invalid amount.";
 
-            if (Constitution < 1 || Constitution > 100)
+            if (Constitution < MinimumValue || Constitution > MaximumValue)
                 return "Invalid amount.";
 
-            if (Charisma < 1 || Charisma > 100)
+            if (Charisma < MinimumValue || Charisma > MaximumValue)
                 return "Invalid amount.";
 
             return null;
