@@ -4,8 +4,6 @@ namespace MitchelCampozano.CharacterCreator
 {
     public class Character
     {
-        // Test comment here
-
         /// <summary>
         /// Gets and sets the name of the character
         /// </summary>
@@ -79,12 +77,12 @@ namespace MitchelCampozano.CharacterCreator
         private string _race;
         private string _biography;
 
-        //private int _strength;
-        //private int _intelligence;
-        //private int _agility;
-        //private int _constitution;
-        //private int _charisma;
-
+        /// <summary>
+        /// Creates a new instance of a character
+        /// </summary>
+        /// <returns>
+        /// Returns a new character
+        /// </returns>
         public Character Recruit ()
         {
             var character = new Character();

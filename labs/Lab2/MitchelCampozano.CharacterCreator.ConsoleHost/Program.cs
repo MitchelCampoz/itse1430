@@ -42,7 +42,7 @@ namespace MitchelCampozano.CharacterCreator.ConsoleHost
         {
             while (true)
             {
-                Console.ForegroundColor = ConsoleColor.Cyan;
+                // Console.ForegroundColor = ConsoleColor.Cyan;
                 Console.WriteLine("");
                 Console.WriteLine("Please select an option: ");
                 Console.WriteLine("A) dd a Character ");
@@ -50,9 +50,12 @@ namespace MitchelCampozano.CharacterCreator.ConsoleHost
                 Console.WriteLine("E) dit your Character ");
                 Console.WriteLine("D) elete your Character ");
                 Console.WriteLine("Q) uit ");
-                Console.ResetColor();
+                // Console.ResetColor();
 
+                Console.ForegroundColor = ConsoleColor.Green;
                 string choice = Console.ReadLine().Trim();
+                Console.ResetColor();
+                Console.WriteLine("");
 
                 switch (choice.ToUpper())
                 {
@@ -101,9 +104,13 @@ namespace MitchelCampozano.CharacterCreator.ConsoleHost
         {
             do
             {
+                // Console.ForegroundColor = ConsoleColor.Cyan;
                 Console.Write(message);
+                // Console.ResetColor();
 
+                Console.ForegroundColor = ConsoleColor.Green;
                 string input = Console.ReadLine().Trim();
+                Console.ResetColor();
 
                 Console.WriteLine("");
 
@@ -118,14 +125,19 @@ namespace MitchelCampozano.CharacterCreator.ConsoleHost
         {
             do
             {
+                // Console.ForegroundColor = ConsoleColor.Cyan;
                 Console.WriteLine(message);
                 Console.WriteLine("Warrior");
                 Console.WriteLine("Cleric");
                 Console.WriteLine("Ranger");
                 Console.WriteLine("Rogue");
                 Console.WriteLine("Wizard");
+                Console.Write("Your occupation: ");
+                // Console.ResetColor();
 
+                Console.ForegroundColor = ConsoleColor.Green;
                 string input = Console.ReadLine().Trim();
+                Console.ResetColor();
 
                 Console.WriteLine("");
 
@@ -149,14 +161,19 @@ namespace MitchelCampozano.CharacterCreator.ConsoleHost
         {
             do
             {
+                // Console.ForegroundColor = ConsoleColor.Cyan;
                 Console.WriteLine(message);
                 Console.WriteLine("Dwarf");
                 Console.WriteLine("Orc");
                 Console.WriteLine("Elf");
                 Console.WriteLine("Hobbit");
                 Console.WriteLine("Human");
-                
+                Console.Write("Your race: ");
+                // Console.ResetColor();
+
+                Console.ForegroundColor = ConsoleColor.Green;
                 string input = Console.ReadLine().Trim();
+                Console.ResetColor();
 
                 Console.WriteLine("");
 
@@ -179,7 +196,9 @@ namespace MitchelCampozano.CharacterCreator.ConsoleHost
 
         static string BiographyEntry ( string message, bool checker )
         {
+            // Console.ForegroundColor = ConsoleColor.Cyan;
             Console.Write(message);
+            // Console.ResetColor();
 
             do
             {
@@ -198,10 +217,11 @@ namespace MitchelCampozano.CharacterCreator.ConsoleHost
         {
             if (character == null)
             {
-                Console.WriteLine("There is no character to view.");
+                ErrorMessage("There is no character to view.");
                 return;
             }
 
+            Console.ForegroundColor = ConsoleColor.DarkYellow;
             Console.WriteLine("-----Adventurer-----");
             Console.WriteLine($"Name: {character.Name}");
             Console.WriteLine($"Profession: {character.Profession}");
@@ -214,6 +234,7 @@ namespace MitchelCampozano.CharacterCreator.ConsoleHost
             Console.WriteLine($"Constitution: {character.Constitution}");
             Console.WriteLine($"Charisma: {character.Charisma}");
             Console.WriteLine("");
+            Console.ResetColor();
         }
 
         static void EditCharacter()
@@ -222,18 +243,21 @@ namespace MitchelCampozano.CharacterCreator.ConsoleHost
 
             if (character == null)
             {
-                Console.WriteLine("There is no character to edit yet.");
-                Console.WriteLine("Please add a character.");
-
+                ErrorMessage("There is no character to edit yet.");
+                ErrorMessage("Please add a character.");
                 AddCharacter();
+                Console.WriteLine("");
             }
 
             do
             {
                 Console.WriteLine("Here is your current character's information: ");
                 ViewCharacter();
-                Console.Write("What would you like to change? (You may enter \"Done\" to quit)");
+                Console.Write("What would you like to change? (You may enter \"Done\" to quit)  ");
+
+                Console.ForegroundColor = ConsoleColor.Green;
                 string input = Console.ReadLine();
+                Console.ResetColor();
 
                 if (!String.IsNullOrEmpty(input))
                 {
@@ -266,7 +290,8 @@ namespace MitchelCampozano.CharacterCreator.ConsoleHost
                 if (ReadBoolean("Are you sure you want to delete your character? (Y/N)")) 
                 {
                     Console.WriteLine("");
-                    Console.WriteLine("Your character's existence has ceased!");
+                    ErrorMessage("Your character's existence has ceased!");
+                    Console.WriteLine("");
                     character = null;
                 }
             }
@@ -300,7 +325,9 @@ namespace MitchelCampozano.CharacterCreator.ConsoleHost
             {
                 Console.Write(message);
 
+                Console.ForegroundColor = ConsoleColor.Green;
                 var input = Console.ReadLine();
+                Console.ResetColor();
 
                 if (Int32.TryParse(input, out var result) && result >= minimumValue && result <= maximumValue)
                     return result;
