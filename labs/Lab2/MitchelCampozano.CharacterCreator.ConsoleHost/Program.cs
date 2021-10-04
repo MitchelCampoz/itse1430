@@ -28,7 +28,7 @@ namespace MitchelCampozano.CharacterCreator.ConsoleHost
                 {
                     case 'A': AddCharacter(); break;
                     case 'V': ViewCharacter(); break;
-                    case 'C': break;
+                    case 'E': EditCharacter(); break;
                     case 'Q': done = CheckQuit(); break;
                     default: ErrorMessage("Unknown choice"); break;
                 };
@@ -46,7 +46,7 @@ namespace MitchelCampozano.CharacterCreator.ConsoleHost
                 Console.WriteLine("Please select an option: ");
                 Console.WriteLine("A) dd a Character ");
                 Console.WriteLine("V) iew your Character ");
-                Console.WriteLine("C. ");
+                Console.WriteLine("E) dit your Character ");
                 Console.WriteLine("Q) uit ");
                 Console.ResetColor();
 
@@ -56,7 +56,7 @@ namespace MitchelCampozano.CharacterCreator.ConsoleHost
                 {
                     case "A": return 'A';
                     case "V": return 'V';
-                    case "C": return 'C';
+                    case "E": return 'E';
                     case "Q": return 'Q';
                 }
 
@@ -189,21 +189,6 @@ namespace MitchelCampozano.CharacterCreator.ConsoleHost
             } while (true);
         }
 
-        static int ReadInt32 ( string message, int minimumValue, int maximumValue )
-        {   
-            do
-            {
-                Console.Write(message);
-
-                var input = Console.ReadLine();
-
-                if (Int32.TryParse(input, out var result) && result >= minimumValue && result <= maximumValue)
-                    return result;
-
-                ErrorMessage($"Your input must be between {minimumValue} and {maximumValue}. Please try again.");
-            } while (true);
-        }
-
         static void ViewCharacter ()
         {
             if (character == null)
@@ -225,6 +210,38 @@ namespace MitchelCampozano.CharacterCreator.ConsoleHost
             Console.WriteLine($"Charisma: {character.Charisma}");
         }
 
+        static void EditCharacter()
+        {
+            if (character == null)
+            {
+                Console.WriteLine("There is no character to edit yet.");
+                Console.WriteLine("Please add a character.");
+
+                AddCharacter();
+            }
+
+            do
+            {
+                Console.WriteLine("Here is your current character's information: ");
+                ViewCharacter();
+                Console.WriteLine("What would you like to change?");
+                string input = Console.ReadLine();
+
+                switch (input.ToUpper())
+                {
+                    case "NAME": character.Name = NamePicker("Pick a new name: "); break;
+                    case "PROFESSION": character.Profession = JobPicker("Pick a new profession: "); break;
+                    case "RACE": character.Race = RacePicker("Pick a new race: "); break;
+                    case "BIOGRAPHY": character.Biography = BiographyEntry("Enter a biography for your character: ", false); break;
+                    case "STRENGTH": character.Strength = ReadInt32("Enter a new Strength value: ", Character.MinimumValue, Character.MaximumValue); break;
+                    case "INTELLIGENCE": character.Intelligence = ReadInt32("Enter a new Intelligence value: ", Character.MinimumValue, Character.MaximumValue); break;
+                    case "AGILITY": character.Agility = ReadInt32("Enter a new Agility value: ", Character.MinimumValue, Character.MaximumValue); break;
+                    case "CONSTITUTION": character.Constitution = ReadInt32("Enter a new Constitution value: ", Character.MinimumValue, Character.MaximumValue); break;
+                    case "CHARISMA": character.Charisma = ReadInt32("Enter a new Charisma value: ", Character.MinimumValue, Character.MaximumValue); break;
+                }       
+            } while (true);
+        }
+
         static bool CheckQuit ()
         {
             if (ReadBoolean("Are you sure you want to quit? (Y/N)"))
@@ -244,6 +261,21 @@ namespace MitchelCampozano.CharacterCreator.ConsoleHost
                     return true;
                 else if (input.Key == ConsoleKey.N)
                     return false;
+            } while (true);
+        }
+
+        static int ReadInt32 ( string message, int minimumValue, int maximumValue )
+        {   
+            do
+            {
+                Console.Write(message);
+
+                var input = Console.ReadLine();
+
+                if (Int32.TryParse(input, out var result) && result >= minimumValue && result <= maximumValue)
+                    return result;
+
+                ErrorMessage($"Your input must be between {minimumValue} and {maximumValue}. Please try again.");
             } while (true);
         }
 
