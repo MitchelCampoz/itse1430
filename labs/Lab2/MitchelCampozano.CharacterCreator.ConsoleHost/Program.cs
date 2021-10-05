@@ -18,8 +18,6 @@ namespace MitchelCampozano.CharacterCreator.ConsoleHost
 
             bool done = false;
 
-            // Test comment
-
             do
             {
                 char choice = GetInput();
@@ -42,7 +40,6 @@ namespace MitchelCampozano.CharacterCreator.ConsoleHost
         {
             while (true)
             {
-                // Console.ForegroundColor = ConsoleColor.Cyan;
                 Console.WriteLine("");
                 Console.WriteLine("Please select an option: ");
                 Console.WriteLine("A) dd a Character ");
@@ -50,7 +47,6 @@ namespace MitchelCampozano.CharacterCreator.ConsoleHost
                 Console.WriteLine("E) dit your Character ");
                 Console.WriteLine("D) elete your Character ");
                 Console.WriteLine("Q) uit ");
-                // Console.ResetColor();
 
                 Console.ForegroundColor = ConsoleColor.Green;
                 string choice = Console.ReadLine().Trim();
@@ -104,9 +100,7 @@ namespace MitchelCampozano.CharacterCreator.ConsoleHost
         {
             do
             {
-                // Console.ForegroundColor = ConsoleColor.Cyan;
                 Console.Write(message);
-                // Console.ResetColor();
 
                 Console.ForegroundColor = ConsoleColor.Green;
                 string input = Console.ReadLine().Trim();
@@ -125,7 +119,6 @@ namespace MitchelCampozano.CharacterCreator.ConsoleHost
         {
             do
             {
-                // Console.ForegroundColor = ConsoleColor.Cyan;
                 Console.WriteLine(message);
                 Console.WriteLine("Warrior");
                 Console.WriteLine("Cleric");
@@ -133,7 +126,6 @@ namespace MitchelCampozano.CharacterCreator.ConsoleHost
                 Console.WriteLine("Rogue");
                 Console.WriteLine("Wizard");
                 Console.Write("Your occupation: ");
-                // Console.ResetColor();
 
                 Console.ForegroundColor = ConsoleColor.Green;
                 string input = Console.ReadLine().Trim();
@@ -161,7 +153,6 @@ namespace MitchelCampozano.CharacterCreator.ConsoleHost
         {
             do
             {
-                // Console.ForegroundColor = ConsoleColor.Cyan;
                 Console.WriteLine(message);
                 Console.WriteLine("Dwarf");
                 Console.WriteLine("Orc");
@@ -169,7 +160,6 @@ namespace MitchelCampozano.CharacterCreator.ConsoleHost
                 Console.WriteLine("Hobbit");
                 Console.WriteLine("Human");
                 Console.Write("Your race: ");
-                // Console.ResetColor();
 
                 Console.ForegroundColor = ConsoleColor.Green;
                 string input = Console.ReadLine().Trim();
@@ -196,9 +186,7 @@ namespace MitchelCampozano.CharacterCreator.ConsoleHost
 
         static string BiographyEntry ( string message, bool checker )
         {
-            // Console.ForegroundColor = ConsoleColor.Cyan;
             Console.Write(message);
-            // Console.ResetColor();
 
             do
             {
@@ -272,12 +260,12 @@ namespace MitchelCampozano.CharacterCreator.ConsoleHost
                         case "AGILITY": character.Agility = ReadInt32("Enter a new Agility value: ", Character.MinimumValue, Character.MaximumValue); break;
                         case "CONSTITUTION": character.Constitution = ReadInt32("Enter a new Constitution value: ", Character.MinimumValue, Character.MaximumValue); break;
                         case "CHARISMA": character.Charisma = ReadInt32("Enter a new Charisma value: ", Character.MinimumValue, Character.MaximumValue); break;
-                        case "DONE": finished = true; break;
+                        case "DONE": return;
                         default: ErrorMessage("Please enter a valid option."); break;
                     }
                 } else
                     ErrorMessage("Please enter a valid option.");
-            } while (!finished);
+            } while (true);
         }
 
         static void DeleteCharacter ()
