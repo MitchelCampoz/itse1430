@@ -223,16 +223,16 @@ namespace MitchelCampozano.CharacterCreator.ConsoleHost
 
             Console.ForegroundColor = ConsoleColor.DarkYellow;
             Console.WriteLine("-----Adventurer-----");
-            Console.WriteLine($"Name: {character.Name}");
+            Console.WriteLine($"Name:       {character.Name}");
             Console.WriteLine($"Profession: {character.Profession}");
-            Console.WriteLine($"Race: {character.Race}");
-            Console.WriteLine($"Biography: {character.Biography}");
+            Console.WriteLine($"Race:       {character.Race}");
+            Console.WriteLine($"Biography:  {character.Biography}");
             Console.WriteLine("-----STATS-----");
-            Console.WriteLine($"Strength: {character.Strength}");
-            Console.WriteLine($"Intelligence: {character.Intelligence}");
-            Console.WriteLine($"Agility: {character.Agility}");
-            Console.WriteLine($"Constitution: {character.Constitution}");
-            Console.WriteLine($"Charisma: {character.Charisma}");
+            Console.WriteLine($"Strength:       {character.Strength}");
+            Console.WriteLine($"Intelligence:   {character.Intelligence}");
+            Console.WriteLine($"Agility:        {character.Agility}");
+            Console.WriteLine($"Constitution:   {character.Constitution}");
+            Console.WriteLine($"Charisma:       {character.Charisma}");
             Console.WriteLine("");
             Console.ResetColor();
         }
@@ -253,7 +253,7 @@ namespace MitchelCampozano.CharacterCreator.ConsoleHost
             {
                 Console.WriteLine("Here is your current character's information: ");
                 ViewCharacter();
-                Console.Write("What would you like to change? (You may enter \"Done\" to quit)  ");
+                Console.Write("Type the name of the field you would like to change. You may enter \"Done\" to quit  ");
 
                 Console.ForegroundColor = ConsoleColor.Green;
                 string input = Console.ReadLine();

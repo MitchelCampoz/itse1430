@@ -52,7 +52,7 @@ namespace MovieLibrary.ConsoleHost
 
         static void AddMovie ()
         {
-            var newMovie = new Movie();
+            var newMovie = new Movie(10, "temp");
             do
             {
                 // Movie Details
