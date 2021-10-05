@@ -90,8 +90,6 @@ namespace MitchelCampozano.CharacterCreator.ConsoleHost
                     character = newCharacter;
                     return;
                 }
-
-                return;
             } while (true);
         }
 
