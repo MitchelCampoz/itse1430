@@ -12,6 +12,33 @@ namespace MovieLibrary
     /// </summary>
     public class Movie
     {
+        //public Movie()
+        //{
+
+        //}
+
+        //// Constructor practice
+        //// To do any initializing if default initializer doesn't work
+        //// CTOR - DECL ::= [access] T ( Parameters ) { S* }
+        //public Movie ( string title ) : this (0, title)
+        //{
+        //    //Initialize(title);
+        //    //Title = title;
+        //}
+
+        //public Movie (int id, string title )
+        //{
+        //    Id = id;
+        //    // Initialize(title);
+        //    Title = title;
+        //}
+
+        //// Shared init but dangerous to use
+        //private void Initialize ( string title )
+        //{
+        //    Title = title;
+        //}
+
         // Mixed accessibility - one accessor may be more restrictive
         public int Id { get; private set; }
 
