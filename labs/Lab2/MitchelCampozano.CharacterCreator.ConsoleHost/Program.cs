@@ -68,7 +68,6 @@ namespace MitchelCampozano.CharacterCreator.ConsoleHost
 
         static void AddCharacter ()
         {
-            bool loopEnder = false;
             var newCharacter = new Character();
             
             do
@@ -92,8 +91,8 @@ namespace MitchelCampozano.CharacterCreator.ConsoleHost
                     return;
                 }
 
-                loopEnder = true;
-            } while (!loopEnder);
+                return;
+            } while (true);
         }
 
         static string NamePicker( string message )
@@ -227,8 +226,6 @@ namespace MitchelCampozano.CharacterCreator.ConsoleHost
 
         static void EditCharacter()
         {
-            bool finished = false;
-
             if (character == null)
             {
                 ErrorMessage("There is no character to edit yet.");
