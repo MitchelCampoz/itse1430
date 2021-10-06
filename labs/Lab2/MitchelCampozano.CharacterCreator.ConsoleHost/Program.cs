@@ -73,8 +73,8 @@ namespace MitchelCampozano.CharacterCreator.ConsoleHost
             do
             {
                 newCharacter.Name = NamePicker("Please enter a name for your character: ");
-                newCharacter.Profession = JobPicker("Please select a valid occupation for your character: ");
-                newCharacter.Race = RacePicker("Please select a valid race: ");
+                newCharacter.Profession = JobPicker("Please select an occupation for your character: ");
+                newCharacter.Race = RacePicker("Please select a race: ");
                 newCharacter.Biography = BiographyEntry("Tell us a little about your character (if you want): ", false);
                 Console.WriteLine("You will now enter the values for your skills: ");
                 newCharacter.Strength = ReadInt32("Please enter a value for your Strength: ", Character.MinimumValue, Character.MaximumValue);
@@ -250,13 +250,13 @@ namespace MitchelCampozano.CharacterCreator.ConsoleHost
                         case "PROFESSION": character.Profession = JobPicker("Pick a new profession: "); break;
                         case "RACE": character.Race = RacePicker("Pick a new race: "); break;
                         case "BIOGRAPHY": character.Biography = BiographyEntry("Enter a biography for your character: ", false); break;
-                        case "STRENGTH": character.Strength = ReadInt32("Enter a new Strength value: ", Character.MinimumValue, Character.MaximumValue); break;
-                        case "INTELLIGENCE": character.Intelligence = ReadInt32("Enter a new Intelligence value: ", Character.MinimumValue, Character.MaximumValue); break;
-                        case "AGILITY": character.Agility = ReadInt32("Enter a new Agility value: ", Character.MinimumValue, Character.MaximumValue); break;
-                        case "CONSTITUTION": character.Constitution = ReadInt32("Enter a new Constitution value: ", Character.MinimumValue, Character.MaximumValue); break;
-                        case "CHARISMA": character.Charisma = ReadInt32("Enter a new Charisma value: ", Character.MinimumValue, Character.MaximumValue); break;
+                        case "STRENGTH": character.Strength = ReadInt32("Enter a new value for Strength: ", Character.MinimumValue, Character.MaximumValue); break;
+                        case "INTELLIGENCE": character.Intelligence = ReadInt32("Enter a new value for Intelligence: ", Character.MinimumValue, Character.MaximumValue); break;
+                        case "AGILITY": character.Agility = ReadInt32("Enter a new value for Agility: ", Character.MinimumValue, Character.MaximumValue); break;
+                        case "CONSTITUTION": character.Constitution = ReadInt32("Enter a new value for Constitution: ", Character.MinimumValue, Character.MaximumValue); break;
+                        case "CHARISMA": character.Charisma = ReadInt32("Enter a new value for Charisma: ", Character.MinimumValue, Character.MaximumValue); break;
                         case "DONE": return;
-                        default: ErrorMessage("Please enter a valid option."); break;
+                        default: ErrorMessage("Please enter the proper name of the field."); break;
                     }
                 } else
                     ErrorMessage("Please enter a valid option.");

@@ -102,7 +102,9 @@ namespace MitchelCampozano.CharacterCreator
         /// <summary>
         /// Validates the Character object
         /// </summary>
-        /// <returns></returns>
+        /// <returns>
+        /// Returns a value based on invalid values
+        /// </returns>
         public string Validator ()
         {
             if (String.IsNullOrEmpty(Name))
