@@ -6,4 +6,8 @@
     <UseWindowsForms>true</UseWindowsForms>
   </PropertyGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\MitchelCampozano.CharacterCreator\MitchelCampozano.AdventureGame.csproj" />
+  </ItemGroup>
+
 </Project>
