@@ -22,7 +22,21 @@ namespace MitchelCampozano.AdventureGame.WinHost
 
         }
 
-        private void toolStripMenuItem2_Click ( object sender, EventArgs e )
+        private void OnFileExit ( object sender, EventArgs e )
+        {
+            //Confirm exit?
+            if (!Confirm("Do you want to quit?", "Confirm"))
+                return;
+
+            Close();
+        }
+
+        private static bool Confirm ( string message, string title )
+        {
+            return MessageBox.Show(message, title, MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes;
+        }
+
+        private void OnHelpAbout ( object sender, EventArgs e )
         {
 
         }
