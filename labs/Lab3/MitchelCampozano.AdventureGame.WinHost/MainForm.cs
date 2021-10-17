@@ -38,7 +38,14 @@ namespace MitchelCampozano.AdventureGame.WinHost
 
         private void OnHelpAbout ( object sender, EventArgs e )
         {
+            var dlg = new AboutBox();
 
+            //Blocks until child form is closed
+            dlg.ShowDialog();
+
+            //Show displays modeless, not blocking
+            //dlg.Show();
+            //MessageBox.Show("After Show");
         }
     }
 }
