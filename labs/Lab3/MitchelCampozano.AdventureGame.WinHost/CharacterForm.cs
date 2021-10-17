@@ -16,5 +16,15 @@ namespace MitchelCampozano.AdventureGame.WinHost
         {
             InitializeComponent();
         }
+
+        public Character Character { get; set; }
+
+        protected override void OnLoad ( EventArgs e )
+        {
+            base.OnLoad(e);
+
+            if (Character != null)
+                LoadCharacter(Character);
+        }
     }
 }

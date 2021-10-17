@@ -29,10 +29,19 @@ namespace MitchelCampozano.AdventureGame.WinHost
         /// </summary>
         private void InitializeComponent ()
         {
-            this.components = new System.ComponentModel.Container();
+            this.SuspendLayout();
+            // 
+            // CharacterForm
+            // 
+            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
-            this.Text = "CharacterForm";
+            this.ClientSize = new System.Drawing.Size(322, 355);
+            this.MaximizeBox = false;
+            this.MinimizeBox = false;
+            this.Name = "CharacterForm";
+            this.Text = "Create New Character";
+            this.ResumeLayout(false);
+
         }
 
         #endregion
