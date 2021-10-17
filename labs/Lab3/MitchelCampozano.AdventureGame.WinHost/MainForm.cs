@@ -47,5 +47,10 @@ namespace MitchelCampozano.AdventureGame.WinHost
             //dlg.Show();
             //MessageBox.Show("After Show");
         }
+
+        private void OnCharacterAdd ( object sender, EventArgs e )
+        {
+            var dlg = new CharacterForm();
+        }
     }
 }
