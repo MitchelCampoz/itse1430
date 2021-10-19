@@ -29,9 +29,9 @@ namespace MovieLibrary.WinHost
             Close();
         }
 
-        private static bool Confirm ( string message, string title )
+        private bool Confirm ( string message, string title )
         {
-            return MessageBox.Show(message, title, MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes;
+            return MessageBox.Show(this, message, title, MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes;
         }
 
         private void OnMovieDelete ( object sender, EventArgs e )
@@ -62,9 +62,10 @@ namespace MovieLibrary.WinHost
         private void OnMovieAdd ( object sender, EventArgs e )
         {
             var dlg = new MovieForm();
+            dlg.StartPosition = FormStartPosition.CenterParent;
 
             // ShowDialog -> DialogResult
-            if (dlg.ShowDialog() != DialogResult.OK)
+            if (dlg.ShowDialog(this) != DialogResult.OK)
                 return;
 
             // TODO: Save Movie
