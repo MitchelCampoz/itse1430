@@ -51,6 +51,26 @@ namespace MitchelCampozano.AdventureGame.WinHost
         private void OnCharacterAdd ( object sender, EventArgs e )
         {
             var dlg = new CharacterForm();
+
+            if (dlg.ShowDialog(this) != DialogResult.OK)
+                return;
+
+            _character = dlg.Character;
+            UpdateUI();
+        }
+
+        private Character _character;
+
+        private void UpdateUI ()
+        {
+            var characters = (_character != null) ? new Character[1] : new Character[0];
+
+            if (_character != null)
+                characters[0] = _character;
+
+            var bindingsource = new BindingSource();
+
+
         }
     }
 }
