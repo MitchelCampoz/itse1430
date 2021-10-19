@@ -4,6 +4,10 @@
     <OutputType>WinExe</OutputType>
     <TargetFramework>net5.0-windows</TargetFramework>
     <UseWindowsForms>true</UseWindowsForms>
+    <Company>Mitchel Campozano</Company>
+    <Product>Character Creator</Product>
+    <Description>Designed to build your character.</Description>
+    <Authors>Mitchel Campozano</Authors>
   </PropertyGroup>
 
   <ItemGroup>

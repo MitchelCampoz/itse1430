@@ -21,10 +21,10 @@ namespace MitchelCampozano.AdventureGame.WinHost
 
         protected override void OnLoad ( EventArgs e )
         {
-            base.OnLoad(e);
+            //base.OnLoad(e);
 
-            if (Character != null)
-                LoadCharacter(Character);
+            //if (Character != null)
+            //    LoadCharacter(Character);
         }
     }
 }
