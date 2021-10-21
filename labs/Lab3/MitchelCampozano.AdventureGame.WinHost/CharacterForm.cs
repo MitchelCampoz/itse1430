@@ -21,15 +21,23 @@ namespace MitchelCampozano.AdventureGame.WinHost
 
         protected override void OnLoad ( EventArgs e )
         {
-            //base.OnLoad(e);
+            base.OnLoad(e);
 
-            //if (Character != null)
-            //    LoadCharacter(Character);
+            if (Character != null)
+                LoadCharacter(Character);
         }
 
         private void LoadCharacter ( Character character )
         {
-            _txtname.Text = character.Name;
+
         }
+
+        private void OnSave (object sender, EventArgs e )
+        {
+            var character = new Character();
+
+            character.Name = 
+        }
+
     }
 }
