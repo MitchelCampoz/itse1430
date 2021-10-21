@@ -33,11 +33,11 @@ namespace MitchelCampozano.AdventureGame.WinHost
             _cbProfession.Text = character.Profession;
             _cbRace.Text = character.Race;
             _txtBiography.Text = character.Biography;
-            _txtStrength.Text = character.Strength;
-            _txtIntelligence.Text = character.Intelligence;
-            _txtAgility.Text = character.Agility;
-            _txtConstitution.Text = character.Constitution;
-            _txtCharisma.Text = character.Charisma;
+            _txtStrength.Text = character.Strength.ToString();
+            _txtIntelligence.Text = character.Intelligence.ToString();
+            _txtAgility.Text = character.Agility.ToString();
+            _txtConstitution.Text = character.Constitution.ToString();
+            _txtCharisma.Text = character.Charisma.ToString();
         }
 
         private void OnSave (object sender, EventArgs e )
@@ -45,6 +45,24 @@ namespace MitchelCampozano.AdventureGame.WinHost
             var character = new Character();
 
             character.Name = _txtName.Name;
+            character.Profession = _cbProfession.Text;
+            character.Race = _cbRace.Text;
+            character.Biography = _txtBiography.Text;
+            character.Strength = GetInt32(_txtStrength);
+            character.Intelligence = GetInt32(_txtIntelligence);
+            character.Agility = GetInt32(_txtAgility);
+            character.Constitution = GetInt32(_txtIntelligence);
+            character.Charisma = GetInt32(_txtCharisma);
+        }
+
+        private int GetInt32 ( Control control )
+        {
+            var text = control.Text;
+
+            if (Int32.TryParse(text, out var result))
+                return result;
+
+            return -1;
         }
 
     }

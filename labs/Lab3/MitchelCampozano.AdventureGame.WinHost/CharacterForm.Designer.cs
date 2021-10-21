@@ -46,9 +46,9 @@ namespace MitchelCampozano.AdventureGame.WinHost
             this.label7 = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this._txtBiography = new System.Windows.Forms.TextBox();
             this.label10 = new System.Windows.Forms.Label();
-            this.button1 = new System.Windows.Forms.Button();
+            this._btnSave = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
@@ -190,13 +190,13 @@ namespace MitchelCampozano.AdventureGame.WinHost
             this.label9.TabIndex = 18;
             this.label9.Text = "Charisma";
             // 
-            // textBox1
+            // _txtBiography
             // 
-            this.textBox1.Location = new System.Drawing.Point(128, 247);
-            this.textBox1.Multiline = true;
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(208, 96);
-            this.textBox1.TabIndex = 19;
+            this._txtBiography.Location = new System.Drawing.Point(128, 247);
+            this._txtBiography.Multiline = true;
+            this._txtBiography.Name = "_txtBiography";
+            this._txtBiography.Size = new System.Drawing.Size(208, 96);
+            this._txtBiography.TabIndex = 19;
             // 
             // label10
             // 
@@ -208,14 +208,15 @@ namespace MitchelCampozano.AdventureGame.WinHost
             this.label10.TabIndex = 20;
             this.label10.Text = "Biography";
             // 
-            // button1
+            // _btnSave
             // 
-            this.button1.Location = new System.Drawing.Point(173, 376);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 23);
-            this.button1.TabIndex = 21;
-            this.button1.Text = "Save";
-            this.button1.UseVisualStyleBackColor = true;
+            this._btnSave.Location = new System.Drawing.Point(173, 376);
+            this._btnSave.Name = "_btnSave";
+            this._btnSave.Size = new System.Drawing.Size(75, 23);
+            this._btnSave.TabIndex = 21;
+            this._btnSave.Text = "Save";
+            this._btnSave.UseVisualStyleBackColor = true;
+            this._btnSave.Click += new System.EventHandler(this.OnSave);
             // 
             // button2
             // 
@@ -232,9 +233,9 @@ namespace MitchelCampozano.AdventureGame.WinHost
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(348, 411);
             this.Controls.Add(this.button2);
-            this.Controls.Add(this.button1);
+            this.Controls.Add(this._btnSave);
             this.Controls.Add(this.label10);
-            this.Controls.Add(this.textBox1);
+            this.Controls.Add(this._txtBiography);
             this.Controls.Add(this.label9);
             this.Controls.Add(this.label8);
             this.Controls.Add(this.label7);
@@ -280,9 +281,9 @@ namespace MitchelCampozano.AdventureGame.WinHost
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.Label label9;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox _txtBiography;
         private System.Windows.Forms.Label label10;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button _btnSave;
         private System.Windows.Forms.Button button2;
     }
 }
