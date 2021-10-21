@@ -29,31 +29,35 @@ namespace MitchelCampozano.AdventureGame.WinHost
         /// </summary>
         private void InitializeComponent ()
         {
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this._txtName = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
+            this._cbProfession = new System.Windows.Forms.ComboBox();
             this.label4 = new System.Windows.Forms.Label();
-            this.comboBox2 = new System.Windows.Forms.ComboBox();
-            this.textBox2 = new System.Windows.Forms.TextBox();
-            this.textBox3 = new System.Windows.Forms.TextBox();
-            this.textBox4 = new System.Windows.Forms.TextBox();
-            this.textBox5 = new System.Windows.Forms.TextBox();
-            this.textBox6 = new System.Windows.Forms.TextBox();
+            this._cbRace = new System.Windows.Forms.ComboBox();
+            this._txtStrength = new System.Windows.Forms.TextBox();
+            this._txtIntelligence = new System.Windows.Forms.TextBox();
+            this._txtAgility = new System.Windows.Forms.TextBox();
+            this._txtConstitution = new System.Windows.Forms.TextBox();
+            this._txtCharisma = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
+            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.label10 = new System.Windows.Forms.Label();
+            this.button1 = new System.Windows.Forms.Button();
+            this.button2 = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
-            // textBox1
+            // _txtName
             // 
-            this.textBox1.Location = new System.Drawing.Point(128, 9);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(182, 23);
-            this.textBox1.TabIndex = 0;
+            this._txtName.Location = new System.Drawing.Point(128, 9);
+            this._txtName.Name = "_txtName";
+            this._txtName.Size = new System.Drawing.Size(208, 23);
+            this._txtName.TabIndex = 0;
             // 
             // label1
             // 
@@ -67,11 +71,11 @@ namespace MitchelCampozano.AdventureGame.WinHost
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(53, 41);
+            this.label2.Location = new System.Drawing.Point(60, 41);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(69, 15);
+            this.label2.Size = new System.Drawing.Size(62, 15);
             this.label2.TabIndex = 3;
-            this.label2.Text = "Occupation";
+            this.label2.Text = "Profession";
             // 
             // label3
             // 
@@ -81,13 +85,13 @@ namespace MitchelCampozano.AdventureGame.WinHost
             this.label3.Size = new System.Drawing.Size(0, 15);
             this.label3.TabIndex = 5;
             // 
-            // comboBox1
+            // _cbProfession
             // 
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(128, 38);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(121, 23);
-            this.comboBox1.TabIndex = 6;
+            this._cbProfession.FormattingEnabled = true;
+            this._cbProfession.Location = new System.Drawing.Point(128, 38);
+            this._cbProfession.Name = "_cbProfession";
+            this._cbProfession.Size = new System.Drawing.Size(121, 23);
+            this._cbProfession.TabIndex = 6;
             // 
             // label4
             // 
@@ -98,48 +102,48 @@ namespace MitchelCampozano.AdventureGame.WinHost
             this.label4.TabIndex = 7;
             this.label4.Text = "Race";
             // 
-            // comboBox2
+            // _cbRace
             // 
-            this.comboBox2.FormattingEnabled = true;
-            this.comboBox2.Location = new System.Drawing.Point(128, 67);
-            this.comboBox2.Name = "comboBox2";
-            this.comboBox2.Size = new System.Drawing.Size(121, 23);
-            this.comboBox2.TabIndex = 8;
+            this._cbRace.FormattingEnabled = true;
+            this._cbRace.Location = new System.Drawing.Point(128, 67);
+            this._cbRace.Name = "_cbRace";
+            this._cbRace.Size = new System.Drawing.Size(121, 23);
+            this._cbRace.TabIndex = 8;
             // 
-            // textBox2
+            // _txtStrength
             // 
-            this.textBox2.Location = new System.Drawing.Point(128, 97);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(100, 23);
-            this.textBox2.TabIndex = 9;
+            this._txtStrength.Location = new System.Drawing.Point(128, 97);
+            this._txtStrength.Name = "_txtStrength";
+            this._txtStrength.Size = new System.Drawing.Size(46, 23);
+            this._txtStrength.TabIndex = 9;
             // 
-            // textBox3
+            // _txtIntelligence
             // 
-            this.textBox3.Location = new System.Drawing.Point(128, 127);
-            this.textBox3.Name = "textBox3";
-            this.textBox3.Size = new System.Drawing.Size(100, 23);
-            this.textBox3.TabIndex = 10;
+            this._txtIntelligence.Location = new System.Drawing.Point(128, 127);
+            this._txtIntelligence.Name = "_txtIntelligence";
+            this._txtIntelligence.Size = new System.Drawing.Size(46, 23);
+            this._txtIntelligence.TabIndex = 10;
             // 
-            // textBox4
+            // _txtAgility
             // 
-            this.textBox4.Location = new System.Drawing.Point(128, 157);
-            this.textBox4.Name = "textBox4";
-            this.textBox4.Size = new System.Drawing.Size(100, 23);
-            this.textBox4.TabIndex = 11;
+            this._txtAgility.Location = new System.Drawing.Point(128, 157);
+            this._txtAgility.Name = "_txtAgility";
+            this._txtAgility.Size = new System.Drawing.Size(46, 23);
+            this._txtAgility.TabIndex = 11;
             // 
-            // textBox5
+            // _txtConstitution
             // 
-            this.textBox5.Location = new System.Drawing.Point(128, 187);
-            this.textBox5.Name = "textBox5";
-            this.textBox5.Size = new System.Drawing.Size(100, 23);
-            this.textBox5.TabIndex = 12;
+            this._txtConstitution.Location = new System.Drawing.Point(128, 187);
+            this._txtConstitution.Name = "_txtConstitution";
+            this._txtConstitution.Size = new System.Drawing.Size(46, 23);
+            this._txtConstitution.TabIndex = 12;
             // 
-            // textBox6
+            // _txtCharisma
             // 
-            this.textBox6.Location = new System.Drawing.Point(128, 217);
-            this.textBox6.Name = "textBox6";
-            this.textBox6.Size = new System.Drawing.Size(100, 23);
-            this.textBox6.TabIndex = 13;
+            this._txtCharisma.Location = new System.Drawing.Point(128, 217);
+            this._txtCharisma.Name = "_txtCharisma";
+            this._txtCharisma.Size = new System.Drawing.Size(46, 23);
+            this._txtCharisma.TabIndex = 13;
             // 
             // label5
             // 
@@ -186,28 +190,68 @@ namespace MitchelCampozano.AdventureGame.WinHost
             this.label9.TabIndex = 18;
             this.label9.Text = "Charisma";
             // 
+            // textBox1
+            // 
+            this.textBox1.Location = new System.Drawing.Point(128, 247);
+            this.textBox1.Multiline = true;
+            this.textBox1.Name = "textBox1";
+            this.textBox1.Size = new System.Drawing.Size(208, 96);
+            this.textBox1.TabIndex = 19;
+            // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.CausesValidation = false;
+            this.label10.Location = new System.Drawing.Point(61, 247);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(61, 15);
+            this.label10.TabIndex = 20;
+            this.label10.Text = "Biography";
+            // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(173, 376);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(75, 23);
+            this.button1.TabIndex = 21;
+            this.button1.Text = "Save";
+            this.button1.UseVisualStyleBackColor = true;
+            // 
+            // button2
+            // 
+            this.button2.Location = new System.Drawing.Point(261, 376);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(75, 23);
+            this.button2.TabIndex = 22;
+            this.button2.Text = "Cancel";
+            this.button2.UseVisualStyleBackColor = true;
+            // 
             // CharacterForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(322, 355);
+            this.ClientSize = new System.Drawing.Size(348, 411);
+            this.Controls.Add(this.button2);
+            this.Controls.Add(this.button1);
+            this.Controls.Add(this.label10);
+            this.Controls.Add(this.textBox1);
             this.Controls.Add(this.label9);
             this.Controls.Add(this.label8);
             this.Controls.Add(this.label7);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.label5);
-            this.Controls.Add(this.textBox6);
-            this.Controls.Add(this.textBox5);
-            this.Controls.Add(this.textBox4);
-            this.Controls.Add(this.textBox3);
-            this.Controls.Add(this.textBox2);
-            this.Controls.Add(this.comboBox2);
+            this.Controls.Add(this._txtCharisma);
+            this.Controls.Add(this._txtConstitution);
+            this.Controls.Add(this._txtAgility);
+            this.Controls.Add(this._txtIntelligence);
+            this.Controls.Add(this._txtStrength);
+            this.Controls.Add(this._cbRace);
             this.Controls.Add(this.label4);
-            this.Controls.Add(this.comboBox1);
+            this.Controls.Add(this._cbProfession);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
-            this.Controls.Add(this.textBox1);
+            this.Controls.Add(this._txtName);
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "CharacterForm";
@@ -219,22 +263,26 @@ namespace MitchelCampozano.AdventureGame.WinHost
 
         #endregion
 
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox _txtName;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.ComboBox comboBox1;
+        private System.Windows.Forms.ComboBox _cbProfession;
         private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.ComboBox comboBox2;
-        private System.Windows.Forms.TextBox textBox2;
-        private System.Windows.Forms.TextBox textBox3;
-        private System.Windows.Forms.TextBox textBox4;
-        private System.Windows.Forms.TextBox textBox5;
-        private System.Windows.Forms.TextBox textBox6;
+        private System.Windows.Forms.ComboBox _cbRace;
+        private System.Windows.Forms.TextBox _txtStrength;
+        private System.Windows.Forms.TextBox _txtIntelligence;
+        private System.Windows.Forms.TextBox _txtAgility;
+        private System.Windows.Forms.TextBox _txtConstitution;
+        private System.Windows.Forms.TextBox _txtCharisma;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.Label label9;
+        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.Label label10;
+        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button button2;
     }
 }
