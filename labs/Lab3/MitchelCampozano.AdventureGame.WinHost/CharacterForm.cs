@@ -26,5 +26,10 @@ namespace MitchelCampozano.AdventureGame.WinHost
             //if (Character != null)
             //    LoadCharacter(Character);
         }
+
+        private void LoadCharacter ( Character character )
+        {
+            _txtname.Text = character.Name;
+        }
     }
 }
