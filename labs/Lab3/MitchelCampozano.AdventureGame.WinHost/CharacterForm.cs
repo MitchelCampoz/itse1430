@@ -29,14 +29,22 @@ namespace MitchelCampozano.AdventureGame.WinHost
 
         private void LoadCharacter ( Character character )
         {
-
+            _txtName.Text = character.Name;
+            _cbProfession.Text = character.Profession;
+            _cbRace.Text = character.Race;
+            _txtBiography.Text = character.Biography;
+            _txtStrength.Text = character.Strength;
+            _txtIntelligence.Text = character.Intelligence;
+            _txtAgility.Text = character.Agility;
+            _txtConstitution.Text = character.Constitution;
+            _txtCharisma.Text = character.Charisma;
         }
 
         private void OnSave (object sender, EventArgs e )
         {
             var character = new Character();
 
-            character.Name = 
+            character.Name = _txtName.Name;
         }
 
     }
