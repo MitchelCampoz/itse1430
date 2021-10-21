@@ -88,6 +88,12 @@ namespace MitchelCampozano.AdventureGame.WinHost
             // _cbProfession
             // 
             this._cbProfession.FormattingEnabled = true;
+            this._cbProfession.Items.AddRange(new object[] {
+            "Warrior",
+            "Cleric",
+            "Ranger",
+            "Rogue",
+            "Wizard"});
             this._cbProfession.Location = new System.Drawing.Point(128, 38);
             this._cbProfession.Name = "_cbProfession";
             this._cbProfession.Size = new System.Drawing.Size(121, 23);
@@ -105,6 +111,12 @@ namespace MitchelCampozano.AdventureGame.WinHost
             // _cbRace
             // 
             this._cbRace.FormattingEnabled = true;
+            this._cbRace.Items.AddRange(new object[] {
+            "Dwarf",
+            "Orc",
+            "Elf",
+            "Hobbit",
+            "Human"});
             this._cbRace.Location = new System.Drawing.Point(128, 67);
             this._cbRace.Name = "_cbRace";
             this._cbRace.Size = new System.Drawing.Size(121, 23);
