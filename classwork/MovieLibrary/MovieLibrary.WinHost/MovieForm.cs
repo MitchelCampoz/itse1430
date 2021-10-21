@@ -22,6 +22,25 @@ namespace MovieLibrary.WinHost
 
         public Movie Movie { get; set; }
 
+        // Called when the form asked to close
+        //protected override void OnFormClosing ( FormClosingEventArgs e )
+        //{
+        //    base.OnFormClosing(e);
+
+        //    if (_txtTitle.Text.Length > 0)
+        //    {
+        //        if (!Confirm("Are you sure you want to close without saving?", "Close")) 
+        //        {
+        //            e.Cancel = true;
+        //        };
+        //    };
+        //}
+
+        //private bool Confirm ( string message, string title )
+        //{
+        //    return MessageBox.Show(this, message, title, MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes;
+        //}
+
         protected override void OnLoad ( EventArgs e )
         {
             // Always call base version first
@@ -30,6 +49,9 @@ namespace MovieLibrary.WinHost
             // Load UI, if necessary
             if (Movie != null)
                 LoadMovie(Movie);
+
+            // Validate so user can see what is required
+            ValidateChildren();
         }
 
         private void LoadMovie ( Movie movie )
@@ -45,7 +67,14 @@ namespace MovieLibrary.WinHost
         //Called when Save clicked
         private void OnSave ( object sender, EventArgs e )
         {
-            //Build up a Movie
+            // Validate children
+            if (!ValidateChildren())
+            {
+                DialogResult = DialogResult.None;
+                return;
+            };
+
+            // Build up a Movie
             var movie = new Movie();
             movie.Title = _txtTitle.Text;
             movie.Description = _txtDescription.Text;
@@ -88,6 +117,68 @@ namespace MovieLibrary.WinHost
             var target = sender as TextBox;
 
             System.Diagnostics.Debug.WriteLine($"KeyUp: Text = {target.Name} Key = {e.KeyCode}");
+        }
+
+        private void OnValidatingTitle ( object sender, System.ComponentModel.CancelEventArgs e )
+        {
+            var control = sender as Control;
+
+            // Title is required
+            if (control.Text.Length > 0)
+            {
+                _errors.SetError(control, "");
+                return;
+            };
+            // Not valid
+            _errors.SetError(control, "Title is required.");
+            e.Cancel = true;
+        }
+
+        private void OnValidatingRating ( object sender, System.ComponentModel.CancelEventArgs e )
+        {
+            var control = sender as Control;
+
+            // Rating is required
+            if (control.Text.Length > 0)
+            {
+                _errors.SetError(control, "");
+                return;
+            };
+            // Not valid
+            _errors.SetError(control, "Rating is required.");
+            e.Cancel = true;
+        }
+
+        private void OnValidatingRunLength ( object sender, System.ComponentModel.CancelEventArgs e )
+        {
+            var control = sender as Control;
+
+            // RunLength > 0
+            var value = GetInt32(control);
+            if (value > 0)
+            {
+                _errors.SetError(control, "");
+                return;
+            };
+            // Not valid
+            _errors.SetError(control, "Run Length must be greater than zero minutes.");
+            e.Cancel = true;
+        }
+
+        private void OnValidatingReleaseYear ( object sender, System.ComponentModel.CancelEventArgs e )
+        {
+            var control = sender as Control;
+
+            // RunLength > 1900
+            var value = GetInt32(control);
+            if (value > Movie.MinimumReleaseYear)
+            {
+                _errors.SetError(control, "");
+                return;
+            };
+            // Not valid
+            _errors.SetError(control, $"Release year must be at least from {Movie.MinimumReleaseYear} onward.");
+            e.Cancel = true;
         }
     }
 }
