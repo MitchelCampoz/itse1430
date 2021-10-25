@@ -53,6 +53,16 @@ namespace MitchelCampozano.AdventureGame.WinHost
             character.Agility = GetInt32(_txtAgility);
             character.Constitution = GetInt32(_txtIntelligence);
             character.Charisma = GetInt32(_txtCharisma);
+
+            var error = character.Validator();
+            if (!String.IsNullOrEmpty(error))
+            {
+                ErrorMessage(error, "Error");
+                DialogResult = DialogResult.None;
+                return;
+            };
+
+            Character = character;
         }
 
         private int GetInt32 ( Control control )
@@ -65,5 +75,9 @@ namespace MitchelCampozano.AdventureGame.WinHost
             return -1;
         }
 
+        private void ErrorMessage (string title, string message)
+        {
+            MessageBox.Show(message, title, MessageBoxButtons.OK, MessageBoxIcon.Error);
+        }
     }
 }
