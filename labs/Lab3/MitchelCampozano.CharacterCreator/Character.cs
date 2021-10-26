@@ -99,6 +99,11 @@ namespace MitchelCampozano.AdventureGame
             return character;
         }
 
+        public override string ToString ()
+        {
+            return $"{Name}, the {Race} {Profession} | S: {Strength}    I: {Intelligence}   A: {Agility}    Con: {Constitution}    Csma: {Charisma}";
+        }
+
         /// <summary>
         /// Validates the Character object
         /// </summary>

@@ -85,5 +85,16 @@ namespace MitchelCampozano.AdventureGame.WinHost
             _character = dlg.Character;
             UpdateUI();
         }
+
+        private void OnCharacterDelete ( object sender, EventArgs e )
+        {
+            if (_character == null)
+                return;
+
+            if (!Confirm($"Are you sure you would like to delete {_character.Name}?", "Delete"))
+                return;
+
+            _character = null;
+        }
     }
 }

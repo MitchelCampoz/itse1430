@@ -44,7 +44,7 @@ namespace MitchelCampozano.AdventureGame.WinHost
         {
             var character = new Character();
 
-            character.Name = _txtName.Name;
+            character.Name = _txtName.Text;
             character.Profession = _cbProfession.Text;
             character.Race = _cbRace.Text;
             character.Biography = _txtBiography.Text;
