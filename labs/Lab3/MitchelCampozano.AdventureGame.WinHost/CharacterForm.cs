@@ -63,6 +63,8 @@ namespace MitchelCampozano.AdventureGame.WinHost
             };
 
             Character = character;
+
+            DialogResult = DialogResult.OK;
         }
 
         private int GetInt32 ( Control control )

@@ -87,6 +87,7 @@ namespace MitchelCampozano.AdventureGame.WinHost
             // 
             // _cbProfession
             // 
+            this._cbProfession.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this._cbProfession.FormattingEnabled = true;
             this._cbProfession.Items.AddRange(new object[] {
             "Warrior",
@@ -110,6 +111,7 @@ namespace MitchelCampozano.AdventureGame.WinHost
             // 
             // _cbRace
             // 
+            this._cbRace.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this._cbRace.FormattingEnabled = true;
             this._cbRace.Items.AddRange(new object[] {
             "Dwarf",
@@ -128,6 +130,7 @@ namespace MitchelCampozano.AdventureGame.WinHost
             this._txtStrength.Name = "_txtStrength";
             this._txtStrength.Size = new System.Drawing.Size(46, 23);
             this._txtStrength.TabIndex = 9;
+            this._txtStrength.Text = "50";
             // 
             // _txtIntelligence
             // 
@@ -135,6 +138,7 @@ namespace MitchelCampozano.AdventureGame.WinHost
             this._txtIntelligence.Name = "_txtIntelligence";
             this._txtIntelligence.Size = new System.Drawing.Size(46, 23);
             this._txtIntelligence.TabIndex = 10;
+            this._txtIntelligence.Text = "50";
             // 
             // _txtAgility
             // 
@@ -142,6 +146,7 @@ namespace MitchelCampozano.AdventureGame.WinHost
             this._txtAgility.Name = "_txtAgility";
             this._txtAgility.Size = new System.Drawing.Size(46, 23);
             this._txtAgility.TabIndex = 11;
+            this._txtAgility.Text = "50";
             // 
             // _txtConstitution
             // 
@@ -149,6 +154,7 @@ namespace MitchelCampozano.AdventureGame.WinHost
             this._txtConstitution.Name = "_txtConstitution";
             this._txtConstitution.Size = new System.Drawing.Size(46, 23);
             this._txtConstitution.TabIndex = 12;
+            this._txtConstitution.Text = "50";
             // 
             // _txtCharisma
             // 
@@ -156,6 +162,7 @@ namespace MitchelCampozano.AdventureGame.WinHost
             this._txtCharisma.Name = "_txtCharisma";
             this._txtCharisma.Size = new System.Drawing.Size(46, 23);
             this._txtCharisma.TabIndex = 13;
+            this._txtCharisma.Text = "50";
             // 
             // label5
             // 
@@ -232,6 +239,7 @@ namespace MitchelCampozano.AdventureGame.WinHost
             // 
             // button2
             // 
+            this.button2.DialogResult = System.Windows.Forms.DialogResult.Cancel;
             this.button2.Location = new System.Drawing.Point(261, 376);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(75, 23);
@@ -243,7 +251,7 @@ namespace MitchelCampozano.AdventureGame.WinHost
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(348, 411);
+            this.ClientSize = new System.Drawing.Size(349, 411);
             this.Controls.Add(this.button2);
             this.Controls.Add(this._btnSave);
             this.Controls.Add(this.label10);
@@ -266,7 +274,9 @@ namespace MitchelCampozano.AdventureGame.WinHost
             this.Controls.Add(this.label1);
             this.Controls.Add(this._txtName);
             this.MaximizeBox = false;
+            this.MaximumSize = new System.Drawing.Size(365, 450);
             this.MinimizeBox = false;
+            this.MinimumSize = new System.Drawing.Size(365, 450);
             this.Name = "CharacterForm";
             this.Text = "Create New Character";
             this.ResumeLayout(false);
