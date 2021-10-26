@@ -94,6 +94,7 @@ namespace MitchelCampozano.AdventureGame.WinHost
             if (!Confirm($"Are you sure you would like to delete {_character.Name}?", "Delete"))
                 return;
 
+            _lstCharacters.DataSource = null;
             _character = null;
         }
     }

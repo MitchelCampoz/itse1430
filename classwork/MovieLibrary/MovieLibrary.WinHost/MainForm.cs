@@ -50,6 +50,7 @@ namespace MovieLibrary.WinHost
                 return;
 
             // TODO: Delete
+            
             _movie = null;
         }
 
