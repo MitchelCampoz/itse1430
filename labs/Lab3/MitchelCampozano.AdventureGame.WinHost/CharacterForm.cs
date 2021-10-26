@@ -81,5 +81,122 @@ namespace MitchelCampozano.AdventureGame.WinHost
         {
             MessageBox.Show(message, title, MessageBoxButtons.OK, MessageBoxIcon.Error);
         }
+
+        private void OnValidatingName ( object sender, System.ComponentModel.CancelEventArgs e )
+        {
+            var control = sender as Control;
+
+            if (control.Text.Length > 0)
+            {
+                _errors.SetError(control, "");
+                return;
+            };
+
+            _errors.SetError(control, "Name is Required!");
+            e.Cancel = true;
+        }
+
+        private void OnValidatingProfession ( object sender, System.ComponentModel.CancelEventArgs e )
+        {
+            var control = sender as Control;
+
+            if (control.Text.Length > 0)
+            {
+                _errors.SetError(control, "");
+                return;
+            };
+
+            _errors.SetError(control, "Profession is Required!");
+            e.Cancel = true;
+        }
+        
+        private void OnValidatingRace ( object sender, System.ComponentModel.CancelEventArgs e )
+        {
+            var control = sender as Control;
+
+            if (control.Text.Length > 0)
+            {
+                _errors.SetError(control, "");
+                return;
+            };
+
+            _errors.SetError(control, "Race is Required!");
+            e.Cancel = true;
+        }
+
+        private void OnValidatingStrength ( object sender, System.ComponentModel.CancelEventArgs e )
+        {
+            var control = sender as Control;
+
+            var value = GetInt32(control);
+            if (value < Character.MinimumValue || value > Character.MaximumValue)
+            {
+                _errors.SetError(control, "");
+                return;
+            };
+
+            _errors.SetError(control, $"Strength must be between {Character.MinimumValue} and {Character.MaximumValue}");
+            e.Cancel = true;
+        }
+
+        private void OnValidatingIntelliegence ( object sender, System.ComponentModel.CancelEventArgs e )
+        {
+            var control = sender as Control;
+
+            var value = GetInt32(control);
+            if (value < Character.MinimumValue || value > Character.MaximumValue)
+            {
+                _errors.SetError(control, "");
+                return;
+            };
+
+            _errors.SetError(control, $"Intelligence must be between {Character.MinimumValue} and {Character.MaximumValue}");
+            e.Cancel = true;
+        }
+
+        private void OnValidatingAgility ( object sender, System.ComponentModel.CancelEventArgs e )
+        {
+            var control = sender as Control;
+
+            var value = GetInt32(control);
+            if (value < Character.MinimumValue || value > Character.MaximumValue)
+            {
+                _errors.SetError(control, "");
+                return;
+            };
+
+            _errors.SetError(control, $"Agility must be between {Character.MinimumValue} and {Character.MaximumValue}");
+            e.Cancel = true;
+        }
+
+        private void OnValidatingConstitution ( object sender, System.ComponentModel.CancelEventArgs e )
+        {
+            var control = sender as Control;
+
+            var value = GetInt32(control);
+            if (value < Character.MinimumValue || value > Character.MaximumValue)
+            {
+                _errors.SetError(control, "");
+                return;
+            };
+
+            _errors.SetError(control, $"Constitution must be between {Character.MinimumValue} and {Character.MaximumValue}");
+            e.Cancel = true;
+        }
+
+        private void OnValidatingCharisma ( object sender, System.ComponentModel.CancelEventArgs e )
+        {
+            var control = sender as Control;
+
+            var value = GetInt32(control);
+            if (value < Character.MinimumValue || value > Character.MaximumValue)
+            {
+                _errors.SetError(control, "");
+                return;
+            };
+
+            _errors.SetError(control, $"Charisma must be between {Character.MinimumValue} and {Character.MaximumValue}");
+            e.Cancel = true;
+        }
     }
 }
