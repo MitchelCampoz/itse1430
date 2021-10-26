@@ -17,9 +17,11 @@ namespace MitchelCampozano.AdventureGame.WinHost
             InitializeComponent();
         }
 
-        private void MainForm_Load ( object sender, EventArgs e )
+        protected override void OnLoad ( EventArgs e )
         {
+            base.OnLoad(e);
 
+            UpdateUI();
         }
 
         private void OnFileExit ( object sender, EventArgs e )
@@ -40,12 +42,7 @@ namespace MitchelCampozano.AdventureGame.WinHost
         {
             var dlg = new AboutBox();
 
-            //Blocks until child form is closed
             dlg.ShowDialog();
-
-            //Show displays modeless, not blocking
-            //dlg.Show();
-            //MessageBox.Show("After Show");
         }
 
         private void OnCharacterAdd ( object sender, EventArgs e )
@@ -69,8 +66,24 @@ namespace MitchelCampozano.AdventureGame.WinHost
                 characters[0] = _character;
 
             var bindingsource = new BindingSource();
+            bindingsource.DataSource = characters;
 
+            _lstCharacters.DataSource = bindingsource;
+        }
 
+        private void OnCharacterEdit ( object sender, EventArgs e )
+        {
+            if (_character == null)
+                return;
+
+            var dlg = new CharacterForm();
+            dlg.Character = _character;
+
+            if (dlg.ShowDialog() != DialogResult.OK)
+                return;
+
+            _character = dlg.Character;
+            UpdateUI();
         }
     }
 }
