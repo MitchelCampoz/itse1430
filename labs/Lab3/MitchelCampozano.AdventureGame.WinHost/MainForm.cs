@@ -76,7 +76,9 @@ namespace MitchelCampozano.AdventureGame.WinHost
             if (_character == null)
                 return;
 
-            var dlg = new CharacterForm();
+            
+
+            var dlg = new CharacterForm( _character );
             dlg.Character = _character;
 
             if (dlg.ShowDialog() != DialogResult.OK)

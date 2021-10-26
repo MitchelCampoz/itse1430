@@ -260,12 +260,14 @@ namespace MitchelCampozano.AdventureGame.WinHost
             // 
             // _errors
             // 
+            this._errors.BlinkStyle = System.Windows.Forms.ErrorBlinkStyle.NeverBlink;
             this._errors.ContainerControl = this;
             // 
             // CharacterForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.AutoValidate = System.Windows.Forms.AutoValidate.EnableAllowFocusChange;
             this.ClientSize = new System.Drawing.Size(384, 411);
             this.Controls.Add(this.button2);
             this.Controls.Add(this._btnSave);
@@ -293,6 +295,7 @@ namespace MitchelCampozano.AdventureGame.WinHost
             this.MinimizeBox = false;
             this.MinimumSize = new System.Drawing.Size(400, 450);
             this.Name = "CharacterForm";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "Create New Character";
             ((System.ComponentModel.ISupportInitialize)(this._errors)).EndInit();
             this.ResumeLayout(false);

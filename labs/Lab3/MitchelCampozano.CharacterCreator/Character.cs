@@ -122,19 +122,19 @@ namespace MitchelCampozano.AdventureGame
                 return "Please give your character a race.";
 
             if (Strength < MinimumValue || Strength > MaximumValue)
-                return "Invalid amount.";
+                return "Invalid amount for Strength.";
 
             if (Intelligence < MinimumValue || Intelligence > MaximumValue)
-                return "Invalid amount.";
+                return "Invalid amount for Intelligence.";
 
             if (Agility < MinimumValue || Agility > MaximumValue)
-                return "Invalid amount.";
+                return "Invalid amount for Agility.";
 
             if (Constitution < MinimumValue || Constitution > MaximumValue)
-                return "Invalid amount.";
+                return "Invalid amount for Constitution.";
 
             if (Charisma < MinimumValue || Charisma > MaximumValue)
-                return "Invalid amount.";
+                return "Invalid amount for Charisma.";
 
             return null;
         }
