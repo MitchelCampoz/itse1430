@@ -20,6 +20,12 @@ namespace MovieLibrary.WinHost
             //Runs at design time as well - be careful
         }
 
+        protected override void OnLoad ( EventArgs e )
+        {
+            base.OnLoad(e);
+
+            UpdateUI();
+        }
         private void OnFileExit ( object sender, EventArgs e )
         {
             //Confirm exit?
@@ -79,6 +85,8 @@ namespace MovieLibrary.WinHost
                 return;
 
             var dlg = new MovieForm();
+            dlg.Movie = _movie;
+            
 
             // ShowDialog -> DialogResult
             if (dlg.ShowDialog() != DialogResult.OK)
@@ -89,20 +97,32 @@ namespace MovieLibrary.WinHost
             UpdateUI();
         }
 
+        // TODO: Remove this...
         private Movie _movie;
+
+        private MovieDatabase _movies = new MovieDatabase();
 
         private void UpdateUI ()
         {
             // Update Movie List
-            var movies = (_movie != null) ? new Movie[1] : new Movie[0];
-            if (_movie != null)
-                movies[0] = _movie;
+            //var movies = (_movie != null) ? new Movie[1] : new Movie[0];
+            //if (_movie != null)
+            //    movies[0] = _movie;
+
+            Movie[] movies = _movies.GetAll();
+
+            var movie = movies[1] = new Movie();
+
+            movie.Title = "Dune";
+            movie.Description = "Something";
 
             var bindingSource = new BindingSource();
             bindingSource.DataSource = movies;
 
             // Bind the movies to the listbox
             _listMovies.DataSource = bindingSource;
+
+
         }
 
         private void listBox1_SelectedIndexChanged ( object sender, EventArgs e )
