@@ -1,4 +1,7 @@
-﻿using System;
+﻿// Mitchel Campozano
+// ITSE 1430
+// AdventureGame Lab 3
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -12,8 +15,6 @@ namespace MitchelCampozano.AdventureGame.WinHost
 {
     public partial class CharacterForm : Form
     {
-        // Test Comment
-
         public CharacterForm ()
         {
             InitializeComponent();
