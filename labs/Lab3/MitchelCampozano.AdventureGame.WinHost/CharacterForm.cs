@@ -12,6 +12,8 @@ namespace MitchelCampozano.AdventureGame.WinHost
 {
     public partial class CharacterForm : Form
     {
+        // Test Comment
+
         public CharacterForm ()
         {
             InitializeComponent();
