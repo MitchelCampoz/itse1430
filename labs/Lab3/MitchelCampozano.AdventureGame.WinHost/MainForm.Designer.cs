@@ -136,7 +136,7 @@ namespace MitchelCampozano.AdventureGame.WinHost
             this.tableLayoutPanel1.RowCount = 2;
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 67.84038F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 32.15963F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(784, 426);
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(784, 537);
             this.tableLayoutPanel1.TabIndex = 1;
             // 
             // _lstCharacters
@@ -145,20 +145,20 @@ namespace MitchelCampozano.AdventureGame.WinHost
             this._lstCharacters.Dock = System.Windows.Forms.DockStyle.Fill;
             this._lstCharacters.FormattingEnabled = true;
             this._lstCharacters.ItemHeight = 15;
-            this._lstCharacters.Location = new System.Drawing.Point(3, 291);
+            this._lstCharacters.Location = new System.Drawing.Point(3, 367);
             this._lstCharacters.Name = "_lstCharacters";
-            this._lstCharacters.Size = new System.Drawing.Size(778, 132);
+            this._lstCharacters.Size = new System.Drawing.Size(778, 167);
             this._lstCharacters.TabIndex = 0;
             // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(784, 450);
+            this.ClientSize = new System.Drawing.Size(784, 561);
             this.Controls.Add(this.tableLayoutPanel1);
             this.Controls.Add(this.menuStrip1);
             this.MainMenuStrip = this.menuStrip1;
-            this.MaximumSize = new System.Drawing.Size(800, 500);
+            this.MaximumSize = new System.Drawing.Size(800, 600);
             this.MinimumSize = new System.Drawing.Size(300, 200);
             this.Name = "MainForm";
             this.Text = "MitchelCampozano Adventure";
