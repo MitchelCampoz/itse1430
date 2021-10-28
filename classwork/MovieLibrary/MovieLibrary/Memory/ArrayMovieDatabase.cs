@@ -6,9 +6,9 @@ using System.Threading.Tasks;
 
 namespace MovieLibrary.WinHost
 {
-    class MovieDatabase
+    internal class ArrayMovieDatabase
     {
-        public MovieDatabase ()
+        public ArrayMovieDatabase ()
         {
             // TODO: Seed
             //var movie = new Movie();
@@ -87,7 +87,7 @@ namespace MovieLibrary.WinHost
         }
         
         // TOOD: Delete
-        public void Delte ( Movie movie )
+        public void Delete ( Movie movie )
         {
 
         }
