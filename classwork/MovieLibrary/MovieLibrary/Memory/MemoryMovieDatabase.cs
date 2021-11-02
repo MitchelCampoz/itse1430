@@ -3,10 +3,49 @@ using System.Collections.Generic;
 
 namespace MovieLibrary.Memory
 {
-    public class MemoryMovieDatabase
+    public class MemoryMovieDatabase : IMovieDatabase
     {
+        public void IsOnlyAvailableInMemoryMovieDatabase ()
+        {
+
+        }
         public MemoryMovieDatabase ()
         {
+
+
+            // Collection initializer syntax
+            var movies = new[] {
+
+                (new Movie() {
+                    Title = "Jaws",
+                    Rating = "PG",
+                    RunLength = 210,
+                    ReleaseYear = 1975,
+                    Description = "Shark Movie",
+                    Id = 1,
+                }),
+
+                (new Movie() {
+                    Title = "Dune",
+                    Rating = "PG",
+                    RunLength = 300,
+                    ReleaseYear = 1982,
+                    Description = "Sand Movie",
+                    Id = 2,
+                }),
+
+                (new Movie() {
+                    Title = "Jaws 2",
+                    Rating = "PG",
+                    RunLength = 190,
+                    ReleaseYear = 1979,
+                    Description = "Shark Movie again",
+                    Id = 3,
+                })
+
+            };
+
+            _items.AddRange(movies);
             // TODO: Seed
             //var movie = new Movie();
             //movie.Title = "Jaws";
@@ -16,15 +55,15 @@ namespace MovieLibrary.Memory
             //movie.Description = "Shark Movie";
             //movie.Id = 1;
 
-           
-            _items.Add(new Movie() {
-                Title = "Jaws",
-                Rating = "PG",
-                RunLength = 210,
-                ReleaseYear = 1975,
-                Description = "Shark Movie",
-                Id = 1,
-            });
+
+            //_items.Add(new Movie() {
+            //    Title = "Jaws",
+            //    Rating = "PG",
+            //    RunLength = 210,
+            //    ReleaseYear = 1975,
+            //    Description = "Shark Movie",
+            //    Id = 1,
+            //});
 
             //movie = new Movie();
             //movie.Title = "Dune";
@@ -33,15 +72,15 @@ namespace MovieLibrary.Memory
             //movie.ReleaseYear = 1982;
             //movie.Description = "Sand Movie";
             //movie.Id = 2;
-            
-            _items.Add(new Movie() {
-                Title = "Dune",
-                Rating = "PG",
-                RunLength = 300,
-                ReleaseYear = 1982,
-                Description = "Sand Movie",
-                Id = 2,
-            });
+
+            //_items.Add(new Movie() {
+            //    Title = "Dune",
+            //    Rating = "PG",
+            //    RunLength = 300,
+            //    ReleaseYear = 1982,
+            //    Description = "Sand Movie",
+            //    Id = 2,
+            //});
 
             // Object initializer - creating and initializing new object
             //  new T() {
@@ -60,17 +99,17 @@ namespace MovieLibrary.Memory
             //    Description = "Shark Movie again",
             //    Id = 3,
             //};
-            
-            _items.Add(new Movie() {
-                Title = "Jaws 2",
-                Rating = "PG",
-                RunLength = 190,
-                ReleaseYear = 1979,
-                Description = "Shark Movie again",
-                Id = 3,
-            });
+
+            //_items.Add(new Movie() {
+            //    Title = "Jaws 2",
+            //    Rating = "PG",
+            //    RunLength = 190,
+            //    ReleaseYear = 1979,
+            //    Description = "Shark Movie again",
+            //    Id = 3,
+            //});
         }
-        
+
         // TODO: Error Handling
         public Movie Add ( Movie movie, out string error )
         {
@@ -81,7 +120,7 @@ namespace MovieLibrary.Memory
 
             // Movie title must be unique
             var existing = FindByTitle(movie.Title);
-            if(existing != null)
+            if (existing != null)
             {
                 error = "Movie must be unique";
                 return null;
@@ -143,7 +182,7 @@ namespace MovieLibrary.Memory
 
             return null;
         }
-        
+
         private void Copy ( Movie target, Movie source )
         {
             target.Title = source.Title;
@@ -153,14 +192,14 @@ namespace MovieLibrary.Memory
             target.ReleaseYear = source.ReleaseYear;
             target.IsClassic = source.IsClassic;
         }
-        
+
         // TOOD: Delete
         public void Delete ( int id )
         {
             // TODO: Validate id
 
             var movie = FindById(id);
-            
+
             if (movie != null)
                 _items.Remove(movie);
         }

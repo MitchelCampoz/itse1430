@@ -122,15 +122,18 @@ namespace MovieLibrary.WinHost
             UpdateUI();
         }
 
+        
+
         private Movie GetSelectedMovie ()
         {
             return _listMovies.SelectedItem as Movie;
         }
 
-        private MemoryMovieDatabase _movies = new MemoryMovieDatabase();
+        private IMovieDatabase _movies = new MemoryMovieDatabase();
 
         private void UpdateUI ()
         {
+            // _movies.IsOnlyAvailableInMemoryMovieDatabase();
             // Update Movie List
             //var movies = (_movie != null) ? new Movie[1] : new Movie[0];
             //if (_movie != null)
