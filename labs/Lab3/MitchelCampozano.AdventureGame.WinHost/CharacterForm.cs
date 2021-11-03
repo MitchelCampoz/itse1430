@@ -66,7 +66,7 @@ namespace MitchelCampozano.AdventureGame.WinHost
             character.Strength = GetInt32(_txtStrength);
             character.Intelligence = GetInt32(_txtIntelligence);
             character.Agility = GetInt32(_txtAgility);
-            character.Constitution = GetInt32(_txtIntelligence);
+            character.Constitution = GetInt32(_txtConstitution);
             character.Charisma = GetInt32(_txtCharisma);
 
             var error = character.Validator();
@@ -144,7 +144,7 @@ namespace MitchelCampozano.AdventureGame.WinHost
             var control = sender as Control;
 
             var value = GetInt32(control);
-            if (value > Character.MinimumValue || value < Character.MaximumValue)
+            if (value > Character.MinimumValue && value < Character.MaximumValue)
             {
                 _errors.SetError(control, "");
                 return;
@@ -159,7 +159,7 @@ namespace MitchelCampozano.AdventureGame.WinHost
             var control = sender as Control;
 
             var value = GetInt32(control);
-            if (value > Character.MinimumValue || value < Character.MaximumValue)
+            if (value > Character.MinimumValue && value < Character.MaximumValue)
             {
                 _errors.SetError(control, "");
                 return;
@@ -174,7 +174,7 @@ namespace MitchelCampozano.AdventureGame.WinHost
             var control = sender as Control;
 
             var value = GetInt32(control);
-            if (value > Character.MinimumValue || value < Character.MaximumValue)
+            if (value > Character.MinimumValue && value < Character.MaximumValue)
             {
                 _errors.SetError(control, "");
                 return;
@@ -189,7 +189,7 @@ namespace MitchelCampozano.AdventureGame.WinHost
             var control = sender as Control;
 
             var value = GetInt32(control);
-            if (value > Character.MinimumValue || value < Character.MaximumValue)
+            if (value > Character.MinimumValue && value < Character.MaximumValue)
             {
                 _errors.SetError(control, "");
                 return;
@@ -204,7 +204,7 @@ namespace MitchelCampozano.AdventureGame.WinHost
             var control = sender as Control;
 
             var value = GetInt32(control);
-            if (value > Character.MinimumValue || value < Character.MaximumValue)
+            if (value > Character.MinimumValue && value < Character.MaximumValue)
             {
                 _errors.SetError(control, "");
                 return;
