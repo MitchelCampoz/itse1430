@@ -20,17 +20,10 @@ namespace MitchelCampozano.AdventureGame
             set { _description = (value != null) ? value.Trim() : null; }
         }
 
-        public int RoomNumX { get; set; }
-
-        public int RoomNumY { get; set; }
+        public int RoomId { get; set; }
 
         private string _roomName;
         private string _description;
-        // private int _roomNum;
-
-        public const int MaximumX = 3;
-
-        public const int MaximumY = 3;
 
         public Area Renovate ()
         {
@@ -52,11 +45,8 @@ namespace MitchelCampozano.AdventureGame
             if (String.IsNullOrEmpty(Description))
                 return "Room needs a description";
 
-            if (RoomNumX < MaximumX || RoomNumX > MaximumX)
-                return "Invalid Room ID";
-
-            if (RoomNumY < MaximumY || RoomNumY > MaximumY)
-                return "Invalid Room ID";
+            if (RoomId < 0)
+                return "Room needs a proper ID";
 
             return null;
         }

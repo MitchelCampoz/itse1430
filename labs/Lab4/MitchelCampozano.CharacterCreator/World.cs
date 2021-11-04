@@ -9,6 +9,7 @@ namespace MitchelCampozano.AdventureGame
     public class World
     {
         private List<Area> _rooms = new List<Area>();
+        private int _nextID = 1;
 
         public Area Add (Area room, out string error )
         {
@@ -26,7 +27,13 @@ namespace MitchelCampozano.AdventureGame
 
             var newRoom = room.Renovate();
 
-            newRoom.RoomNumX = 
+            newRoom = room.Renovate();
+
+            _rooms.Add(newRoom);
+
+            room.RoomId = newRoom.RoomId;
+
+            return room;
         }
 
         public Area FindRoomName ( string name )
@@ -40,15 +47,17 @@ namespace MitchelCampozano.AdventureGame
             return null;
         }
 
-        public Area FindRoomId ( int roomX, int roomY )
+        public Area FindRoomId ( int id )
         {
             foreach (var room in _rooms)
             {
-                if (room.RoomNumX == roomX && room.RoomNumY == roomY)
+                if (room.RoomId == id)
                     return room;
-            };
+            }
 
             return null;
         }
+
+
     }
 }
