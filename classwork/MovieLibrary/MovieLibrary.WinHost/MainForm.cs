@@ -139,12 +139,12 @@ namespace MovieLibrary.WinHost
             //if (_movie != null)
             //    movies[0] = _movie;
 
-            Movie[] movies = _movies.GetAll();
+            var movies = _movies.GetAll();
 
-            var movie = movies[1] = new Movie();
+            //var movie = movies[1] = new Movie();
 
-            movie.Title = "Dune";
-            movie.Description = "Something";
+            //movie.Title = "Dune";
+            //movie.Description = "Something";
 
             var bindingSource = new BindingSource();
             bindingSource.DataSource = movies;

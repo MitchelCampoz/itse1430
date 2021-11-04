@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
+using System.Linq;
 
 namespace MovieLibrary.Memory
 {
@@ -113,10 +115,20 @@ namespace MovieLibrary.Memory
         // TODO: Error Handling
         public Movie Add ( Movie movie, out string error )
         {
-            // Movie must be valid
-            error = movie.Validate();
-            if (!String.IsNullOrEmpty(error))
+            var validator = new ObjectValidator();
+            if (!validator.TryValidate(movie, out error))
                 return null;
+
+            //var errors = validator.TryValidate(movie);
+
+            //error = errors.FirstOrDefault().ErrorMessage;
+
+            //if (!String.IsNullOrEmpty(error))
+            //    return null;
+            // Movie must be valid
+            //error = movie.Validate();
+            //if (!String.IsNullOrEmpty(error))
+            //    return null;
 
             // Movie title must be unique
             var existing = FindByTitle(movie.Title);
@@ -164,8 +176,27 @@ namespace MovieLibrary.Memory
         public string Update ( int id, Movie movie )
         {
             // Movie must be valid
-            var error = movie.Validate();
-            if (!String.IsNullOrEmpty(error))
+            //var validator = new ObjectValidator();
+            //var errors = validator.TryValidate(movie);
+
+            //error = errors.FirstorDefault().ErrorMessage;
+
+            //if (!String.IsNullOrEmpty(error))
+            //    return null;
+            //var errors = new List<ValidationResult>();
+            //var context = new ValidationContext(movie);
+            //if (Validator.TryValidateObject(movie, context, errors))
+            //{
+            //    error = errors.FirstOrDefault().ErrorMessage;
+            //    return null;
+            //};
+
+            //var error = movie.Validate();
+            //if (!String.IsNullOrEmpty(error))
+            //    return error;
+
+            var validator = new ObjectValidator();
+            if (!validator.TryValidate(movie, out var error))
                 return error;
 
             // Movie must exist
@@ -214,11 +245,18 @@ namespace MovieLibrary.Memory
         }
 
         // TODO: Get All
-        public Movie[] GetAll ()
+        public IEnumerable<Movie> GetAll ()
         {
             // NEVER DO THIS
             // return _items;
 
+            int counter = 0;
+            // Use Iterator Syntax
+            foreach (var item in _items)
+            {
+                ++counter;
+                yield return item.Clone();
+            };
             // Array.Copy(); - Will copy aqrray but not ref movies
 
             // Need to filter out null movies
@@ -232,24 +270,24 @@ namespace MovieLibrary.Memory
             //var count = _items.Count;
 
             // Must clone both array and movies to return new copies
-            var items = new Movie[_items.Count];
+            //var items = new Movie[_items.Count];
 
-            // Don;t need the for loop
-            //for (int index = 0; index < _items.Length; ++index)
-            //{
-            //    items[index] = Copy(items[index]);
-            //};
+            //// Don;t need the for loop
+            ////for (int index = 0; index < _items.Length; ++index)
+            ////{
+            ////    items[index] = Copy(items[index]);
+            ////};
 
-            // Each itereation the next element is coped to the item variable
-            // Two limitations
-            // No Index (use a simple index variable)
-            // Item is read-only
-            // Array cannot change for the life of the loop (keep a separate list)
-            var index = 0;
-            foreach (var item in _items)
-                items[index++] = item.Clone();
+            //// Each itereation the next element is coped to the item variable
+            //// Two limitations
+            //// No Index (use a simple index variable)
+            //// Item is read-only
+            //// Array cannot change for the life of the loop (keep a separate list)
+            //var index = 0;
+            //foreach (var item in _items)
+            //    items[index++] = item.Clone();
 
-            return items;
+            //return items;
         }
 
         // Arrays are always open in C#

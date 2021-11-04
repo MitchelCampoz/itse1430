@@ -1,4 +1,6 @@
-﻿namespace MovieLibrary
+﻿using System.Collections.Generic;
+
+namespace MovieLibrary
 {
     public interface IMovieDatabase
     {
@@ -10,7 +12,7 @@
         Movie Add ( Movie movie, out string error );
         void Delete ( int id );
         Movie Get ( int id );
-        Movie[] GetAll ();
+        IEnumerable<Movie> GetAll ();
         string Update ( int id, Movie movie );
     }
 }
