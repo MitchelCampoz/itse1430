@@ -8,6 +8,62 @@ namespace MitchelCampozano.AdventureGame
 {
     public class World
     {
+        public World ()
+        {
+            //var roomCollection = new[] {
+
+            //    (new Area() {
+            //        RoomName = "Fountain",
+            //        RoomId = 1,
+            //        Description = "You find yourself in an offering room, with gates at the east busted down.\n"
+                                
+            //    }
+            //    ),
+
+            //    (new Area() {
+            //        RoomName = "Chapel Entrance",
+            //        RoomId = 2,
+            //        Description = "You find yourself in an offering room, with gates at the east busted down.\n"
+
+            //    }
+            //    ),
+
+            //    (new Area() {
+            //        RoomName = "Chest Room",
+            //        RoomId = 3,
+            //        Description = "You find yourself in an offering room, with gates at the east busted down.\n"
+
+            //    }
+            //    ),
+
+            //    (new Area() {
+            //        RoomName = "Hallway",
+            //        RoomId = 4,
+            //        Description = "You find yourself in an offering room, with gates at the east busted down.\n"
+
+            //    }
+            //    ),
+                
+            //    (new Area() {
+            //        RoomName = "Chapel Middle",
+            //        RoomId = 5,
+            //        Description = "You find yourself in an offering room, with gates at the east busted down.\n"
+
+            //    }
+            //    ),
+
+            //    (new Area() {
+            //        RoomName = "Dining Hall",
+            //        RoomId = 6,
+            //        Description = "You find yourself in an offering room, with gates at the east busted down.\n"
+
+            //    }
+            //    ),
+            //};
+            
+            //_rooms.AddRange(roomCollection);
+        }
+
         private List<Area> _rooms = new List<Area>();
         private int _nextID = 1;
 
@@ -57,7 +113,5 @@ namespace MitchelCampozano.AdventureGame
 
             return null;
         }
-
-
     }
 }
