@@ -26,7 +26,7 @@ namespace MovieLibrary.WinHost
         {
             base.OnLoad(e);
 
-            UpdateUI();
+            UpdateUI(true);
         }
         private void OnFileExit ( object sender, EventArgs e )
         {
@@ -131,15 +131,29 @@ namespace MovieLibrary.WinHost
 
         private IMovieDatabase _movies = new MemoryMovieDatabase();
 
-        private void UpdateUI ()
+        private void UpdateUI (bool isFirstRun = false)
         {
+
+            // IEnumerable<TextBox> onlyTextboxes = Controls.OfType<TextBox>();
             // _movies.IsOnlyAvailableInMemoryMovieDatabase();
             // Update Movie List
-            //var movies = (_movie != null) ? new Movie[1] : new Movie[0];
-            //if (_movie != null)
+            // var movies = (_movie != null) ? new Movie[1] : new Movie[0];
+            // if (_movie != null)
             //    movies[0] = _movie;
 
             var movies = _movies.GetAll();
+
+            if (isFirstRun && !movies.Any())
+            {
+                if(Confirm("Do you want to seed the database", "Seed"))
+                {
+                    _movies.Seed();
+                    //SeedDatabase.Seed(_movies);
+                    movies = _movies.GetAll();
+
+                    var firstMovie = movies.FirstOrDefault();
+                }
+            }
 
             //var movie = movies[1] = new Movie();
 
@@ -147,7 +161,7 @@ namespace MovieLibrary.WinHost
             //movie.Description = "Something";
 
             var bindingSource = new BindingSource();
-            bindingSource.DataSource = movies;
+            bindingSource.DataSource = movies.ToArray();
 
             // Bind the movies to the listbox
             _listMovies.DataSource = bindingSource;

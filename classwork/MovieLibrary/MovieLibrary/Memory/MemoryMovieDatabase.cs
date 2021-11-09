@@ -11,43 +11,43 @@ namespace MovieLibrary.Memory
         {
 
         }
-        public MemoryMovieDatabase ()
-        {
+        //public MemoryMovieDatabase ()
+        //{
 
 
-            // Collection initializer syntax
-            var movies = new[] {
+            //    // Collection initializer syntax
+            //    var movies = new[] {
 
-                (new Movie() {
-                    Title = "Jaws",
-                    Rating = "PG",
-                    RunLength = 210,
-                    ReleaseYear = 1975,
-                    Description = "Shark Movie",
-                    Id = 1,
-                }),
+            //        (new Movie() {
+            //            Title = "Jaws",
+            //            Rating = "PG",
+            //            RunLength = 210,
+            //            ReleaseYear = 1975,
+            //            Description = "Shark Movie",
+            //            Id = 1,
+            //        }),
 
-                (new Movie() {
-                    Title = "Dune",
-                    Rating = "PG",
-                    RunLength = 300,
-                    ReleaseYear = 1982,
-                    Description = "Sand Movie",
-                    Id = 2,
-                }),
+            //        (new Movie() {
+            //            Title = "Dune",
+            //            Rating = "PG",
+            //            RunLength = 300,
+            //            ReleaseYear = 1982,
+            //            Description = "Sand Movie",
+            //            Id = 2,
+            //        }),
 
-                (new Movie() {
-                    Title = "Jaws 2",
-                    Rating = "PG",
-                    RunLength = 190,
-                    ReleaseYear = 1979,
-                    Description = "Shark Movie again",
-                    Id = 3,
-                })
+            //        (new Movie() {
+            //            Title = "Jaws 2",
+            //            Rating = "PG",
+            //            RunLength = 190,
+            //            ReleaseYear = 1979,
+            //            Description = "Shark Movie again",
+            //            Id = 3,
+            //        })
 
-            };
+            //    };
 
-            _items.AddRange(movies);
+            //    _items.AddRange(movies);
             // TODO: Seed
             //var movie = new Movie();
             //movie.Title = "Jaws";
@@ -110,13 +110,12 @@ namespace MovieLibrary.Memory
             //    Description = "Shark Movie again",
             //    Id = 3,
             //});
-        }
+        //}
 
         // TODO: Error Handling
         public Movie Add ( Movie movie, out string error )
         {
-            var validator = new ObjectValidator();
-            if (!validator.TryValidate(movie, out error))
+            if (!ObjectValidator.TryValidate(movie, out error))
                 return null;
 
             //var errors = validator.TryValidate(movie);
@@ -195,8 +194,7 @@ namespace MovieLibrary.Memory
             //if (!String.IsNullOrEmpty(error))
             //    return error;
 
-            var validator = new ObjectValidator();
-            if (!validator.TryValidate(movie, out var error))
+            if (!ObjectValidator.TryValidate(movie, out var error))
                 return error;
 
             // Movie must exist
@@ -250,11 +248,12 @@ namespace MovieLibrary.Memory
             // NEVER DO THIS
             // return _items;
 
-            int counter = 0;
+            //int counter = 0;
             // Use Iterator Syntax
             foreach (var item in _items)
             {
-                ++counter;
+                //++counter;
+                System.Diagnostics.Debug.WriteLine($"Return {item.Title}");
                 yield return item.Clone();
             };
             // Array.Copy(); - Will copy aqrray but not ref movies
