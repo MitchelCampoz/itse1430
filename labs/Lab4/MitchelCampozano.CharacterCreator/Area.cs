@@ -35,6 +35,26 @@ namespace MitchelCampozano.AdventureGame
             return room;
         }
 
+        public static void GameStart ()
+        {
+            var room = new Area();
+            room.RoomName = "Starting Point";
+            room.Description = GameStartTell();
+            room.RoomId = 0;
+        }
+
+        public static string GameStartTell ()
+        {
+            return "Mitchel Campozano, ITSE 1430 Adventure Game, Fall 2021\n" +
+                    "------------------------------------------------------\n\n" +
+                    "A clap of thunder wakes you from your unconscious, rain sweeping across the dead, charred land around you.\n" +
+                    "The raindrops tap against your armor as you look around at the unfamiliar forest.\n" +
+                    "Dead trees loom over you as you wander through the strange woods that eventually give way to a clearing in front of a temple.\n" +
+                    "Large bronze doors tower over you, embossed with a tale of struggle between man and deities.\n" +
+                    "Before you can move, they groan open, cracking enough to give you room to enter.\n" +
+                    "As you enter, your eyes begin to adjust to the all encompassing darkness when the bronze doors behind you slam shut.";
+        }
+
         public static void Fountain ()
         {
             var room = new Area();
@@ -120,12 +140,32 @@ namespace MitchelCampozano.AdventureGame
             room.RoomId = 5;
         }
 
+        public static string ChapelMidTell ()
+        {
+            return "Stumbling through the piles of bones, rotted clothes, and rusted weapons, you find a break in the pews.\n" +
+                    "You are standing the in the middle of the chapel, halfway toward the entrance and the altar.\n" +
+                    "The ceiling towers over you, the stained glass around allowing a dim light to seep in.\n" +
+                    "The mural above you has remained untouched, saved from the onslaught below it.\n" +
+                    "It tells a tale of a slumbering god, once strong and mighty, laid to rest in a slab of stone.\n" +
+                    "Following along, you notice another depiction of the same deity, though this time standing tall and powerful, wielding a hammer.";
+        }
+
         public static void DiningHall()
         {
             var room = new Area();
             room.RoomName = "Dining Hall";
             room.Description = DiningHallTell();
             room.RoomId = 6;
+        }
+
+        public static string DiningHallTell ()
+        {
+            return "You enter the dining hall, looking around at the obliterated grand table in the center of the room.\n" +
+                    "Stained glass windows rise above the room, though the tight iron bars seemed to cage everyone in during the massacre.\n" +
+                    "The bones seem to spill into the room from where the iron chest resides.\n" +
+                    "The squeaks of rats can be heard about, eating the rotting remnants of flesh and entrees.\n" +
+                    "Up and down the bars of the stained glass windows, you see bones clinging to them, desperate souls looking for safe haven.\n" +
+                    "The bones around you seem to grow denser around the room with the chest, but also to the Southern end of the hall.";
         }
 
         public static void PriestRoom ()
@@ -136,6 +176,23 @@ namespace MitchelCampozano.AdventureGame
             room.RoomId = 7;
         }
 
+        public static string PriestRoomTell ()
+        {
+            return "Entering the Priest's Quarters, the juxtaposition between here and the rest of the temple is striking.\n" +
+                    "There is no carnage, no distress, rather, there is but one lone skeleton here, sitting at a desk.\n" +
+                    "As you approach, you see there is something in each hand: in his left is a vial of poison, and in the right, there is a key.\n" +
+                    "On the desk in front of the priest is a piece of parchment with faded ink scribbled on it.\n" +
+                    "What you can make out reads: \n" + PriestLetter();
+        }
+
+        public static string PriestLetter ()
+        {
+            return "\"Should this be the end of us, our sacred order, I can not bear to see it fall.\"\n" +
+                    "\"If our order does not fall, however, and if the Smith himself sends a savior, \"\n" +
+                    "\"let it be known we died loyal servants to him, guarding his most sacred treasure.\"\n" +
+                    "\"We will die for the sake of the Smith, and in turn, the sake of the Liberator!\"";
+        }
+
         public static void ChapelAltar ()
         {
             var room = new Area();
@@ -144,12 +201,42 @@ namespace MitchelCampozano.AdventureGame
             room.RoomId = 8;
         }
 
+        public static string ChapelAltarTell ()
+        {
+            return "You reach the end of the chapel, where a massive altar resides. Piles of bones lay all over it, possibly seeking refuge or saying a final prayer.\n" +
+                    "The idol carved into the wall behind it stands tall, a depiction similar to the god in the mural on top of the cieling.\n" +
+                    "The altar has strange carvings in it, though much of it is illegible, worn away by the test of time and the collision of weapons to it.\n" +
+                    "The carved idol seems to wield an ornate hammer, the head embossed with runes of might and power.\n" +
+                    "Its purpose seems to be to intimidate those below it, ensuring they pray and give proper offering.\n" +
+                    "Your eyes trail down to the altar it looms over, seeing carved inscriptions scrawled on the edges of it.\n" +
+                    "The words you can make out, appear to say: \n" + AltarInscription();
+        }
+
+        public static string AltarInscription ()
+        {
+            return "\"And the Smith shall rest after his endeavor with the Liberator, as will all of the Old Ones.\"\n" +
+                    "\"Knowing his hammer to be the source of his everlasting power, he stowed it away with those\"\n" +
+                    "\"most devoted as a pact of peace with the humans that fought alongside the Liberator and the Old Ones.\"\n" +
+                    "\"And with this act, he laid himself to rest until called once more, sealing his power for now.\"";
+        }
+
         public static void Kitchen ()
         {
             var room = new Area();
             room.RoomName = "Kitchen";
             room.Description = KitchenTell();
             room.RoomId = 9;
+        }
+
+        public static string KitchenTell ()
+        {
+            return "This room is darker than the others, being completely sealed off from the light of both the chapel and the dining hall.\n" +
+                    "It looks to be the kitchen, with large amounts of rotten food on shelves lining the walls and cookware tossed about.\n" +
+                    "The rats scurry about your feet, too scared to nibble at you. They must be startled to see someone alive here after all these years.\n" +
+                    "Upon closer inspection, you notice that the oven was not intended for food at all, at least, when it was first built.\n" +
+                    "The racks inside of it were obviously forced into it as you look inside, when the inner wall grabs your attention.\n" +
+                    "Inside is a carved potrayal of men and women with hammers forging weapons for others, concluding what you suspected; \n" +
+                    "This isn't an oven, this is a forge!";
         }
 
         public string Validator ()
