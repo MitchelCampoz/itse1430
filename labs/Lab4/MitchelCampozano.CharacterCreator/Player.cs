@@ -6,7 +6,120 @@ using System.Threading.Tasks;
 
 namespace MitchelCampozano.AdventureGame
 {
-    class Player
+    public class Player
     {
+        public Player ()
+        {
+            var game = new World();
+        }
+
+        static int placeX;
+        static int placeY;
+        static int maximumX = 3;
+        static int maximumY = 3;
+
+        static void CheckMove ( string holder )
+        {
+            switch (holder)
+            {
+                case "MOVENORTH":
+                RoomTracker(0, -1);
+                break;
+                case "MOVESOUTH":
+                RoomTracker(0, 1);
+                break;
+                case "MOVEEAST":
+                RoomTracker(1, 0);
+                break;
+                case "MOVEWEST":
+                RoomTracker(-1, 0);
+                break;
+                default:
+                ErrorMessage("Invalid Move");
+                break;
+            };
+        }
+
+        static void RoomTracker ( int newX, int newY )
+        {
+            placeX += newX;
+            placeY += newY;
+
+            int roomNumber = placeX + (maximumX * (placeY - 1));
+
+            if (placeX  >= 0 && placeX  < maximumX && placeY >= 0 && placeY < maximumY)
+            {
+                switch (roomNumber)
+                {
+                    //case 0: FirstRowTracker(); break;
+                    //case 1: SecondRowTracker(); break;
+                    //case 2: ThirdRowTracker(); break;
+                    case 1: World.Get(roomNumber); break;
+                    case 2: World.Get(roomNumber); break;
+                    case 3: World.Get(roomNumber); break;
+                    case 4: World.Get(roomNumber); break;
+                    case 5: World.Get(roomNumber); break;
+                    case 6: World.Get(roomNumber); break;
+                    case 7: World.Get(roomNumber); break;
+                    case 8: World.Get(roomNumber); break;
+                    case 9: World.Get(roomNumber); break;
+                };
+            } else
+            {
+                ErrorMessage("You can't go that way.");
+
+                if (placeX < 0)
+                    placeX++;
+                else if (placeX > 2)
+                    placeX--;
+
+                if (placeY < 0)
+                    placeY++;
+                else if (placeY > 2)
+                    placeY--;
+            }
+        }
+
+        //static void FirstRowTracker ()
+        //{
+        //    switch (placeX)
+        //    {
+        //        case 0: Fountain(); break;
+        //        case 1: ChapelStart(); break;
+        //        case 2: ChestRoom(); break;
+        //    };
+        //}
+
+        //static void SecondRowTracker ()
+        //{
+        //    switch (placeX)
+        //    {
+        //        case 0: Hallway(); break;
+        //        case 1: ChapelMiddle(); break;
+        //        case 2: DiningHall(); break;
+        //    };
+        //}
+
+        //static void ThirdRowTracker ()
+        //{
+        //    switch (placeX)
+        //    {
+        //        case 0: PriestRoom(); break;
+        //        case 1: ChapelAltar(); break;
+        //        case 2: Forge(); break;
+        //    };
+        //}
+
+        static void RoomDisplay ()
+        {
+            Console.WriteLine($"You are currently at {placeX + 1}, {placeY + 1}.");
+        }
+
+        static void ErrorMessage ( string message )
+        {
+            Console.ForegroundColor = ConsoleColor.Red;
+            Console.WriteLine(message);
+            Console.ResetColor();
+        }
     }
 }

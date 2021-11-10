@@ -8,60 +8,87 @@ namespace MitchelCampozano.AdventureGame
 {
     public class World
     {
+        public World (Area StartingPoint )
+        {
+            Get(0);
+        }
+
         public World ()
         {
-            //var roomCollection = new[] {
+            var roomCollection = new[] {
+                (new Area(){
+                    RoomName = "Game Start",
+                    RoomId = 0,
+                    Description = Area.GameStartTell()
+                }),
 
-            //    (new Area() {
-            //        RoomName = "Fountain",
-            //        RoomId = 1,
-            //        Description = "You find yourself in an offering room, with gates at the east busted down.\n"
-                                
-            //    }
-            //    ),
+                (new Area() {
+                    RoomName = "Fountain",
+                    RoomId = 1,
+                    Description = Area.FountainTell()
+                }
+                ),
 
-            //    (new Area() {
-            //        RoomName = "Chapel Entrance",
-            //        RoomId = 2,
-            //        Description = "You find yourself in an offering room, with gates at the east busted down.\n"
+                (new Area() {
+                    RoomName = "Chapel Entrance",
+                    RoomId = 2,
+                    Description = Area.ChapelStartTell()
 
-            //    }
-            //    ),
+                }
+                ),
 
-            //    (new Area() {
-            //        RoomName = "Chest Room",
-            //        RoomId = 3,
-            //        Description = "You find yourself in an offering room, with gates at the east busted down.\n"
+                (new Area() {
+                    RoomName = "Chest Room",
+                    RoomId = 3,
+                    Description = Area.ChestRoomTell()
 
-            //    }
-            //    ),
+                }
+                ),
 
-            //    (new Area() {
-            //        RoomName = "Hallway",
-            //        RoomId = 4,
-            //        Description = "You find yourself in an offering room, with gates at the east busted down.\n"
+                (new Area() {
+                    RoomName = "Hallway",
+                    RoomId = 4,
+                    Description = Area.HallwayTell()
 
-            //    }
-            //    ),
-                
-            //    (new Area() {
-            //        RoomName = "Chapel Middle",
-            //        RoomId = 5,
-            //        Description = "You find yourself in an offering room, with gates at the east busted down.\n"
+                }
+                ),
 
-            //    }
-            //    ),
+                (new Area() {
+                    RoomName = "Chapel Middle",
+                    RoomId = 5,
+                    Description = Area.ChapelMidTell()
 
-            //    (new Area() {
-            //        RoomName = "Dining Hall",
-            //        RoomId = 6,
-            //        Description = "You find yourself in an offering room, with gates at the east busted down.\n"
+                }
+                ),
 
-            //    }
-            //    ),
-            //};
-            
-            //_rooms.AddRange(roomCollection);
+                (new Area() {
+                    RoomName = "Dining Hall",
+                    RoomId = 6,
+                    Description = Area.DiningHallTell()
+
+                }
+                ),
+
+                (new Area() {
+                    RoomName = "Priest Room",
+                    RoomId = 7,
+                    Description = Area.PriestRoomTell()
+                }),
+
+                (new Area() {
+                    RoomName = "Chapel Altar",
+                    RoomId = 8,
+                    Description = Area.ChapelAltarTell()
+                }),
+
+                (new Area(){
+                    RoomName = "Kitchen",
+                    RoomId = 9,
+                    Description = Area.KitchenTell()
+                })
+            };
+
+            _rooms.AddRange(roomCollection);
         }
 
         private List<Area> _rooms = new List<Area>();
@@ -73,7 +100,6 @@ namespace MitchelCampozano.AdventureGame
             if (!String.IsNullOrEmpty(error))
                 return null;
 
-            //var existing = FindRoomId(room.RoomNumX, room.RoomNumY);
             var existing = FindRoomName(room.RoomName);
             if (existing != null)
             {
@@ -112,6 +138,13 @@ namespace MitchelCampozano.AdventureGame
             }
 
             return null;
+        }
+
+        public Area Get ( int id )
+        {
+            var room = FindRoomId(id);
+
+            return room?.Renovate();
         }
     }
 }

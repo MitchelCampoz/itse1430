@@ -35,14 +35,6 @@ namespace MitchelCampozano.AdventureGame
             return room;
         }
 
-        public static void GameStart ()
-        {
-            var room = new Area();
-            room.RoomName = "Starting Point";
-            room.Description = GameStartTell();
-            room.RoomId = 0;
-        }
-
         public static string GameStartTell ()
         {
             return "Mitchel Campozano, ITSE 1430 Adventure Game, Fall 2021\n" +
@@ -53,14 +45,6 @@ namespace MitchelCampozano.AdventureGame
                     "Large bronze doors tower over you, embossed with a tale of struggle between man and deities.\n" +
                     "Before you can move, they groan open, cracking enough to give you room to enter.\n" +
                     "As you enter, your eyes begin to adjust to the all encompassing darkness when the bronze doors behind you slam shut.";
-        }
-
-        public static void Fountain ()
-        {
-            var room = new Area();
-            room.RoomName = "Fountain";
-            room.Description = FountainTell();
-            room.RoomId = 1;
         }
 
         public static string FountainTell ()
@@ -76,14 +60,6 @@ namespace MitchelCampozano.AdventureGame
                     "They lay on the floor, abandoned, victims to what has happened here.";
         }
 
-        public static void ChapelStart ()
-        {
-            var room = new Area();
-            room.RoomName = "Chapel Entrance";
-            room.Description = ChapelStartTell();
-            room.RoomId = 2;
-        }
-
         public static string ChapelStartTell ()
         {
             return "You walk over the cracked bones and stumble into the grand chapel, rows of pews stretching far toward the altar.\n" +
@@ -94,15 +70,7 @@ namespace MitchelCampozano.AdventureGame
                     "Those that aren't armored seem to stream into the main aisle toward the altar, going to the South of the chapel.\n" +
                     "There must be a way out in that direction, but there must be answers elsewhere.";
         }
-
-        public static void ChestRoom ()
-        {
-            var room = new Area();
-            room.RoomName = "Chest Room";
-            room.Description = ChestRoomTell();
-            room.RoomId = 3;
-        }
-
+        
         public static string ChestRoomTell ()
         {
             return "Making your way down the passage around the chapel, you see more signs of struggle between the temple's followers and the invaders.\n" +
@@ -112,14 +80,6 @@ namespace MitchelCampozano.AdventureGame
                     "The key to the lock, however, is nowhere in sight.\n" +
                     "Whatever is inside must be important to the temple, the defenders all fighting to the bitter end.\n" +
                     "It must have been important to the attackers as well, nothing valuable thus far looted from here.";
-        }
-
-        public static void Hallway ()
-        {
-            var room = new Area();
-            room.RoomName = "Hallway";
-            room.Description = HallwayTell();
-            room.RoomId = 4;
         }
 
         public static string HallwayTell ()
@@ -132,14 +92,6 @@ namespace MitchelCampozano.AdventureGame
                     "At the end of the hallway is a small cannon aimed straight down to a hole in the wall behind you. That's one mystery solved.";
         }
 
-        public static void ChapelMid ()
-        {
-            var room = new Area();
-            room.RoomName = "Chapel Middle";
-            room.Description = ChapelMidTell();
-            room.RoomId = 5;
-        }
-
         public static string ChapelMidTell ()
         {
             return "Stumbling through the piles of bones, rotted clothes, and rusted weapons, you find a break in the pews.\n" +
@@ -150,14 +102,6 @@ namespace MitchelCampozano.AdventureGame
                     "Following along, you notice another depiction of the same deity, though this time standing tall and powerful, wielding a hammer.";
         }
 
-        public static void DiningHall()
-        {
-            var room = new Area();
-            room.RoomName = "Dining Hall";
-            room.Description = DiningHallTell();
-            room.RoomId = 6;
-        }
-
         public static string DiningHallTell ()
         {
             return "You enter the dining hall, looking around at the obliterated grand table in the center of the room.\n" +
@@ -166,14 +110,6 @@ namespace MitchelCampozano.AdventureGame
                     "The squeaks of rats can be heard about, eating the rotting remnants of flesh and entrees.\n" +
                     "Up and down the bars of the stained glass windows, you see bones clinging to them, desperate souls looking for safe haven.\n" +
                     "The bones around you seem to grow denser around the room with the chest, but also to the Southern end of the hall.";
-        }
-
-        public static void PriestRoom ()
-        {
-            var room = new Area();
-            room.RoomName = "Priest Room";
-            room.Description = PriestRoomTell();
-            room.RoomId = 7;
         }
 
         public static string PriestRoomTell ()
@@ -193,14 +129,6 @@ namespace MitchelCampozano.AdventureGame
                     "\"We will die for the sake of the Smith, and in turn, the sake of the Liberator!\"";
         }
 
-        public static void ChapelAltar ()
-        {
-            var room = new Area();
-            room.RoomName = "Chapel Altar";
-            room.Description = ChapelAltarTell();
-            room.RoomId = 8;
-        }
-
         public static string ChapelAltarTell ()
         {
             return "You reach the end of the chapel, where a massive altar resides. Piles of bones lay all over it, possibly seeking refuge or saying a final prayer.\n" +
@@ -218,14 +146,6 @@ namespace MitchelCampozano.AdventureGame
                     "\"Knowing his hammer to be the source of his everlasting power, he stowed it away with those\"\n" +
                     "\"most devoted as a pact of peace with the humans that fought alongside the Liberator and the Old Ones.\"\n" +
                     "\"And with this act, he laid himself to rest until called once more, sealing his power for now.\"";
-        }
-
-        public static void Kitchen ()
-        {
-            var room = new Area();
-            room.RoomName = "Kitchen";
-            room.Description = KitchenTell();
-            room.RoomId = 9;
         }
 
         public static string KitchenTell ()
