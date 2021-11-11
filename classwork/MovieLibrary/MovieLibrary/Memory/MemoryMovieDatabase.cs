@@ -151,24 +151,32 @@ namespace MovieLibrary.Memory
 
         private Movie FindByTitle ( string title )
         {
-            foreach (var movie in _items)
-            {
-                if (String.Compare(title, movie.Title, true) == 0)
-                    return movie;
-            };
+            return _items.FirstOrDefault(x => String.Compare(title, x.Title, true) == 0);
+            //foreach (var movie in _items)
+            //{
+            //    if (String.Compare(title, movie.Title, true) == 0)
+            //        return movie;
+            //};
 
-            return null;
+            //return null;
         }
 
         private Movie FindById ( int id )
         {
-            foreach (var movie in _items)
-            {
-                if (movie.Id == id)
-                    return movie;
-            };
+            //return _items.FirstOrDefault(x => x.Id == id);
 
-            return null;
+            // LINQ syntax
+            return (from movie in _items where movie.Id == id select movie).FirstOrDefault();
+
+            // Where (Func <Movie, bool>) -> Ienumerable<T>
+            //return _items.Where(x => x.Id == id).FirstOrDefault();
+            //foreach (var movie in _items)
+            //{
+            //    if (movie.Id == id)
+            //        return movie;
+            //};
+
+            //return null;
         }
 
         // TODO: Update
@@ -242,20 +250,51 @@ namespace MovieLibrary.Memory
             return movie?.Clone();
         }
 
+
+        private class IdandTitle
+        {
+            public int Id { get; set; }
+
+            public string Title { get; set; }
+        }
+
+        private IdandTitle Convert (Movie movie )
+        {
+            return new IdandTitle() {
+                Id = movie.Id,
+                Title = movie.Title
+            };
+        }
+
+        //private Movie Clone ( Movie movie )
+        //{
+        //    return movie.Clone();
+        //}
+
         // TODO: Get All
         public IEnumerable<Movie> GetAll ()
         {
+            return _items.Select(x => x.Clone());
             // NEVER DO THIS
             // return _items;
 
             //int counter = 0;
             // Use Iterator Syntax
-            foreach (var item in _items)
-            {
-                //++counter;
-                System.Diagnostics.Debug.WriteLine($"Return {item.Title}");
-                yield return item.Clone();
-            };
+
+            // Select transforms S to T
+            // IEnumerable<IdandTitle> titles = _items.Select<Movie, IdandTitle>(Convert);
+            // IEnumerable<IdandTitle> titles = _items.Select(Convert);
+            // return _items.Select(Clone);
+
+            // Using LINQ extension method here
+            // return _items.Select(x => x.Clone());
+            return from x in _items select x.Clone();
+
+            // foreach (var item in _items)
+            // ++counter;
+            // System.Diagnostics.Debug.WriteLine($"Return {item.Title}");
+            // yield return item.Clone();
+
             // Array.Copy(); - Will copy aqrray but not ref movies
 
             // Need to filter out null movies

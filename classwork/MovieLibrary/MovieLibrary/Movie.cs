@@ -58,27 +58,28 @@ namespace MovieLibrary
         /// </summary>
         public string Title
         {
+            get => _title ?? "";
+
+            set => _title = value?.Trim();
+
             // Read: T get_Title()
-            get 
-            { 
-                return _title ?? "";
-                //if (_title == null)
+            //get { return _title ?? ""; }
+            
+            //if (_title == null)
                 //    return "";
 
                 //return _title;
                 // return (_title != null) ? _title : "";
-            }
 
             // Write void set_Title ( string value )
-            set 
-            {
-                //_title = value;
+            
+            //set { _title = value?.Trim(); }
+            
+            //_title = value;
                 //_title = (value != null) ? value.Trim() : null;
-                _title = value?.Trim();
-
-                //Movie m;
+                
+            //Movie m;
                 //int id = m?.Id ?? 0; // int?
-            }
         }
 
         /// <summary>
@@ -86,9 +87,13 @@ namespace MovieLibrary
         /// </summary>
         public string Description
         {
-            get { return (_description != null) ? _description : ""; }
+            get => (_description != null) ? _description : "";
 
-            set { _description = (value != null) ? value.Trim() : null; }
+            set => _description = (value != null) ? value.Trim() : null;
+
+            //get { return (_description != null) ? _description : ""; }
+
+            //set { _description = (value != null) ? value.Trim() : null; }
         }
 
         /// <summary>
@@ -169,10 +174,13 @@ namespace MovieLibrary
         //{
         //    return _releaseYear < 1922;
         //}
-        public bool IsBlackAndWhite
-        {
-            get { return ReleaseYear < 1922; }
-        }
+
+        // Expression body for calculated property
+        public bool IsBlackAndWhite => ReleaseYear < 1922;
+        //{
+        //    // get { return ReleaseYear < 1922; }
+        //    get => ReleaseYear < 1922;
+        //}
         // Methods - provide functionality (function inside a class)
         // Can reference fields in method
 
@@ -181,26 +189,24 @@ namespace MovieLibrary
         /// </summary>
         /// <returns>
         /// A copy of the movie
-        /// </returns>
-        public Movie Clone ()
-        {
-            var movie = new Movie();
-            movie.Id = Id;
-            movie.Title = Title;
-            movie.Description = Description;
-            movie.RunLength = RunLength;
-            movie.ReleaseYear = ReleaseYear;
-            movie.ReviewRating = ReviewRating;
-            movie.Rating = Rating;
-            movie.IsClassic = IsClassic;
+        /// </returns> 
+        public Movie Clone () => new Movie() {
+           Id = Id,
+           Title = Title,
+           Description = Description,
+           RunLength = RunLength,
+           ReleaseYear = ReleaseYear,
+           ReviewRating = ReviewRating,
+           Rating = Rating,
+           IsClassic = IsClassic
+        };
 
-            return movie;
-        }
+        public override string ToString () => $"{Title} ({ReleaseYear})";
 
-        public override string ToString ()
-        {
-            return $"{Title} ({ReleaseYear})";
-        }
+        //public override string ToString ()
+        //{
+        //    return $"{Title} ({ReleaseYear})";
+        //}
 
         public IEnumerable<ValidationResult> Validate ( ValidationContext validationContext )
         {

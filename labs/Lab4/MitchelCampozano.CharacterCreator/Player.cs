@@ -8,11 +8,6 @@ namespace MitchelCampozano.AdventureGame
 {
     public class Player
     {
-        public Player ()
-        {
-            var world = new World();
-        }
-
         static int placeX;
         static int placeY;
         static int maximumX = 3;
@@ -79,36 +74,6 @@ namespace MitchelCampozano.AdventureGame
                     placeY--;
             }
         }
-
-        //static void FirstRowTracker ()
-        //{
-        //    switch (placeX)
-        //    {
-        //        case 0: Fountain(); break;
-        //        case 1: ChapelStart(); break;
-        //        case 2: ChestRoom(); break;
-        //    };
-        //}
-
-        //static void SecondRowTracker ()
-        //{
-        //    switch (placeX)
-        //    {
-        //        case 0: Hallway(); break;
-        //        case 1: ChapelMiddle(); break;
-        //        case 2: DiningHall(); break;
-        //    };
-        //}
-
-        //static void ThirdRowTracker ()
-        //{
-        //    switch (placeX)
-        //    {
-        //        case 0: PriestRoom(); break;
-        //        case 1: ChapelAltar(); break;
-        //        case 2: Forge(); break;
-        //    };
-        //}
 
         static void RoomDisplay ()
         {

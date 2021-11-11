@@ -118,7 +118,7 @@ namespace MitchelCampozano.AdventureGame
             return room;
         }
 
-        public Area FindRoomName ( string name )
+        private Area FindRoomName ( string name )
         {
             foreach (var room in _rooms)
             {
@@ -129,7 +129,7 @@ namespace MitchelCampozano.AdventureGame
             return null;
         }
 
-        public Area FindRoomId ( int id )
+        private Area FindRoomId ( int id )
         {
             foreach (var room in _rooms)
             {
