@@ -37,6 +37,8 @@ namespace MitchelCampozano.AdventureGame
 
         static void RoomTracker ( int newX, int newY )
         {
+            // Fix it
+
             placeX += newX;
             placeY += newY;
 
