@@ -10,7 +10,7 @@ namespace MitchelCampozano.AdventureGame
     {
         public Player ()
         {
-            var game = new World();
+            var world = new World();
         }
 
         static int placeX;
