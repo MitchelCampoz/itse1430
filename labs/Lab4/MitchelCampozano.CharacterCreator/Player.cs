@@ -8,12 +8,18 @@ namespace MitchelCampozano.AdventureGame
 {
     public class Player
     {
-        static int placeX;
-        static int placeY;
-        static int maximumX = 3;
-        static int maximumY = 3;
+        public Player ()
+        {
+            var character = new Character()?.Recruit();
+        }
 
-        static void CheckMove ( string holder )
+        public int placeX { get; set; }
+        public int placeY { get; set; }
+        
+        public const int MaximumX = 3;
+        public const int MaximumY = 3;
+
+        private void CheckMove ( string holder )
         {
             switch (holder)
             {
@@ -35,31 +41,27 @@ namespace MitchelCampozano.AdventureGame
             };
         }
 
-        static void RoomTracker ( int newX, int newY )
+        public void RoomTracker ( int newX, int newY )
         {
-            // Fix it
-
+            World playerWorld = new World();
             placeX += newX;
             placeY += newY;
 
-            int roomNumber = placeX + (maximumX * (placeY - 1));
+            int roomNumber = placeX + (MaximumX * (placeY - 1));
 
-            if (placeX  >= 0 && placeX  < maximumX && placeY >= 0 && placeY < maximumY)
+            if (placeX  >= 0 && placeX  < MaximumX && placeY >= 0 && placeY < MaximumY)
             {
                 switch (roomNumber)
                 {
-                    //case 0: FirstRowTracker(); break;
-                    //case 1: SecondRowTracker(); break;
-                    //case 2: ThirdRowTracker(); break;
-                    case 1: World.Get(roomNumber); break;
-                    case 2: World.Get(roomNumber); break;
-                    case 3: World.Get(roomNumber); break;
-                    case 4: World.Get(roomNumber); break;
-                    case 5: World.Get(roomNumber); break;
-                    case 6: World.Get(roomNumber); break;
-                    case 7: World.Get(roomNumber); break;
-                    case 8: World.Get(roomNumber); break;
-                    case 9: World.Get(roomNumber); break;
+                    case 1: playerWorld.Get(roomNumber); break;
+                    case 2: playerWorld.Get(roomNumber); break;
+                    case 3: playerWorld.Get(roomNumber); break;
+                    case 4: playerWorld.Get(roomNumber); break;
+                    case 5: playerWorld.Get(roomNumber); break;
+                    case 6: playerWorld.Get(roomNumber); break;
+                    case 7: playerWorld.Get(roomNumber); break;
+                    case 8: playerWorld.Get(roomNumber); break;
+                    case 9: playerWorld.Get(roomNumber); break;
                 };
             } else
             {
@@ -77,12 +79,12 @@ namespace MitchelCampozano.AdventureGame
             }
         }
 
-        static void RoomDisplay ()
+        private void RoomDisplay ()
         {
             Console.WriteLine($"You are currently at {placeX + 1}, {placeY + 1}.");
         }
 
-        static void ErrorMessage ( string message )
+        private void ErrorMessage ( string message )
         {
             Console.ForegroundColor = ConsoleColor.Red;
             Console.WriteLine(message);
