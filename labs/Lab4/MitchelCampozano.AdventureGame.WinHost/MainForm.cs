@@ -79,8 +79,6 @@ namespace MitchelCampozano.AdventureGame.WinHost
             if (_character == null)
                 return;
 
-            
-
             var dlg = new CharacterForm( _character );
             dlg.Character = _character;
 
@@ -102,5 +100,24 @@ namespace MitchelCampozano.AdventureGame.WinHost
             _lstCharacters.DataSource = null;
             _character = null;
         }
+
+        private void OnNewGame ( object sender, EventArgs e )
+        {
+            if (_character == null)
+            {
+                ErrorMessage("Error", "A character must be made before you can play the game.");
+                DialogResult = DialogResult.None;
+                return;
+            };
+
+            Player newPlayer = new Player();
+            World newWorld = new World();
+        }
+
+        private void ErrorMessage ( string title, string message )
+        {
+            MessageBox.Show(message, title, MessageBoxButtons.OK, MessageBoxIcon.Error);
+        }
+
     }
 }
