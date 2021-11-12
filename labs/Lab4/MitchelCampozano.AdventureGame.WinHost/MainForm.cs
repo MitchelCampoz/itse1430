@@ -112,6 +112,7 @@ namespace MitchelCampozano.AdventureGame.WinHost
 
             Player newPlayer = new Player();
             World newWorld = new World();
+            characterToolStripMenuItem.Enabled = false;
         }
 
         private void ErrorMessage ( string title, string message )
