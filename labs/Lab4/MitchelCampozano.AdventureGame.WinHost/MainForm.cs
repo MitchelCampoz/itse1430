@@ -103,6 +103,7 @@ namespace MitchelCampozano.AdventureGame.WinHost
 
         private void OnNewGame ( object sender, EventArgs e )
         {
+            // Test comment
             if (_character == null)
             {
                 ErrorMessage("Error", "A character must be made before you can play the game.");
