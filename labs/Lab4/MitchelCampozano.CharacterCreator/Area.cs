@@ -35,6 +35,11 @@ namespace MitchelCampozano.AdventureGame
             return room;
         }
 
+        public override string ToString ()
+        {
+            return $"{RoomName}\n {Description}";
+        }
+
         public static string GameStartTell ()
         {
             return "Mitchel Campozano, ITSE 1430 Adventure Game, Fall 2021\n" +

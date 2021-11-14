@@ -8,13 +8,10 @@ namespace MitchelCampozano.AdventureGame
 {
     public class World
     {
-        public World (Area StartingPoint )
-        {
-            Get(0);
-        }
-
         public World ()
-        {
+        { 
+            Get(0);
+            
             var roomCollection = new[] {
                 (new Area(){
                     RoomName = "Game Start",

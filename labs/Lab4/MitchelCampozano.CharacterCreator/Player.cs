@@ -11,6 +11,8 @@ namespace MitchelCampozano.AdventureGame
         public Player ()
         {
             var character = new Character()?.Recruit();
+
+            var world = new World();
         }
 
         public int placeX { get; set; }

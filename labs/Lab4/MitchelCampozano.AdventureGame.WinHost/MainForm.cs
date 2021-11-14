@@ -25,11 +25,12 @@ namespace MitchelCampozano.AdventureGame.WinHost
             base.OnLoad(e);
 
             UpdateUI();
+
+            UpdateQuest();
         }
 
         private void OnFileExit ( object sender, EventArgs e )
         {
-            //Confirm exit?
             if (!Confirm("Do you want to quit?", "Confirm"))
                 return;
 
@@ -74,6 +75,21 @@ namespace MitchelCampozano.AdventureGame.WinHost
             _lstCharacters.DataSource = bindingsource;
         }
 
+        private Area _playerSpace;
+
+        private void UpdateQuest ()
+        {
+            var playerRoom = (_playerSpace != null) ? new Area[1] : new Area[0];
+
+            if (_playerSpace != null)
+                playerRoom[0] = _playerSpace;
+
+            var bindingsource = new BindingSource();
+            bindingsource.DataSource = playerRoom;
+
+            _lstArea.DataSource = bindingsource;
+        }
+
         private void OnCharacterEdit ( object sender, EventArgs e )
         {
             if (_character == null)
@@ -112,8 +128,9 @@ namespace MitchelCampozano.AdventureGame.WinHost
             };
 
             Player newPlayer = new Player();
-            World newWorld = new World();
             characterToolStripMenuItem.Enabled = false;
+
+            UpdateQuest();
         }
 
         private void ErrorMessage ( string title, string message )
