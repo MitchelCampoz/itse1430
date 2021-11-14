@@ -22,6 +22,14 @@ namespace MitchelCampozano.AdventureGame
 
         public int RoomId { get; set; }
 
+        public bool North { get; set; }
+
+        public bool South { get; set; }
+
+        public bool East { get; set; }
+
+        public bool West { get; set; }
+
         private string _roomName;
         private string _description;
 
@@ -31,6 +39,10 @@ namespace MitchelCampozano.AdventureGame
 
             room.RoomName = RoomName;
             room.Description = Description;
+            room.North = North;
+            room.South = South;
+            room.East = East;
+            room.West = West;
 
             return room;
         }

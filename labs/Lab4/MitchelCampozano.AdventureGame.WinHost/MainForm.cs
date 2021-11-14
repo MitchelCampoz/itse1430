@@ -25,8 +25,6 @@ namespace MitchelCampozano.AdventureGame.WinHost
             base.OnLoad(e);
 
             UpdateUI();
-
-            UpdateQuest();
         }
 
         private void OnFileExit ( object sender, EventArgs e )
@@ -75,14 +73,15 @@ namespace MitchelCampozano.AdventureGame.WinHost
             _lstCharacters.DataSource = bindingsource;
         }
 
-        private Area _playerSpace;
+        private World _playerSpace = new World();
 
         private void UpdateQuest ()
         {
-            var playerRoom = (_playerSpace != null) ? new Area[1] : new Area[0];
+            var playerRoom = (_playerSpace != null) ? new World[1] : new World[0];
 
             if (_playerSpace != null)
                 playerRoom[0] = _playerSpace;
+            
 
             var bindingsource = new BindingSource();
             bindingsource.DataSource = playerRoom;
@@ -119,7 +118,6 @@ namespace MitchelCampozano.AdventureGame.WinHost
 
         private void OnNewGame ( object sender, EventArgs e )
         {
-            // Test comment
             if (_character == null)
             {
                 ErrorMessage("Error", "A character must be made before you can play the game.");
