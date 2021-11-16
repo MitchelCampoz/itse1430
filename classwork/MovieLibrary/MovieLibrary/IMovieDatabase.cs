@@ -9,10 +9,10 @@ namespace MovieLibrary
         // Methods, properties, events
         // The implmentation is not provided
 
-        Movie Add ( Movie movie, out string error );
+        Movie Add ( Movie movie );
         void Delete ( int id );
         Movie Get ( int id );
         IEnumerable<Movie> GetAll ();
-        string Update ( int id, Movie movie );
+        void Update ( int id, Movie movie );
     }
 }

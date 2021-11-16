@@ -75,22 +75,22 @@ namespace MovieLibrary.WinHost
         }
         
         // TODO: Add
-        public void Add ( Movie movie )
-        {
+        //public void Add ( Movie movie )
+        //{
 
-        }
+        //}
 
-        // TODO: Update
-        public void Update ( Movie movie )
-        {
+        //// TODO: Update
+        //public void Update ( Movie movie )
+        //{
 
-        }
+        //}
         
-        // TOOD: Delete
-        public void Delete ( Movie movie )
-        {
+        //// TOOD: Delete
+        //public void Delete ( Movie movie )
+        //{
 
-        }
+        //}
 
         // TODO: Get
         public Movie Get ()

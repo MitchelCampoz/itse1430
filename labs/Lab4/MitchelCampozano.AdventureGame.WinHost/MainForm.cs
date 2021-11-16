@@ -81,7 +81,6 @@ namespace MitchelCampozano.AdventureGame.WinHost
 
             if (_playerSpace != null)
                 playerRoom[0] = _playerSpace;
-            
 
             var bindingsource = new BindingSource();
             bindingsource.DataSource = playerRoom;

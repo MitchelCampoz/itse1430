@@ -53,9 +53,14 @@ namespace MovieLibrary.WinHost
                 return;
 
             // TODO: Error Handling
-            
-            _movies.Delete(movie.Id);
-            UpdateUI();
+            try
+            {
+                _movies.Delete(movie.Id);
+                UpdateUI();
+            }catch(Exception ex)
+            {
+                DisplayError(ex.Message, "Delete Failed");
+            };
         }
 
         private void OnHelpAbout ( object sender, EventArgs e )
@@ -81,15 +86,35 @@ namespace MovieLibrary.WinHost
                 if (dlg.ShowDialog(this) != DialogResult.OK)
                     return;
 
-                // TODO: Save Movie
-                if (_movies.Add(dlg.Movie, out var error) != null)
-                    break;
+                try
+                {
+                    // TODO: Save Movie
+                    _movies.Add(dlg.Movie);
+                    UpdateUI();
+                    return;
+                } catch (ArgumentException ex)
+                {
+                    DisplayError(ex.Message, "Programmer Error");
+                } catch (InvalidOperationException ex)
+                {
+                    DisplayError(ex.Message, "Not Now");
+                } catch (NotSupportedException ex)
+                {
+                    DisplayError("Not supported", "Failed");
+                    // Do Some Logging
+                    throw;
+                } catch (System.IO.IOException ex)
+                {
+                    throw new Exception("IO failed", ex);
+                }
+                catch (Exception ex)
+                {
+                    DisplayError(ex.Message, "Failed");
+                };
 
-                DisplayError(error, "Add Failed");
+                
             } while (true);
-            
-            UpdateUI();
-        }
+        }        
 
         private void DisplayError ( string message, string title )
         {
@@ -107,19 +132,19 @@ namespace MovieLibrary.WinHost
 
             do
             {
-                // ShowDialog -> DialogResult
                 if (dlg.ShowDialog() != DialogResult.OK)
                     return;
 
-                // TODO: Error handling
-                var error = _movies.Update(movie.Id, dlg.Movie);
-                if (String.IsNullOrEmpty(error))
-                    break;
-
-                DisplayError(error, "Update failed");
+                try
+                {
+                    _movies.Update(movie.Id, dlg.Movie);
+                    UpdateUI();
+                    return;
+                }catch(Exception ex)
+                {
+                    DisplayError(ex.Message, "Update Failed");
+                };
             } while (true);
-
-            UpdateUI();
         }
 
         
