@@ -53,15 +53,15 @@ namespace MitchelCampozano.AdventureGame
             {
                 switch (roomNumber)
                 {
-                    case 1: playerWorld.Get(roomNumber); break;
-                    case 2: playerWorld.Get(roomNumber); break;
-                    case 3: playerWorld.Get(roomNumber); break;
-                    case 4: playerWorld.Get(roomNumber); break;
-                    case 5: playerWorld.Get(roomNumber); break;
-                    case 6: playerWorld.Get(roomNumber); break;
-                    case 7: playerWorld.Get(roomNumber); break;
-                    case 8: playerWorld.Get(roomNumber); break;
-                    case 9: playerWorld.Get(roomNumber); break;
+                    case 1: playerWorld.RoomSeeker(roomNumber); break;
+                    case 2: playerWorld.RoomSeeker(roomNumber); break;
+                    case 3: playerWorld.RoomSeeker(roomNumber); break;
+                    case 4: playerWorld.RoomSeeker(roomNumber); break;
+                    case 5: playerWorld.RoomSeeker(roomNumber); break;
+                    case 6: playerWorld.RoomSeeker(roomNumber); break;
+                    case 7: playerWorld.RoomSeeker(roomNumber); break;
+                    case 8: playerWorld.RoomSeeker(roomNumber); break;
+                    case 9: playerWorld.RoomSeeker(roomNumber); break;
                 };
             } else
             {

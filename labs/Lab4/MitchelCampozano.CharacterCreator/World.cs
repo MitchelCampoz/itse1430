@@ -8,6 +8,7 @@ namespace MitchelCampozano.AdventureGame
 {
     public class World
     {
+
         public World ()
         {
             var roomCollection = new[] {
@@ -118,7 +119,8 @@ namespace MitchelCampozano.AdventureGame
         private List<Area> _rooms = new List<Area>();
         // private int _nextID = 1;
 
-        public Area Add (Area room, out string error )
+
+        public Area Add ( Area room, out string error )
         {
             error = room.Validator();
             if (!String.IsNullOrEmpty(error))
@@ -132,8 +134,6 @@ namespace MitchelCampozano.AdventureGame
             }
 
             var newRoom = room.Renovate();
-
-            newRoom = room.Renovate();
 
             _rooms.Add(newRoom);
 
@@ -175,6 +175,23 @@ namespace MitchelCampozano.AdventureGame
         {
             foreach (var room in _rooms)
                 yield return room.Renovate();
+        }
+
+        //public void Converter ( int index )
+        //{
+        //    _rooms.ToArray();
+
+        //    return $"{_rooms[index].RoomName}\n {_rooms[index].Description}";
+        //}
+
+        public void RoomSeeker ()
+        {
+            _
+        }
+
+        public override string ToString ()
+        {
+            return _rooms.ToString();
         }
     }
 }
