@@ -177,21 +177,6 @@ namespace MitchelCampozano.AdventureGame
                 yield return room.Renovate();
         }
 
-        //public void Converter ( int index )
-        //{
-        //    _rooms.ToArray();
-
-        //    return $"{_rooms[index].RoomName}\n {_rooms[index].Description}";
-        //}
-
-        public void RoomSeeker ()
-        {
-            _
-        }
-
-        public override string ToString ()
-        {
-            return _rooms.ToString();
-        }
+        // Maybe bring description functions over to put into override ToString()
     }
 }
