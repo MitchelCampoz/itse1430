@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 
 using MovieLibrary.Memory;
+using MovieLibrary.Sql;
 
 namespace MovieLibrary.WinHost
 {
@@ -154,8 +155,7 @@ namespace MovieLibrary.WinHost
             return _listMovies.SelectedItem as Movie;
         }
 
-        private IMovieDatabase _movies = new MemoryMovieDatabase();
-
+        private IMovieDatabase _movies = new SqlMovieDatabase(@"Data Source=(localdb)\ProjectsV13;Initial Catalog=MovieDb;Integrated Security=True;");
         private void UpdateUI (bool isFirstRun = false)
         {
 
