@@ -25,6 +25,11 @@ namespace MitchelCampozano.AdventureGame.WinHost
             base.OnLoad(e);
 
             UpdateUI();
+
+            _btnNorth.Enabled = false;
+            _btnSouth.Enabled = false;
+            _btnEast.Enabled = false;
+            _btnWest.Enabled = false;
         }
 
         private void OnFileExit ( object sender, EventArgs e )
@@ -77,10 +82,11 @@ namespace MitchelCampozano.AdventureGame.WinHost
 
         private void UpdateQuest ()
         {
-            var playerRoom = (_playerSpace != null) ? new World[1] : new World[0];
+            var playerRoom = _playerSpace.GetAll();
 
-            if (_playerSpace != null)
-                playerRoom[0] = _playerSpace;
+            playerRoom.ToArray();
+
+            var mainPlayer = new Player();
 
             var bindingsource = new BindingSource();
             bindingsource.DataSource = playerRoom;
@@ -126,6 +132,11 @@ namespace MitchelCampozano.AdventureGame.WinHost
 
             Player newPlayer = new Player();
             characterToolStripMenuItem.Enabled = false;
+            _btnNorth.Enabled = true;
+            _btnSouth.Enabled = true;
+            _btnEast.Enabled = true;
+            _btnWest.Enabled = true;
+
 
             UpdateQuest();
         }
@@ -135,5 +146,32 @@ namespace MitchelCampozano.AdventureGame.WinHost
             MessageBox.Show(message, title, MessageBoxButtons.OK, MessageBoxIcon.Error);
         }
 
+        private void OnMoveNorth ( object sender, EventArgs e )
+        {
+            var player = new Player();
+
+            player.placeY += -1;
+        }
+
+        private void OnMoveSouth ( object sender, EventArgs e )
+        {
+            var player = new Player();
+
+            player.placeY += 1;
+        }
+
+        private void OnMoveEast ( object sender, EventArgs e )
+        {
+            var player = new Player();
+
+            player.placeX += 1;
+        }
+
+        private void OnMoveWest ( object sender, EventArgs e )
+        {
+            var player = new Player();
+
+            player.placeX += -1;
+        }
     }
 }

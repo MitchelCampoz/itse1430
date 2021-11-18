@@ -11,6 +11,7 @@ namespace MitchelCampozano.AdventureGame
         public Player ()
         {
             var mainCharacter = new Character()?.Recruit();
+            var mainInventory = new Inventory();
         }
 
         public int placeX { get; set; }
@@ -19,29 +20,7 @@ namespace MitchelCampozano.AdventureGame
         public const int MaximumX = 3;
         public const int MaximumY = 3;
 
-        private void CheckMove ( string holder )
-        {
-            switch (holder)
-            {
-                case "MOVENORTH":
-                RoomTracker(0, -1);
-                break;
-                case "MOVESOUTH":
-                RoomTracker(0, 1);
-                break;
-                case "MOVEEAST":
-                RoomTracker(1, 0);
-                break;
-                case "MOVEWEST":
-                RoomTracker(-1, 0);
-                break;
-                default:
-                ErrorMessage("Invalid Move");
-                break;
-            };
-        }
-
-        public void RoomTracker ( int newX, int newY )
+        public int RoomTracker ( int newX, int newY )
         {
             World playerWorld = new World();
             placeX += newX;
@@ -53,15 +32,24 @@ namespace MitchelCampozano.AdventureGame
             {
                 switch (roomNumber)
                 {
-                    case 1: playerWorld.RoomSeeker(roomNumber); break;
-                    case 2: playerWorld.RoomSeeker(roomNumber); break;
-                    case 3: playerWorld.RoomSeeker(roomNumber); break;
-                    case 4: playerWorld.RoomSeeker(roomNumber); break;
-                    case 5: playerWorld.RoomSeeker(roomNumber); break;
-                    case 6: playerWorld.RoomSeeker(roomNumber); break;
-                    case 7: playerWorld.RoomSeeker(roomNumber); break;
-                    case 8: playerWorld.RoomSeeker(roomNumber); break;
-                    case 9: playerWorld.RoomSeeker(roomNumber); break;
+                    //case 1: playerWorld.Get(roomNumber); break;
+                    //case 2: playerWorld.Get(roomNumber); break;
+                    //case 3: playerWorld.Get(roomNumber); break;
+                    //case 4: playerWorld.Get(roomNumber); break;
+                    //case 5: playerWorld.Get(roomNumber); break;
+                    //case 6: playerWorld.Get(roomNumber); break;
+                    //case 7: playerWorld.Get(roomNumber); break;
+                    //case 8: playerWorld.Get(roomNumber); break;
+                    //case 9: playerWorld.Get(roomNumber); break;
+                    case 1: return 1;
+                    case 2: return 2;
+                    case 3: return 3;
+                    case 4: return 4;
+                    case 5: return 5;
+                    case 6: return 6;
+                    case 7: return 7;
+                    case 8: return 8;
+                    case 9: return 9;
                 };
             } else
             {
@@ -77,6 +65,8 @@ namespace MitchelCampozano.AdventureGame
                 else if (placeY > 2)
                     placeY--;
             }
+
+            return -1;
         }
 
         private void RoomDisplay ()

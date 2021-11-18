@@ -43,10 +43,10 @@ namespace MitchelCampozano.AdventureGame.WinHost
             this._lstCharacters = new System.Windows.Forms.ListBox();
             this._lstArea = new System.Windows.Forms.ListBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.button4 = new System.Windows.Forms.Button();
-            this.button3 = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
-            this.button1 = new System.Windows.Forms.Button();
+            this._btnSouth = new System.Windows.Forms.Button();
+            this._btnEast = new System.Windows.Forms.Button();
+            this._btnWest = new System.Windows.Forms.Button();
+            this._btnNorth = new System.Windows.Forms.Button();
             this.menuStrip1.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
             this.groupBox1.SuspendLayout();
@@ -182,52 +182,53 @@ namespace MitchelCampozano.AdventureGame.WinHost
             // 
             // groupBox1
             // 
-            this.groupBox1.Controls.Add(this.button4);
-            this.groupBox1.Controls.Add(this.button3);
-            this.groupBox1.Controls.Add(this.button2);
-            this.groupBox1.Controls.Add(this.button1);
+            this.groupBox1.Controls.Add(this._btnSouth);
+            this.groupBox1.Controls.Add(this._btnEast);
+            this.groupBox1.Controls.Add(this._btnWest);
+            this.groupBox1.Controls.Add(this._btnNorth);
             this.groupBox1.Location = new System.Drawing.Point(395, 3);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(386, 358);
             this.groupBox1.TabIndex = 2;
             this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "groupBox1";
+            this.groupBox1.Text = "Player Controls";
             // 
-            // button4
+            // _btnSouth
             // 
-            this.button4.Location = new System.Drawing.Point(172, 192);
-            this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(75, 23);
-            this.button4.TabIndex = 3;
-            this.button4.Text = "South";
-            this.button4.UseVisualStyleBackColor = true;
+            this._btnSouth.Location = new System.Drawing.Point(172, 192);
+            this._btnSouth.Name = "_btnSouth";
+            this._btnSouth.Size = new System.Drawing.Size(75, 23);
+            this._btnSouth.TabIndex = 3;
+            this._btnSouth.Text = "South";
+            this._btnSouth.UseVisualStyleBackColor = true;
             // 
-            // button3
+            // _btnEast
             // 
-            this.button3.Location = new System.Drawing.Point(246, 127);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(75, 23);
-            this.button3.TabIndex = 2;
-            this.button3.Text = "East";
-            this.button3.UseVisualStyleBackColor = true;
+            this._btnEast.Location = new System.Drawing.Point(246, 127);
+            this._btnEast.Name = "_btnEast";
+            this._btnEast.Size = new System.Drawing.Size(75, 23);
+            this._btnEast.TabIndex = 2;
+            this._btnEast.Text = "East";
+            this._btnEast.UseVisualStyleBackColor = true;
             // 
-            // button2
+            // _btnWest
             // 
-            this.button2.Location = new System.Drawing.Point(90, 127);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(75, 23);
-            this.button2.TabIndex = 1;
-            this.button2.Text = "West";
-            this.button2.UseVisualStyleBackColor = true;
+            this._btnWest.Location = new System.Drawing.Point(90, 127);
+            this._btnWest.Name = "_btnWest";
+            this._btnWest.Size = new System.Drawing.Size(75, 23);
+            this._btnWest.TabIndex = 1;
+            this._btnWest.Text = "West";
+            this._btnWest.UseVisualStyleBackColor = true;
             // 
-            // button1
+            // _btnNorth
             // 
-            this.button1.Location = new System.Drawing.Point(172, 59);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 23);
-            this.button1.TabIndex = 0;
-            this.button1.Text = "North";
-            this.button1.UseVisualStyleBackColor = true;
+            this._btnNorth.Location = new System.Drawing.Point(172, 59);
+            this._btnNorth.Name = "_btnNorth";
+            this._btnNorth.Size = new System.Drawing.Size(75, 23);
+            this._btnNorth.TabIndex = 0;
+            this._btnNorth.Text = "North";
+            this._btnNorth.UseVisualStyleBackColor = true;
+            this._btnNorth.Click += new System.EventHandler(this.OnMoveNorth);
             // 
             // MainForm
             // 
@@ -266,10 +267,10 @@ namespace MitchelCampozano.AdventureGame.WinHost
         private System.Windows.Forms.ToolStripMenuItem newGameToolStripMenuItem;
         private System.Windows.Forms.ListBox _lstArea;
         private System.Windows.Forms.GroupBox groupBox1;
-        private System.Windows.Forms.Button button4;
-        private System.Windows.Forms.Button button3;
-        private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button _btnSouth;
+        private System.Windows.Forms.Button _btnEast;
+        private System.Windows.Forms.Button _btnWest;
+        private System.Windows.Forms.Button _btnNorth;
     }
 }
 
