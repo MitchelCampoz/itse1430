@@ -1,4 +1,7 @@
-﻿using System;
+﻿// Mitchel Campozano
+// ITSE 1430
+// AdventureGame Lab 3
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;

@@ -1,4 +1,7 @@
-﻿using System;
+﻿// Mitchel Campozano
+// ITSE 1430
+// AdventureGame Lab 3
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -16,10 +19,10 @@ namespace MitchelCampozano.AdventureGame
                     RoomName = "Game Start",
                     RoomId = 0,
                     Description = GameStartTell(),
-                    North = false,
-                    South = false,
-                    East = false,
-                    West = false
+                    NorthAccess = false,
+                    SouthAccess = false,
+                    EastAccess = false,
+                    WestAccess = false
                 }),
 
                 // New coordinate (1,1)
@@ -27,10 +30,10 @@ namespace MitchelCampozano.AdventureGame
                     RoomName = "Fountain",
                     RoomId = 1,
                     Description = FountainTell(),
-                    North = false,
-                    South = true,
-                    East = true,
-                    West = false
+                    NorthAccess = false,
+                    SouthAccess = true,
+                    EastAccess = true,
+                    WestAccess = false
                 }),
 
                 // New coordinate (2,1)
@@ -38,10 +41,10 @@ namespace MitchelCampozano.AdventureGame
                     RoomName = "Chapel Entrance",
                     RoomId = 2,
                     Description = ChapelStartTell(),
-                    North = false,
-                    South = true,
-                    East = true,
-                    West = true
+                    NorthAccess = false,
+                    SouthAccess = true,
+                    EastAccess = true,
+                    WestAccess = true
                 }),
 
                 // New coordinate (3,1)
@@ -49,10 +52,10 @@ namespace MitchelCampozano.AdventureGame
                     RoomName = "Chest Room",
                     RoomId = 3,
                     Description = ChestRoomTell(),
-                    North = false,
-                    South = true,
-                    East = false,
-                    West = true
+                    NorthAccess = false,
+                    SouthAccess = true,
+                    EastAccess = false,
+                    WestAccess = true
                 }),
 
                 // New coordinate (1,2)
@@ -60,60 +63,60 @@ namespace MitchelCampozano.AdventureGame
                     RoomName = "Hallway",
                     RoomId = 4,
                     Description = HallwayTell(),
-                    North = true,
-                    South = true,
-                    East = true,
-                    West = false
+                    NorthAccess = true,
+                    SouthAccess = true,
+                    EastAccess = true,
+                    WestAccess = false
                 }),
 
                 (new Area() {
                     RoomName = "Chapel Middle",
                     RoomId = 5,
                     Description = ChapelMidTell(),
-                    North = true,
-                    South = true,
-                    East = true,
-                    West = true
+                    NorthAccess = true,
+                    SouthAccess = true,
+                    EastAccess = true,
+                    WestAccess = true
                 }),
 
                 (new Area() {
                     RoomName = "Dining Hall",
                     RoomId = 6,
                     Description = DiningHallTell(),
-                    North = true,
-                    South = true,
-                    East = false,
-                    West = true
+                    NorthAccess = true,
+                    SouthAccess = true,
+                    EastAccess = false,
+                    WestAccess = true
                 }),
 
                 (new Area() {
                     RoomName = "Priest Room",
                     RoomId = 7,
                     Description = PriestRoomTell(),
-                    North = true,
-                    South = false,
-                    East = true,
-                    West = false
+                    NorthAccess = true,
+                    SouthAccess = false,
+                    EastAccess = true,
+                    WestAccess = false
                 }),
 
                 (new Area() {
                     RoomName = "Chapel Altar",
                     RoomId = 8,
                     Description = ChapelAltarTell(),
-                    North = true,
-                    South = false,
-                    East = true,
-                    West = true
+                    NorthAccess = true,
+                    SouthAccess = false,
+                    EastAccess = true,
+                    WestAccess = true
                 }),
 
                 (new Area(){
                     RoomName = "Kitchen",
                     RoomId = 9,
                     Description = KitchenTell(),
-                    North = true,
-                    South = false,
-                    East = false,
-                    West = true
+                    NorthAccess = true,
+                    SouthAccess = false,
+                    EastAccess = false,
+                    WestAccess = true
                 })
             };
 
@@ -302,7 +305,5 @@ namespace MitchelCampozano.AdventureGame
             foreach (var room in _rooms)
                 yield return room.Renovate();
         }
-
-        // Maybe bring description functions over to put into override ToString()
     }
 }

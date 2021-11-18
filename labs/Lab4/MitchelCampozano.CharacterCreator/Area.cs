@@ -1,4 +1,7 @@
-﻿using System;
+﻿// Mitchel Campozano
+// ITSE 1430
+// AdventureGame Lab 3
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -22,13 +25,13 @@ namespace MitchelCampozano.AdventureGame
 
         public int RoomId { get; set; }
 
-        public bool North { get; set; }
+        public bool NorthAccess { get; set; }
 
-        public bool South { get; set; }
+        public bool SouthAccess { get; set; }
 
-        public bool East { get; set; }
+        public bool EastAccess { get; set; }
 
-        public bool West { get; set; }
+        public bool WestAccess { get; set; }
 
         private string _roomName;
         private string _description;
@@ -39,10 +42,10 @@ namespace MitchelCampozano.AdventureGame
 
             room.RoomName = RoomName;
             room.Description = Description;
-            room.North = North;
-            room.South = South;
-            room.East = East;
-            room.West = West;
+            room.NorthAccess = NorthAccess;
+            room.SouthAccess = SouthAccess;
+            room.EastAccess = EastAccess;
+            room.WestAccess = WestAccess;
 
             return room;
         }
