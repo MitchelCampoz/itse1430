@@ -11,7 +11,9 @@ namespace MitchelCampozano.AdventureGame
 {
     public class World
     {
-
+        /// <summary>
+        /// Fills the list of rooms
+        /// </summary>
         public World ()
         {
             var roomCollection = new[] {
@@ -25,7 +27,6 @@ namespace MitchelCampozano.AdventureGame
                     WestAccess = false
                 }),
 
-                // New coordinate (1,1)
                 (new Area() {
                     RoomName = "Fountain",
                     RoomId = 1,
@@ -36,7 +37,6 @@ namespace MitchelCampozano.AdventureGame
                     WestAccess = false
                 }),
 
-                // New coordinate (2,1)
                 (new Area() {
                     RoomName = "Chapel Entrance",
                     RoomId = 2,
@@ -47,7 +47,6 @@ namespace MitchelCampozano.AdventureGame
                     WestAccess = true
                 }),
 
-                // New coordinate (3,1)
                 (new Area() {
                     RoomName = "Chest Room",
                     RoomId = 3,
@@ -58,7 +57,6 @@ namespace MitchelCampozano.AdventureGame
                     WestAccess = true
                 }),
 
-                // New coordinate (1,2)
                 (new Area() {
                     RoomName = "Hallway",
                     RoomId = 4,
@@ -125,6 +123,12 @@ namespace MitchelCampozano.AdventureGame
 
         private List<Area> _rooms = new List<Area>();
 
+        /// <summary>
+        /// Helper function containing the description for the Start of the Game
+        /// </summary>
+        /// <returns>
+        /// Returns the description for the start of the game
+        /// </returns>
         public static string GameStartTell ()
         {
             return "Mitchel Campozano, ITSE 1430 Adventure Game, Fall 2021\n" +
@@ -137,6 +141,12 @@ namespace MitchelCampozano.AdventureGame
                     "As you enter, your eyes begin to adjust to the all encompassing darkness when the bronze doors behind you slam shut.";
         }
 
+        /// <summary>
+        /// Helper function containing the description for the Fountain Room
+        /// </summary>
+        /// <returns>
+        /// Returns the description for the Fountain Room
+        /// </returns>
         public static string FountainTell ()
         {
             return "You find yourself in an offering room, with gates at the east busted down.\n " +
@@ -150,6 +160,12 @@ namespace MitchelCampozano.AdventureGame
                     "They lay on the floor, abandoned, victims to what has happened here.";
         }
 
+        /// <summary>
+        /// Helper function containing the description for the Front of the Chapel
+        /// </summary>
+        /// <returns>
+        /// Returns the description for the Front of the Chapel
+        /// </returns>
         public static string ChapelStartTell ()
         {
             return "You walk over the cracked bones and stumble into the grand chapel, rows of pews stretching far toward the altar.\n" +
@@ -161,6 +177,12 @@ namespace MitchelCampozano.AdventureGame
                     "There must be a way out in that direction, but there must be answers elsewhere.";
         }
 
+        /// <summary>
+        /// Helper function containing the description for the Chest Room
+        /// </summary>
+        /// <returns>
+        /// Returns the description for the Chest Room
+        /// </returns>
         public static string ChestRoomTell ()
         {
             return "Making your way down the passage around the chapel, you see more signs of struggle between the temple's followers and the invaders.\n" +
@@ -172,6 +194,12 @@ namespace MitchelCampozano.AdventureGame
                     "It must have been important to the attackers as well, nothing valuable thus far looted from here.";
         }
 
+        /// <summary>
+        /// Helper function containing the description for the Hallway
+        /// </summary>
+        /// <returns>
+        /// Returns the description for the Hallway
+        /// </returns>
         public static string HallwayTell ()
         {
             return "You walk through the ruined entranceway, entering a once opulent hallway.\n" +
@@ -182,6 +210,12 @@ namespace MitchelCampozano.AdventureGame
                     "At the end of the hallway is a small cannon aimed straight down to a hole in the wall behind you. That's one mystery solved.";
         }
 
+        /// <summary>
+        /// Helper function containing the description for the Middle of the Chapel
+        /// </summary>
+        /// <returns>
+        /// Returns the description for the Middle of the Chapel
+        /// </returns>
         public static string ChapelMidTell ()
         {
             return "Stumbling through the piles of bones, rotted clothes, and rusted weapons, you find a break in the pews.\n" +
@@ -192,6 +226,12 @@ namespace MitchelCampozano.AdventureGame
                     "Following along, you notice another depiction of the same deity, though this time standing tall and powerful, wielding a hammer.";
         }
 
+        /// <summary>
+        /// Helper function containing the description for the Dining Hall
+        /// </summary>
+        /// <returns>
+        /// Returns the description for the Dining Hall
+        /// </returns>
         public static string DiningHallTell ()
         {
             return "You enter the dining hall, looking around at the obliterated grand table in the center of the room.\n" +
@@ -202,6 +242,12 @@ namespace MitchelCampozano.AdventureGame
                     "The bones around you seem to grow denser around the room with the chest, but also to the Southern end of the hall.";
         }
 
+        /// <summary>
+        /// Helper function containing the description for the Priest's Room
+        /// </summary>
+        /// <returns>
+        /// Returns the description for the Priest's Room
+        /// </returns>
         public static string PriestRoomTell ()
         {
             return "Entering the Priest's Quarters, the juxtaposition between here and the rest of the temple is striking.\n" +
@@ -211,6 +257,12 @@ namespace MitchelCampozano.AdventureGame
                     "What you can make out reads: \n" + PriestLetter();
         }
 
+        /// <summary>
+        /// Helper function for the helper function containing the Priest's letter player will find
+        /// </summary>
+        /// <returns>
+        /// Returns the Priest's letter player will find
+        /// </returns>
         public static string PriestLetter ()
         {
             return "\"Should this be the end of us, our sacred order, I can not bear to see it fall.\"\n" +
@@ -219,6 +271,12 @@ namespace MitchelCampozano.AdventureGame
                     "\"We will die for the sake of the Smith, and in turn, the sake of the Liberator!\"";
         }
 
+        /// <summary>
+        /// Helper function containing the description for the Altar Space at the end of the Chapel
+        /// </summary>
+        /// <returns>
+        /// Returns the description of the Altar Space at the end of the Chapel
+        /// </returns>
         public static string ChapelAltarTell ()
         {
             return "You reach the end of the chapel, where a massive altar resides. Piles of bones lay all over it, possibly seeking refuge or saying a final prayer.\n" +
@@ -230,6 +288,12 @@ namespace MitchelCampozano.AdventureGame
                     "The words you can make out, appear to say: \n" + AltarInscription();
         }
 
+        /// <summary>
+        /// Helper function for the helper function containing the carved inscription on the Altar
+        /// </summary>
+        /// <returns>
+        /// Returns the carved inscription on the Altar
+        /// </returns>
         public static string AltarInscription ()
         {
             return "\"And the Smith shall rest after his endeavor with the Liberator, as will all of the Old Ones.\"\n" +
@@ -238,6 +302,12 @@ namespace MitchelCampozano.AdventureGame
                     "\"And with this act, he laid himself to rest until called once more, sealing his power for now.\"";
         }
 
+        /// <summary>
+        /// Helper function containing the description for the Kitchen
+        /// </summary>
+        /// <returns>
+        /// Returns the description for the Kitchen
+        /// </returns>
         public static string KitchenTell ()
         {
             return "This room is darker than the others, being completely sealed off from the light of both the chapel and the dining hall.\n" +
@@ -249,6 +319,12 @@ namespace MitchelCampozano.AdventureGame
                     "This isn't an oven, this is a forge!";
         }
 
+        /// <summary>
+        /// Adds a new room to the list while also validating whether or not it already exists
+        /// </summary>
+        /// <returns>
+        /// Returns a new room
+        /// </returns>
         public Area Add ( Area room, out string error )
         {
             error = room.Validator();
@@ -271,6 +347,13 @@ namespace MitchelCampozano.AdventureGame
             return room;
         }
 
+        /// <summary>
+        /// Finds a Room based on a name parameter
+        /// </summary>
+        /// <param name="name"></param>
+        /// <returns>
+        /// Returns a Room
+        /// </returns>
         private Area FindRoomName ( string name )
         {
             foreach (var room in _rooms)
@@ -282,6 +365,13 @@ namespace MitchelCampozano.AdventureGame
             return null;
         }
 
+        /// <summary>
+        /// Finds a Room based on an ID parameter
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns>
+        /// Returns a Room
+        /// </returns>
         private Area FindRoomId ( int id )
         {
             foreach (var room in _rooms)
@@ -293,6 +383,13 @@ namespace MitchelCampozano.AdventureGame
             return null;
         }
 
+        /// <summary>
+        /// Gets a Room based on an ID parameter
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns>
+        /// Returns a room
+        /// </returns>
         public Area Get ( int id )
         {
             var room = FindRoomId(id);
@@ -300,10 +397,15 @@ namespace MitchelCampozano.AdventureGame
             return room?.Renovate();
         }
 
-        public IEnumerable<Area> GetAll ()
+        /// <summary>
+        /// Gets all of the Rooms from the list
+        /// </summary>
+        /// <returns>
+        /// Returns all of the rooms
+        /// </returns>
+        public List<Area> GetAll ()
         {
-            foreach (var room in _rooms)
-                yield return room.Renovate();
+            return _rooms;
         }
     }
 }

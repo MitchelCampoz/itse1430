@@ -9,13 +9,21 @@ using System.Threading.Tasks;
 
 namespace MitchelCampozano.AdventureGame
 {
-    class Inventory
+    public class Inventory
     {
         private List<Item> _items = new List<Item>();
 
-        public Item Add ( Item junk, out string error )
+        /// <summary>
+        /// Adds a new item to the list
+        /// </summary>
+        /// <param name="junk"></param>
+        /// <param name="error"></param>
+        /// <returns>
+        /// Returns a new item to the list
+        /// </returns>
+        public Item Add ( Item junk )
         {
-            error = junk.ItemValidator();
+            var error = junk.ItemValidator();
             if (!String.IsNullOrEmpty(error))
                 return null;
 
@@ -35,6 +43,13 @@ namespace MitchelCampozano.AdventureGame
             return junk;
         }
 
+        /// <summary>
+        /// Finds an item based on a name parameter
+        /// </summary>
+        /// <param name="name"></param>
+        /// <returns>
+        /// Returns an item
+        /// </returns>
         private Item FindJunkName( string name )
         {
             foreach (var item in _items)
@@ -46,6 +61,13 @@ namespace MitchelCampozano.AdventureGame
             return null;
         }
 
+        /// <summary>
+        /// Finds an item based on an ID parameter
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns>
+        /// Returns an item
+        /// </returns>
         private Item FindJunkId ( int id )
         {
             foreach (var item in _items)
@@ -57,6 +79,13 @@ namespace MitchelCampozano.AdventureGame
             return null;
         }
 
+        /// <summary>
+        /// Gets an item from the list based on an ID parameter
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns>
+        /// Returns an item 
+        /// </returns>
         public Item Get ( int id )
         {
             var item = FindJunkId(id);
@@ -64,6 +93,12 @@ namespace MitchelCampozano.AdventureGame
             return item?.Creation();
         }
 
+        /// <summary>
+        /// Gets all of the items from the list
+        /// </summary>
+        /// <returns>
+        /// Returns all of the items
+        /// </returns>
         public IEnumerable<Item> GetAll ()
         {
             foreach (var item in _items)

@@ -11,31 +11,58 @@ namespace MitchelCampozano.AdventureGame
 {
     public class Area
     {
+        /// <summary>
+        /// Gets and sets the name of the room
+        /// </summary>
         public string RoomName
         {
             get { return _roomName ?? ""; }
             set { _roomName = (value != null) ? value.Trim() : null; }
         }
 
+        /// <summary>
+        /// Gets and sets the description of the room
+        /// </summary>
         public string Description
         {
             get { return _description ?? ""; }
             set { _description = (value != null) ? value.Trim() : null; }
         }
 
+        /// <summary>
+        /// Gets and sets the ID of the room
+        /// </summary>
         public int RoomId { get; set; }
 
+        /// <summary>
+        /// Gets and sets the indicator for whether a player can go North
+        /// </summary>
         public bool NorthAccess { get; set; }
 
+        /// <summary>
+        /// Gets and sets the indicator for whether a player can go South
+        /// </summary>
         public bool SouthAccess { get; set; }
 
+        /// <summary>
+        /// Gets and sets the indicator for whether a player can go East
+        /// </summary>
         public bool EastAccess { get; set; }
 
+        /// <summary>
+        /// Gets and sets the indicator for whether a player can go West
+        /// </summary>
         public bool WestAccess { get; set; }
 
         private string _roomName;
         private string _description;
 
+        /// <summary>
+        /// Creates a new room
+        /// </summary>
+        /// <returns>
+        /// Returns a room
+        /// </returns>
         public Area Renovate ()
         {
             var room = new Area();
@@ -50,9 +77,15 @@ namespace MitchelCampozano.AdventureGame
             return room;
         }
 
+        /// <summary>
+        /// Determines if an area has an item
+        /// </summary>
+        /// <returns>
+        /// Returns whether an area has an item
+        /// </returns>
         public bool HasItem ()
         {
-
+            return true;
         }
 
         public override string ToString ()
@@ -60,6 +93,12 @@ namespace MitchelCampozano.AdventureGame
             return $"{RoomName}\n {Description}";
         }
 
+        /// <summary>
+        /// Validates values when creating a new room
+        /// </summary>
+        /// <returns>
+        /// Returns an error message if an invalid value was used
+        /// </returns>
         public string Validator ()
         {
             if (String.IsNullOrEmpty(RoomName))

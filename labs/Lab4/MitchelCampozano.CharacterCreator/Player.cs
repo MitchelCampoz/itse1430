@@ -11,18 +11,36 @@ namespace MitchelCampozano.AdventureGame
 {
     public class Player
     {
+        /// <summary>
+        /// Supposed to hold the character information and create a new inventory upon initialization
+        /// </summary>
         public Player ()
         {
             var mainCharacter = new Character()?.Recruit();
             var mainInventory = new Inventory();
         }
 
+        /// <summary>
+        /// Gets and sets the x-coordinate of the player
+        /// </summary>
         public int placeX { get; set; }
+
+        /// <summary>
+        /// Gets and sets the y-coordinate of the player
+        /// </summary>
         public int placeY { get; set; }
         
         public const int MaximumX = 3;
         public const int MaximumY = 3;
 
+        /// <summary>
+        /// Processes the x- and y-coordinate of the player and checks which room they are in
+        /// </summary>
+        /// <param name="newX"></param>
+        /// <param name="newY"></param>
+        /// <returns>
+        /// Returns a number used to fetch the numerical ID of the room
+        /// </returns>
         public int RoomTracker ( int newX, int newY )
         {
             World playerWorld = new World();
@@ -35,15 +53,6 @@ namespace MitchelCampozano.AdventureGame
             {
                 switch (roomNumber)
                 {
-                    //case 1: playerWorld.Get(roomNumber); break;
-                    //case 2: playerWorld.Get(roomNumber); break;
-                    //case 3: playerWorld.Get(roomNumber); break;
-                    //case 4: playerWorld.Get(roomNumber); break;
-                    //case 5: playerWorld.Get(roomNumber); break;
-                    //case 6: playerWorld.Get(roomNumber); break;
-                    //case 7: playerWorld.Get(roomNumber); break;
-                    //case 8: playerWorld.Get(roomNumber); break;
-                    //case 9: playerWorld.Get(roomNumber); break;
                     case 1: return 1;
                     case 2: return 2;
                     case 3: return 3;
@@ -72,11 +81,18 @@ namespace MitchelCampozano.AdventureGame
             return -1;
         }
 
+        /// <summary>
+        /// Displays the location of the player
+        /// </summary>
         private void RoomDisplay ()
         {
             Console.WriteLine($"You are currently at {placeX + 1}, {placeY + 1}.");
         }
 
+        /// <summary>
+        /// Helper function to print the error message
+        /// </summary>
+        /// <param name="message"></param>
         private void ErrorMessage ( string message )
         {
             Console.ForegroundColor = ConsoleColor.Red;

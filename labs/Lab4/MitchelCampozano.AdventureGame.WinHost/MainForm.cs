@@ -30,6 +30,8 @@ namespace MitchelCampozano.AdventureGame.WinHost
             _btnSouth.Enabled = false;
             _btnEast.Enabled = false;
             _btnWest.Enabled = false;
+            _btnPickItem.Enabled = false;
+            _btnInventory.Enabled = false;
         }
 
         private void OnFileExit ( object sender, EventArgs e )
@@ -86,8 +88,6 @@ namespace MitchelCampozano.AdventureGame.WinHost
 
             playerRoom.ToArray();
 
-            var mainPlayer = new Player();
-
             var bindingsource = new BindingSource();
             bindingsource.DataSource = playerRoom;
 
@@ -136,7 +136,8 @@ namespace MitchelCampozano.AdventureGame.WinHost
             _btnSouth.Enabled = true;
             _btnEast.Enabled = true;
             _btnWest.Enabled = true;
-
+            _btnPickItem.Enabled = true;
+            _btnInventory.Enabled = true;
 
             UpdateQuest();
         }
@@ -144,6 +145,26 @@ namespace MitchelCampozano.AdventureGame.WinHost
         private void ErrorMessage ( string title, string message )
         {
             MessageBox.Show(message, title, MessageBoxButtons.OK, MessageBoxIcon.Error);
+        }
+
+        private Inventory _inventory = new Inventory();
+
+        private void OnShowInventory( object sender, EventArgs e )
+        {
+            var playerInventory = _inventory.GetAll();
+
+            playerInventory.ToArray();
+
+            var bindingsource = new BindingSource();
+            bindingsource.DataSource = playerInventory;
+
+            _lstArea.DataSource = bindingsource;
+        }
+
+        private void OnPickUp ( object sender, EventArgs e )
+        {
+            var item = new Item();
+            _inventory.Add(item);
         }
 
         private void OnMoveNorth ( object sender, EventArgs e )
