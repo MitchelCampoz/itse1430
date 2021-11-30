@@ -9,8 +9,11 @@ using System.Threading.Tasks;
 
 namespace MitchelCampozano.AdventureGame
 {
-    class Item
+    public class Item
     {
+        /// <summary>
+        /// Gets and sets the name of the item
+        /// </summary>
         public string ItemName
         {
             get { return _itemName ?? "" ; }
@@ -18,14 +21,29 @@ namespace MitchelCampozano.AdventureGame
             set { _itemName = (value != null) ? value.Trim() : ""; }
         }
 
+        /// <summary>
+        /// Gets and sets the value of the item in coins
+        /// </summary>
         public int CoinValue { get; set; }
 
+        /// <summary>
+        /// Gets and sets the weight of the item
+        /// </summary>
         public int Weight { get; set; }
 
+        /// <summary>
+        /// Gets and sets the ID of the item
+        /// </summary>
         public int ItemId { get; set; }
 
         private string _itemName;
 
+        /// <summary>
+        /// Creates a new item
+        /// </summary>
+        /// <returns>
+        /// Returns a new item
+        /// </returns>
         public Item Creation ()
         {
             var item = new Item();
@@ -37,6 +55,17 @@ namespace MitchelCampozano.AdventureGame
             return item;
         }
 
+        public override string ToString ()
+        {
+            return $"{ItemName}\n{CoinValue}\n{Weight}";
+        }
+
+        /// <summary>
+        /// Validates the values of the fields of a new item
+        /// </summary>
+        /// <returns>
+        /// Returns an error message if a value is invalid
+        /// </returns>
         public string ItemValidator ()
         {
             if (String.IsNullOrEmpty(ItemName))

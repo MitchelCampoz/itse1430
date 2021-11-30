@@ -43,6 +43,8 @@ namespace MitchelCampozano.AdventureGame.WinHost
             this._lstCharacters = new System.Windows.Forms.ListBox();
             this._lstArea = new System.Windows.Forms.ListBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this._btnInventory = new System.Windows.Forms.Button();
+            this._btnPickItem = new System.Windows.Forms.Button();
             this._btnSouth = new System.Windows.Forms.Button();
             this._btnEast = new System.Windows.Forms.Button();
             this._btnWest = new System.Windows.Forms.Button();
@@ -182,6 +184,8 @@ namespace MitchelCampozano.AdventureGame.WinHost
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this._btnInventory);
+            this.groupBox1.Controls.Add(this._btnPickItem);
             this.groupBox1.Controls.Add(this._btnSouth);
             this.groupBox1.Controls.Add(this._btnEast);
             this.groupBox1.Controls.Add(this._btnWest);
@@ -193,8 +197,37 @@ namespace MitchelCampozano.AdventureGame.WinHost
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Player Controls";
             // 
+            // _btnInventory
+            // 
+            this._btnInventory.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this._btnInventory.Location = new System.Drawing.Point(246, 251);
+            this._btnInventory.Name = "_btnInventory";
+            this._btnInventory.Size = new System.Drawing.Size(75, 23);
+            this._btnInventory.TabIndex = 5;
+            this._btnInventory.Text = "Inventory";
+            this._btnInventory.UseVisualStyleBackColor = true;
+            this._btnInventory.Click += new System.EventHandler(this.OnShowInventory);
+            // 
+            // _btnPickItem
+            // 
+            this._btnPickItem.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this._btnPickItem.Location = new System.Drawing.Point(90, 252);
+            this._btnPickItem.Name = "_btnPickItem";
+            this._btnPickItem.Size = new System.Drawing.Size(75, 23);
+            this._btnPickItem.TabIndex = 4;
+            this._btnPickItem.Text = "Pick Up";
+            this._btnPickItem.UseVisualStyleBackColor = true;
+            this._btnPickItem.Click += new System.EventHandler(this.OnPickUp);
+            // 
             // _btnSouth
             // 
+            this._btnSouth.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this._btnSouth.Location = new System.Drawing.Point(172, 192);
             this._btnSouth.Name = "_btnSouth";
             this._btnSouth.Size = new System.Drawing.Size(75, 23);
@@ -204,6 +237,9 @@ namespace MitchelCampozano.AdventureGame.WinHost
             // 
             // _btnEast
             // 
+            this._btnEast.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this._btnEast.Location = new System.Drawing.Point(246, 127);
             this._btnEast.Name = "_btnEast";
             this._btnEast.Size = new System.Drawing.Size(75, 23);
@@ -213,6 +249,9 @@ namespace MitchelCampozano.AdventureGame.WinHost
             // 
             // _btnWest
             // 
+            this._btnWest.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this._btnWest.Location = new System.Drawing.Point(90, 127);
             this._btnWest.Name = "_btnWest";
             this._btnWest.Size = new System.Drawing.Size(75, 23);
@@ -222,6 +261,9 @@ namespace MitchelCampozano.AdventureGame.WinHost
             // 
             // _btnNorth
             // 
+            this._btnNorth.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this._btnNorth.Location = new System.Drawing.Point(172, 59);
             this._btnNorth.Name = "_btnNorth";
             this._btnNorth.Size = new System.Drawing.Size(75, 23);
@@ -271,6 +313,8 @@ namespace MitchelCampozano.AdventureGame.WinHost
         private System.Windows.Forms.Button _btnEast;
         private System.Windows.Forms.Button _btnWest;
         private System.Windows.Forms.Button _btnNorth;
+        private System.Windows.Forms.Button _btnInventory;
+        private System.Windows.Forms.Button _btnPickItem;
     }
 }
 
