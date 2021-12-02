@@ -43,13 +43,37 @@ namespace Nile.Windows
         private void OnProductAdd( object sender, EventArgs e )
         {
             var child = new ProductDetailForm("Product Details");
-            if (child.ShowDialog(this) != DialogResult.OK)
-                return;
+            
+            do
+            {
+                if (child.ShowDialog(this) != DialogResult.OK)
+                    return;
 
-            //TODO: Handle errors
-            //Save product
-            _database.Add(child.Product);
-            UpdateList();
+                //TODO: Handle errors
+                try
+                {
+                    //Save product
+                    _database.Add(child.Product);
+                    UpdateList();
+                    return;
+                } catch (ArgumentException ex)
+                {
+                    throw;
+                } catch (InvalidOperationException ex)
+                {
+                    throw;
+                } catch (NotSupportedException ex)
+                {
+                    throw;
+                } catch (System.IO.IOException ex)
+                {
+                    throw;
+                } catch (Exception ex)
+                {
+                    throw;
+                };
+
+            } while (true);
         }
 
         private void OnProductEdit( object sender, EventArgs e )
@@ -107,12 +131,16 @@ namespace Nile.Windows
 
         private void DeleteProduct ( Product product )
         {
-            //Confirm
-            if (MessageBox.Show(this, $"Are you sure you want to delete '{product.Name}'?",
-                                "Delete", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.No)
-                return;
+            do
+            {
+                //Confirm
+                if (MessageBox.Show(this, $"Are you sure you want to delete '{product.Name}'?",
+                                    "Delete", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.No)
+                    return;
 
-            //TODO: Handle errors
+                //TODO: Handle errors
+            } while (true);
+
             //Delete product
             _database.Remove(product.Id);
             UpdateList();
