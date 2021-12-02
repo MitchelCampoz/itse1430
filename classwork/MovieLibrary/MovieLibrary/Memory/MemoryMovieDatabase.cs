@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.Diagnostics;
 using System.Linq;
 
 namespace MovieLibrary.Memory
@@ -153,6 +154,7 @@ namespace MovieLibrary.Memory
             return movie;
         }
 
+        [Obsolete("Use GetCore Instead")]   // Add true to make it from a warning to an error
         private Movie FindByTitle ( string title )
         {
             return _items.FirstOrDefault(x => String.Compare(title, x.Title, true) == 0);
@@ -345,6 +347,12 @@ namespace MovieLibrary.Memory
             //    items[index++] = item.Clone();
 
             //return items;
+        }
+
+        [Conditional("DEBUG")]
+        private void Dump ()
+        {
+
         }
 
         // Arrays are always open in C#
