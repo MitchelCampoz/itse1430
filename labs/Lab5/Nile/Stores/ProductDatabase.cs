@@ -14,11 +14,14 @@ namespace Nile.Stores
         /// <returns>The added product.</returns>
         public Product Add ( Product product )
         {
-            //TODO: Check Arguments
             var item = product ?? throw new ArgumentNullException(nameof(product));
 
-            //TODO: Validate product
             ObjectValidator.Validate(product);
+
+            //Ensure product isn't a duplicate
+            var exists = FindProduct(product.Id);
+            if (exists != null)
+                throw new InvalidOperationException("Product must be unique.");
 
             //Emulate database by storing copy
             return AddCore(product);
@@ -28,7 +31,6 @@ namespace Nile.Stores
         /// <returns>The product, if it exists.</returns>
         public Product Get ( int id )
         {
-            //TODO: Check arguments
             if (id < 0)
                 throw new ArgumentOutOfRangeException(nameof(id), "ID not valid; must be greater than or equal to zero.");
 
@@ -46,7 +48,6 @@ namespace Nile.Stores
         /// <param name="id">The product to remove.</param>
         public void Remove ( int id )
         {
-            //TODO: Check arguments
             if (id < 0)
                 throw new ArgumentOutOfRangeException(nameof(id), "ID not valid; must be greater than or equal to zero.");
 
@@ -58,7 +59,6 @@ namespace Nile.Stores
         /// <returns>The updated product.</returns>
         public Product Update ( Product product )
         {
-            //TODO: Check arguments
             if (product.Id < 0)
                 throw new ArgumentOutOfRangeException(nameof(product.Id), "ID not valid; must be greater than or equal to zero.");
 
@@ -69,6 +69,11 @@ namespace Nile.Stores
 
             //Get existing product
             var existing = GetCore(product.Id);
+
+            //Checks if updated product doesn't match an existing one
+            var match = FindProduct(product.Id);
+            if (match != null && match.Name != product.Name)
+                throw new InvalidOperationException("Product must be different from existing one.");
 
             return UpdateCore(existing, product);
         }
@@ -84,6 +89,8 @@ namespace Nile.Stores
         protected abstract Product UpdateCore( Product existing, Product newItem );
 
         protected abstract Product AddCore( Product product );
+
+        protected abstract Product FindProduct( int id );
         #endregion
     }
 }

@@ -49,7 +49,6 @@ namespace Nile.Windows
                 if (child.ShowDialog(this) != DialogResult.OK)
                     return;
 
-                //TODO: Handle errors
                 try
                 {
                     //Save product
@@ -58,19 +57,13 @@ namespace Nile.Windows
                     return;
                 } catch (ArgumentException ex)
                 {
-                    throw;
+                    ErrorMessage(ex.Message, "Invalid Product");
                 } catch (InvalidOperationException ex)
                 {
-                    throw;
-                } catch (NotSupportedException ex)
-                {
-                    throw;
-                } catch (System.IO.IOException ex)
-                {
-                    throw;
+                    ErrorMessage(ex.Message, "Unable to currently process.");
                 } catch (Exception ex)
                 {
-                    throw;
+                    ErrorMessage(ex.Message, "Error.");
                 };
 
             } while (true);
@@ -125,38 +118,66 @@ namespace Nile.Windows
             e.SuppressKeyPress = true;
         }
 
+        public void ErrorMessage( string message, string title )
+        {
+            MessageBox.Show(message, title, MessageBoxButtons.OK, MessageBoxIcon.Error);
+        }
+
         #endregion
 
         #region Private Members
 
         private void DeleteProduct ( Product product )
         {
-            do
+
+            //Confirm
+            if (MessageBox.Show(this, $"Are you sure you want to delete '{product.Name}'?",
+                                "Delete", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.No)
+                return;
+
+            try
             {
-                //Confirm
-                if (MessageBox.Show(this, $"Are you sure you want to delete '{product.Name}'?",
-                                    "Delete", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.No)
-                    return;
-
-                //TODO: Handle errors
-            } while (true);
-
-            //Delete product
-            _database.Remove(product.Id);
-            UpdateList();
+                //Delete product
+                _database.Remove(product.Id);
+                UpdateList();
+            } catch (ArgumentException ex)
+            {
+                ErrorMessage(ex.Message, "No Product to delete.");
+            } catch (InvalidOperationException ex)
+            {
+                ErrorMessage(ex.Message, "Unable to currently process.");
+            } catch (Exception ex)
+            {
+                ErrorMessage(ex.Message, "Error.");
+            };
         }
 
         private void EditProduct ( Product product )
         {
             var child = new ProductDetailForm("Product Details");
             child.Product = product;
-            if (child.ShowDialog(this) != DialogResult.OK)
-                return;
 
-            //TODO: Handle errors
-            //Save product
-            _database.Update(child.Product);
-            UpdateList();
+            do
+            {
+                if (child.ShowDialog(this) != DialogResult.OK)
+                    return;
+
+                try
+                {
+                    //Save product
+                    _database.Update(child.Product);
+                    UpdateList();
+                } catch (ArgumentException ex)
+                {
+                    ErrorMessage(ex.Message, "Invalid Product");
+                } catch (InvalidOperationException ex)
+                {
+                    ErrorMessage(ex.Message, "Unable to currently process.");
+                } catch (Exception ex)
+                {
+                    ErrorMessage(ex.Message, "Error.");
+                };
+            } while (true);
         }
 
         private Product GetSelectedProduct ()
@@ -169,9 +190,19 @@ namespace Nile.Windows
 
         private void UpdateList ()
         {
-            //TODO: Handle errors
-
-            _bsProducts.DataSource = _database.GetAll();
+            try
+            {
+                _bsProducts.DataSource = _database.GetAll();
+            } catch (ArgumentException ex)
+            {
+                ErrorMessage(ex.Message, "Invalid Product");
+            } catch (InvalidOperationException ex)
+            {
+                ErrorMessage(ex.Message, "Unable to currently process.");
+            } catch (Exception ex)
+            {
+                ErrorMessage(ex.Message, "Error.");
+            };
         }
 
         private string GetConnectionString ( string name )
