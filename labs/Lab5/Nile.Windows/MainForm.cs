@@ -206,7 +206,9 @@ namespace Nile.Windows
         }
 
         private string GetConnectionString ( string name )
-                => Program.Configuration.GetConnectionString(name);        
+                => Program.Configuration.GetConnectionString("Data Source=(localdb)\\ProjectsV13;Initial Catalog=NileDatabase;Integrated Security=SSPI;");
+
+        private IProductDatabase _products = new SqlProductDatabase(GetConnectionString);
 
         private readonly IProductDatabase _database = new Nile.Stores.MemoryProductDatabase();
         #endregion
