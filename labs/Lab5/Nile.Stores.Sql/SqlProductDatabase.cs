@@ -1,6 +1,8 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
+using System.Linq;
 
 namespace Nile.Stores.Sql
 {
@@ -27,16 +29,53 @@ namespace Nile.Stores.Sql
                     if (reader.Read())
                     {
                         return new Product() {
-                            Name = Convert.ToString()
-                        }
-                    }
-                }
-            }
+                            Id = reader.GetFieldValue<int>("id"),
+                            Name = reader.GetFieldValue<string>("name"),
+                            price = reader.GetFieldValue<int>("price"),
+                            Description = reader.GetFieldValue<string>("description"),
+                            IsDiscontinued = reader.GetFieldValue<bool>("isDiscontinued")
+                        };
+                    };
+                };
+            };
+
+            return null;
         }
 
-        protected override IEnumerable<Product> GetAllCore ();
+        protected override IEnumerable<Product> GetAllCore ()
+        {
+            var set = new DataSet();
 
-        protected override void RemoveCore ( int id );
+            using (var connect = OpenConnection())
+            {
+                var cmd = new SqlCommand("GetAllProducts", connect);
+                cmd.CommandType = System.Data.CommandType.StoredProcedure;
+
+                var adapter = new SqlDataAdapter(cmd);
+                adapter.Fill(set);
+            };
+
+            var table = set.Tables.OfType<DataTable>().FirstOrDefault();
+
+            if (table != null)
+            {
+                foreach (var row in table.Rows.OfType<DataRow>())
+                {
+                    yield return new Product() {
+                        Id = row.Field<int>("id"),
+                        Name = row.Field<string>("name"),
+                        Price = row.Field<int>("price"),
+                        Description = row.Field<string>("description"),
+                        IsDiscontinued = row.Field<bool>("isDiscontinued")
+                    };
+                };
+            };
+        }
+
+        protected override void RemoveCore ( int id )
+        {
+
+        }
 
         protected override Product UpdateCore ( Product existing, Product newItem );
 
