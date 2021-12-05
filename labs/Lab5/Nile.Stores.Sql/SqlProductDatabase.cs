@@ -74,16 +74,60 @@ namespace Nile.Stores.Sql
 
         protected override void RemoveCore ( int id )
         {
+            using (var connect = OpenConnection())
+            {
+                var cmd = new SqlCommand("RemoveProduct", connect);
+                cmd.CommandType = CommandType.StoredProcedure;
 
+                cmd.Parameters.AddWithValue("@id", id);
+
+                cmd.ExecuteNonQuery();
+            };
         }
 
-        protected override Product UpdateCore ( Product existing, Product newItem );
+        protected override Product UpdateCore ( Product existing, Product newItem )
+        {
+            using (var connect = OpenConnection())
+            {
+                var cmd = new SqlCommand("UpdateMovie", connect);
+                cmd.CommandType = System.Data.CommandType.StoredProcedure;
+
+                cmd.Parameters.AddWithValue("@id", existing.id);
+
+                var paramName = cmd.CreateParameter();
+                paramName.ParameterName = "@name";
+                paramName.SqlDbType = System.Data.SqlDbType.VarChar;
+                paramName.Value = product.Name;
+                cmd.Parameters.Add(paramName);
+
+                var paramPrice = cmd.CreateParameter();
+                paramPrice.ParameterName = "@price";
+                paramPrice.SqlDbType = System.Data.SqlDbType.VarChar;
+                paramPrice.Value = product.Price;
+                cmd.Parameters.Add(paramPrice);
+
+                var paramDescript = cmd.CreateParameter();
+                paramDescript.ParameterName = "@description";
+                paramDescript.SqlDbType = System.Data.SqlDbType.VarChar;
+                paramDescript.Value = product.Description;
+                cmd.Parameters.Add(paramDescript);
+
+                var paramIsDisc = cmd.CreateParameter();
+                paramIsDisc.ParameterName = "@isDiscontinued";
+                paramIsDisc.SqlDbType = System.Data.SqlDbType.VarChar;
+                paramIsDisc.Value = product.IsDiscontinued;
+                cmd.Parameters.Add(paramIsDisc);
+
+                cmd.ExecuteNonQuery();
+            };
+        }
 
         protected override Product AddCore ( Product product )
         {
             using (var connect = OpenConnection())
             {
                 var cmd = new SqlCommand("AddProduct", connect);
+                cmd.CommandType = System.Data.CommandType.StoredProcedure;
 
                 var paramName = cmd.CreateParameter();
                 paramName.ParameterName = "@name";
@@ -116,7 +160,7 @@ namespace Nile.Stores.Sql
             return product;
         }
 
-        protected override Product FindProduct ( int id );
+        protected override Product FindProduct ( int id ) => GetCore(id);
 
         private SqlConnection OpenConnection ()
         {
