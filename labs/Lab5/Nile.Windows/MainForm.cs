@@ -27,6 +27,8 @@ namespace Nile.Windows
 
             _gridProducts.AutoGenerateColumns = false;
 
+            _bsProducts.ProductComparer();
+
             UpdateList();
         }
 

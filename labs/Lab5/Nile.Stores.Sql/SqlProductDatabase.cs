@@ -70,8 +70,6 @@ namespace Nile.Stores.Sql
                     };
                 };
             };
-
-
         }
 
         protected override void RemoveCore ( int id )
