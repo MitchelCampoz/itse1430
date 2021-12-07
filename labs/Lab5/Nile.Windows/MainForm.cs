@@ -2,9 +2,11 @@
  * ITSE 1430
  */
 using System;
+using System.Collections.Generic;
+using System.ComponentModel;
 using System.Windows.Forms;
 using Microsoft.Extensions.Configuration;
-
+using System.Data.SqlClient;
 using Nile.Stores.Sql;
 
 namespace Nile.Windows
@@ -179,6 +181,8 @@ namespace Nile.Windows
                 {
                     ErrorMessage(ex.Message, "Error.");
                 };
+
+                return;
             } while (true);
         }
 
@@ -208,11 +212,9 @@ namespace Nile.Windows
         }
 
         private string GetConnectionString ( string name )
-                => Program.Configuration.GetConnectionString("Data Source=(localdb)\\ProjectsV13;Initial Catalog=NileDatabase;Integrated Security=SSPI;");
+                => Program.Configuration.GetConnectionString(name);
 
-        private IProductDatabase _products = new SqlProductDatabase(GetConnectionString);
-
-        private readonly IProductDatabase _database = new Nile.Stores.MemoryProductDatabase();
+        private readonly IProductDatabase _database = new SqlProductDatabase("Data Source=(localdb)\\ProjectsV13;Initial Catalog=NileDatabase;Integrated Security=SSPI;");
         #endregion
     }
 }

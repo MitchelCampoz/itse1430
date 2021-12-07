@@ -31,7 +31,7 @@ namespace Nile.Stores.Sql
                         return new Product() {
                             Id = reader.GetFieldValue<int>("id"),
                             Name = reader.GetFieldValue<string>("name"),
-                            Price = reader.GetFieldValue<int>("price"),
+                            Price = reader.GetFieldValue<decimal>("price"),
                             Description = reader.GetFieldValue<string>("description"),
                             IsDiscontinued = reader.GetFieldValue<bool>("isDiscontinued")
                         };
@@ -64,12 +64,14 @@ namespace Nile.Stores.Sql
                     yield return new Product() {
                         Id = row.Field<int>("id"),
                         Name = row.Field<string>("name"),
-                        Price = row.Field<int>("price"),
+                        Price = row.Field<decimal>("price"),
                         Description = row.Field<string>("description"),
                         IsDiscontinued = row.Field<bool>("isDiscontinued")
                     };
                 };
             };
+
+
         }
 
         protected override void RemoveCore ( int id )
@@ -89,7 +91,7 @@ namespace Nile.Stores.Sql
         {
             using (var connect = OpenConnection())
             {
-                var cmd = new SqlCommand("UpdateMovie", connect);
+                var cmd = new SqlCommand("UpdateProduct", connect);
                 cmd.CommandType = System.Data.CommandType.StoredProcedure;
 
                 cmd.Parameters.AddWithValue("@id", existing.Id);

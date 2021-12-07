@@ -72,7 +72,7 @@ namespace Nile.Stores
 
             //Checks if updated product doesn't match an existing one
             var match = FindProduct(product.Id);
-            if (match != null && match.Name != product.Name)
+            if (match != null && match.Name != match.Name)
                 throw new InvalidOperationException("Product must be different from existing one.");
 
             return UpdateCore(existing, product);
