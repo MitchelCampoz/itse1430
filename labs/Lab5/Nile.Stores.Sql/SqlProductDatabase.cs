@@ -31,7 +31,7 @@ namespace Nile.Stores.Sql
                         return new Product() {
                             Id = reader.GetFieldValue<int>("id"),
                             Name = reader.GetFieldValue<string>("name"),
-                            price = reader.GetFieldValue<int>("price"),
+                            Price = reader.GetFieldValue<int>("price"),
                             Description = reader.GetFieldValue<string>("description"),
                             IsDiscontinued = reader.GetFieldValue<bool>("isDiscontinued")
                         };
@@ -92,34 +92,36 @@ namespace Nile.Stores.Sql
                 var cmd = new SqlCommand("UpdateMovie", connect);
                 cmd.CommandType = System.Data.CommandType.StoredProcedure;
 
-                cmd.Parameters.AddWithValue("@id", existing.id);
+                cmd.Parameters.AddWithValue("@id", existing.Id);
 
                 var paramName = cmd.CreateParameter();
                 paramName.ParameterName = "@name";
                 paramName.SqlDbType = System.Data.SqlDbType.VarChar;
-                paramName.Value = product.Name;
+                paramName.Value = newItem.Name;
                 cmd.Parameters.Add(paramName);
 
                 var paramPrice = cmd.CreateParameter();
                 paramPrice.ParameterName = "@price";
                 paramPrice.SqlDbType = System.Data.SqlDbType.VarChar;
-                paramPrice.Value = product.Price;
+                paramPrice.Value = newItem.Price;
                 cmd.Parameters.Add(paramPrice);
 
                 var paramDescript = cmd.CreateParameter();
                 paramDescript.ParameterName = "@description";
                 paramDescript.SqlDbType = System.Data.SqlDbType.VarChar;
-                paramDescript.Value = product.Description;
+                paramDescript.Value = newItem.Description;
                 cmd.Parameters.Add(paramDescript);
 
                 var paramIsDisc = cmd.CreateParameter();
                 paramIsDisc.ParameterName = "@isDiscontinued";
                 paramIsDisc.SqlDbType = System.Data.SqlDbType.VarChar;
-                paramIsDisc.Value = product.IsDiscontinued;
+                paramIsDisc.Value = newItem.IsDiscontinued;
                 cmd.Parameters.Add(paramIsDisc);
 
                 cmd.ExecuteNonQuery();
             };
+
+            return null;
         }
 
         protected override Product AddCore ( Product product )

@@ -5,6 +5,8 @@ using System;
 using System.Windows.Forms;
 using Microsoft.Extensions.Configuration;
 
+using Nile.Stores.Sql;
+
 namespace Nile.Windows
 {
     public partial class MainForm : Form
