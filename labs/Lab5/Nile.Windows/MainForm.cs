@@ -2,6 +2,7 @@
  * ITSE 1430
  */
 using System;
+using System.Linq;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Windows.Forms;
@@ -26,8 +27,6 @@ namespace Nile.Windows
             base.OnLoad(e);
 
             _gridProducts.AutoGenerateColumns = false;
-
-            _bsProducts.ProductComparer();
 
             UpdateList();
         }
@@ -200,7 +199,7 @@ namespace Nile.Windows
         {
             try
             {
-                _bsProducts.DataSource = _database.GetAll();
+                _bsProducts.DataSource = _database.GetAll().OrderBy(x => x.Name).ToList();
             } catch (ArgumentException ex)
             {
                 ErrorMessage(ex.Message, "Invalid Product");

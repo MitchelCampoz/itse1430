@@ -8,6 +8,8 @@ namespace Nile.Stores.Sql
 {
     public class SqlProductDatabase : ProductDatabase
     {
+        /// <summary>Connects the database with the connection string</summary>
+        /// <param name="connectionString"></param>
         public SqlProductDatabase ( string connectionString )
         {
             _connectionString = connectionString;
@@ -15,6 +17,9 @@ namespace Nile.Stores.Sql
 
         private readonly string _connectionString;
 
+        /// <summary>Gets the product via the specified ID</summary>
+        /// <param name="id"></param>
+        /// <returns>Returns the specified product</returns>
         protected override Product GetCore ( int id )
         {
             using (var connect = OpenConnection())
@@ -42,6 +47,8 @@ namespace Nile.Stores.Sql
             return null;
         }
 
+        /// <summary>Gets all the products in the list and puts them into a dataset</summary>
+        /// <returns>All of the products</returns>
         protected override IEnumerable<Product> GetAllCore ()
         {
             var set = new DataSet();
@@ -71,7 +78,9 @@ namespace Nile.Stores.Sql
                 };
             };
         }
-
+        
+        /// <summary>Handles the deletion of a product from the database</summary>
+        /// <param name="id"></param>
         protected override void RemoveCore ( int id )
         {
             using (var connect = OpenConnection())
@@ -85,6 +94,10 @@ namespace Nile.Stores.Sql
             };
         }
 
+        /// <summary>Updates an item's existing properties with new data</summary>
+        /// <param name="existing"></param>
+        /// <param name="newItem"></param>
+        /// <returns>An updated product</returns>
         protected override Product UpdateCore ( Product existing, Product newItem )
         {
             using (var connect = OpenConnection())
@@ -124,6 +137,9 @@ namespace Nile.Stores.Sql
             return null;
         }
 
+        /// <summary>Adds a new item to the database</summary>
+        /// <param name="product"></param>
+        /// <returns>A new item</returns>
         protected override Product AddCore ( Product product )
         {
             using (var connect = OpenConnection())
@@ -162,8 +178,13 @@ namespace Nile.Stores.Sql
             return product;
         }
 
+        /// <summary>Finds the product with the specified ID</summary>
+        /// <param name="id"></param>
+        /// <returns>An item grabbed through the GetCore function</returns>
         protected override Product FindProduct ( int id ) => GetCore(id);
 
+        /// <summary>Starts the connection of the database</summary>
+        /// <returns>An open connection</returns>
         private SqlConnection OpenConnection ()
         {
             var connect = new SqlConnection(_connectionString);

@@ -39,6 +39,9 @@ namespace Nile
             return Name;
         }
 
+        /// <summary>Performs validation checks</summary>
+        /// <param name="validationContext"></param>
+        /// <returns>Any error in validation</returns>
         public IEnumerable<ValidationResult> Validate ( ValidationContext validationContext )
         {
             var errors = new List<ValidationResult>();
