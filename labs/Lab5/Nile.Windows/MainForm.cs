@@ -18,6 +18,8 @@ namespace Nile.Windows
 
         public MainForm()
         {
+            _database = new SqlProductDatabase(GetConnectionString("ProductDatabase"));
+
             InitializeComponent();
         }
         #endregion
@@ -25,6 +27,7 @@ namespace Nile.Windows
         protected override void OnLoad( EventArgs e )
         {
             base.OnLoad(e);
+
 
             _gridProducts.AutoGenerateColumns = false;
 
@@ -215,7 +218,7 @@ namespace Nile.Windows
         private string GetConnectionString ( string name )
                 => Program.Configuration.GetConnectionString(name);
 
-        private readonly IProductDatabase _database = new SqlProductDatabase("Data Source=(localdb)\\ProjectsV13;Initial Catalog=NileDatabase;Integrated Security=SSPI;");
+        private readonly IProductDatabase _database;
         #endregion
     }
 }
